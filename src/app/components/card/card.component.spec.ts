@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardEventComponent } from './card-event.component';
+import { CardComponent } from './card.component';
 
-describe('CardEventComponent', () => {
-  let component: CardEventComponent;
-  let fixture: ComponentFixture<CardEventComponent>;
+describe('CardComponent', () => {
+  let component: CardComponent;
+  let fixture: ComponentFixture<CardComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CardEventComponent]
+      declarations: [CardComponent]
     });
-    fixture = TestBed.createComponent(CardEventComponent);
+    fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
