@@ -1,13 +1,12 @@
-<div class="card-columns">
-    <div *ngFor="let event of events">
-      <div class="card">
-        <img class="card-img-top" src="assets/images/{{ event.image }}" alt="Event image">
-        <div class="card-body">
-          <h5 class="card-title">{{ event.title }}</h5>
-          <p class="card-text">{{ event.description }}</p>
-          <a href="#" class="btn btn-primary">Ver más</a>
-        </div>
+<div class="card-conteiner">
+  <div *ngFor="let event of events">
+    <div class="card" data-aos="zoom-in-right">
+      <img class="card-img-top" src="{{ event.image }}" alt="Event image">
+      <div class="card-body">
+        <h5 class="card-title">{{ event.title }}</h5>
+        <p class="card-text">{{ event.description }}</p>
+        <a href="#" class="btn btn-primary">Visualizar</a>
       </div>
     </div>
   </div>
-  
+</div>

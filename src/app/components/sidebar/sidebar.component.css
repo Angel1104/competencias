@@ -1,12 +1,12 @@
 .sidebar {
-  width: 25%; /* El sidebar ocupa 1/4 de la pantalla */
-  background: linear-gradient(to bottom, #007BFF, #0056b3); /* Paleta de colores azules */
+  width: 20%; 
+  background: linear-gradient(to bottom, #007BFF, #0056b3); 
   color: white;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 110px); /* Resta la altura del navbar, ajusta según tu diseño */
+  height: calc(100vh - 110px);
 }
   /* Ajustes para los botones de redirección */
   .sidebar-button {

@@ -23,21 +23,21 @@ export class CardComponent implements OnInit {
     this.events = [
       {
         "title": "Concurso de programación",
-        "image": "assets/images/event.jpg",
+        "image": "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
         "description": "Un concurso de programación para estudiantes de todo el mundo.",
         "date": "2023-10-20",
         "location": "La Paz, Bolivia"
       },
       {
         "title": "Hackatón de desarrollo web",
-        "image": "assets/images/event.jpg",
+        "image": "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
         "description": "Un hackatón de 24 horas para desarrollar proyectos web.",
         "date": "2023-11-05",
         "location": "Santa Cruz de la Sierra, Bolivia"
       },
       {
         "title": "Conferencia sobre inteligencia artificial",
-        "image": "assets/images/event.jpg",
+        "image": "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
         "description": "Una conferencia sobre los últimos avances en inteligencia artificial.",
         "date": "2023-12-02",
         "location": "Cochabamba, Bolivia"
