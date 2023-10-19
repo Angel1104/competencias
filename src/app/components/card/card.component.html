@@ -1,12 +1,17 @@
-<div class="card-conteiner">
+<div class="box-1">
   <div *ngFor="let event of events">
-    <div class="card" data-aos="zoom-in-right">
-      <img class="card-img-top" src="{{ event.image }}" alt="Event image">
-      <div class="card-body">
-        <h5 class="card-title">{{ event.title }}</h5>
-        <p class="card-text">{{ event.description }}</p>
-        <a href="#" class="btn btn-primary">Visualizar</a>
+  <div class="image">
+      <img src={{ event.image }} alt="">
+  </div>
+  <div class="content">
+      <h3>{{ event.title }}</h3>
+      <p>
+        {{ event.description }} 
+      </p>
+      <div clas="icons">
+          <span class="price">Mas info</span>
+          <span class="buy"><img src="assets/arrow.svg" alt=""></span>
       </div>
-    </div>
+  </div>
   </div>
 </div>

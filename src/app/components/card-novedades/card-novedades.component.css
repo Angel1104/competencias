@@ -1,6 +1,7 @@
   
-.box-1{
-    background-image: url(../assets/fondo2.jpg);
+
+.box-3 {
+    background-image: url(../../../assets/fondo2.jpg);
     background-position: center center;
     background-repeat: no-repeat; 
     background-size: cover;
@@ -11,10 +12,10 @@
     display: none;
 }
 
-.box-1:nth-child(1),
-.box-1:nth-child(2),
-.box-1:nth-child(3),
-.box-1:nth-child(4) {
+.box-3:nth-child(1),
+.box-3:nth-child(2),
+.box-3:nth-child(3),
+.box-3:nth-child(4) {
     display: inline-block;
 }
 
