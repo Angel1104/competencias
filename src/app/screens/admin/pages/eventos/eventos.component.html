@@ -1,0 +1,43 @@
+<h1 style="margin:20px 0px 0px 40px">Eventos</h1>
+
+<mat-card style="margin: 20px 40px 40px 40px">
+
+    <mat-card-title>
+      <button 
+      mat-raised-button color="primary" 
+      (click)="nuevoEvento()"
+      ><mat-icon mat-list-icon>add</mat-icon> Nuevo Evento</button>
+    </mat-card-title>
+    <mat-divider inset></mat-divider>
+  
+    <mat-card-content class="dashboard-card-content">
+  
+      <div class="mat-elevation-z2">
+        <div class="section-card">
+          <mat-card class="card" *ngFor="let evento of eventos">
+            <mat-card-header>
+              <mat-card-title> {{evento.nombre}} </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="../../../../../assets/evento.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <h4>Descripcion: </h4>
+              <p>{{evento.descripcion}}</p>
+              <h4>Fecha inicio</h4>
+              <p>{{evento.fechaIni}}</p>
+              <h4>Fecha fin</h4>
+              <p>{{evento.fechaFin}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button  
+                mat-raised-button color="primary"
+                
+                (click)="visualizarEvento(evento.id)"
+                >VISUALIZAR</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>  
+      </div>
+  
+    </mat-card-content>
+  
+  </mat-card>

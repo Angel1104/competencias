@@ -1,0 +1,34 @@
+<div class="body">
+    <mat-card class="loginCard">
+  
+      <div class="header">
+        <h2>Login</h2>
+      </div>
+      <mat-card-content style="padding-bottom: 15px;">
+        <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+          <div>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input formControlName="email" matInput autocomplete="off"/>
+              <mat-icon matSuffix>mail</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input matInput formControlName="password" type="password">
+              <button mat-icon-button matSuffix type="button">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </mat-form-field>
+            <button class="full-width" mat-raised-button color="primary" type="submit" >
+              Ingresar
+              <mat-icon matSuffix>login</mat-icon>
+            </button>
+          </div>
+        </form>
+  
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </div>
