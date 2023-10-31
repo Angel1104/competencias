@@ -1,0 +1,39 @@
+
+.footer {
+    padding: 150px 0 100px 0;
+    display: flex; 
+    justify-content: space-between;
+}
+    
+.logo-2 {    
+    width: 150px;
+}
+    
+.links h4 {
+    color: #FDFDFD;
+    text-transform: uppercase; 
+    margin-bottom: 25px;
+}
+    
+.links ul li a { 
+    color: #FDFDFD; 
+    font-size: 16px; 
+    margin-bottom: 5px; 
+    display: inline-block;
+}
+.socials {
+    display: flex;
+}
+.socials{
+    margin: 0 10px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #cf1f16;
+    border-radius: 50%;
+}
+.social:hover {
+    background-color: #dd241b;
+}
+.social img {
+    margin: 8px 0 0 10px;
+}
