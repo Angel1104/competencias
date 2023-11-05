@@ -1,1 +1,43 @@
-<p>competencias works!</p>
+<h1 style="margin:20px 0px 0px 40px">Competencias</h1>
+
+<mat-card style="margin: 20px 40px 40px 40px">
+
+    <mat-card-title>
+      <button 
+      mat-raised-button color="primary" 
+      (click)="nuevaCompetencia()"
+      ><mat-icon mat-list-icon>add</mat-icon> Nueva Competencia</button>
+    </mat-card-title>
+    <mat-divider inset></mat-divider>
+  
+    <mat-card-content class="dashboard-card-content">
+  
+      <div class="mat-elevation-z2">
+        <div class="section-card">
+          <mat-card class="card" *ngFor="let competencias of competencias">
+            <mat-card-header>
+              <mat-card-title> {{competencias.nombre}} </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="../../../../../assets/evento.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <h4>Descripcion: </h4>
+              <p>{{competencias.descripcion}}</p>
+              <h4>Fecha inicio</h4>
+              <p>{{competencias.fechaIni}}</p>
+              <h4>Fecha fin</h4>
+              <p>{{competencias.fechaFin}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button  
+                mat-raised-button color="primary"
+                
+                (click)="visualizarCompetencia(competencias.id)"
+                >ver mas</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>  
+      </div>
+  
+    </mat-card-content>
+  
+  </mat-card>

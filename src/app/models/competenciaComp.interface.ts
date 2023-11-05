@@ -1,4 +1,5 @@
-export interface CompetenciaEditI {
+export interface CompetenciaI {
+    id : Number;
     nombre : string;
     descripcion : string;
     fechaIni : string;

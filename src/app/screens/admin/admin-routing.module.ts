@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { CompetenciasComponent } from './pages/competencias/competencias.component';
+
 import { EventosComponent } from './pages/eventos/eventos.component';
 import { CreareventoComponent } from './pages/crearevento/crearevento.component';
 import { VisualizareventoComponent } from './pages/visualizarevento/visualizarevento.component';
 import { EditareventoComponent } from './pages/editarevento/editarevento.component';
+
+import { CompetenciasComponent } from './pages/competencias/competencias.component';
+import { CrearcompComponent } from './pages/crearcomp/crearcomp.component';
+import { VisualizarcompComponent } from './pages/visualizarcomp/visualizarcomp.component';
+import { EditarcompComponent } from './pages/editarcomp/editarcomp.component';
 
 const routes: Routes = [{
     path:"", component: AdminComponent,
@@ -15,6 +20,9 @@ const routes: Routes = [{
       {path: "crearevento", component:CreareventoComponent},
       {path: "visualizarevento/:id", component:VisualizareventoComponent},
       {path: "editarevento/:id", component:EditareventoComponent},
+      {path: "crearcompetencia", component:CrearcompComponent},
+      {path: "visualizarcompetencia/:id", component:VisualizarcompComponent},
+      {path: "editarcompetencia/:id", component:EditarcompComponent},
     ]
   }];
   
