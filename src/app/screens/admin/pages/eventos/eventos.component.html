@@ -3,10 +3,23 @@
 <mat-card style="margin: 20px 40px 40px 40px">
 
     <mat-card-title>
-      <button 
-      mat-raised-button color="primary" 
-      (click)="nuevoEvento()"
-      ><mat-icon mat-list-icon>add</mat-icon> Nuevo Evento</button>
+
+    <div class="contenedorTitulo">
+      <div class="boton">
+        <button mat-raised-button color="primary" 
+          (click)="nuevoEvento()">
+          <mat-icon mat-list-icon>add</mat-icon> 
+          Nuevo Evento
+        </button>
+      </div>
+      <div class="buscador">
+        <mat-form-field class="buscar">
+          <input matInput placeholder="Buscar eventos" >
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
     </mat-card-title>
     <mat-divider inset></mat-divider>
   
