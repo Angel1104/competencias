@@ -1,1 +1,70 @@
-<p>visualizarcomp works!</p>
+<h1>Información de la Competencia</h1>
+<div style="margin:20px 0px 0px 40px">
+  <mat-form-field class="campo">
+    <mat-label>Nombre de la Competencia</mat-label>
+    <input matInput value={{competencias.nombre}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Tipo de competencia:</mat-label>
+    <input matInput value={{competencias.id_tipoCompetencia}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Descripción:</mat-label>
+    <input matInput value={{competencias.descripcion}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Fecha de inicio:</mat-label>
+    <input matInput value={{competencias.fechaIni}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Fecha de finalización:</mat-label>
+    <input matInput value={{competencias.fechaFin}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Encargado:</mat-label>
+    <input matInput value={{competencias.encargado}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Requisitos:</mat-label>
+    <input matInput value={{competencias.requisitos}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Lugar:</mat-label>
+    <input matInput value={{competencias.lugar}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Email:</mat-label>
+    <input matInput value={{competencias.email}} readonly>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Costo:</mat-label>
+    <input matInput value={{competencias.costo}} readonly>
+  </mat-form-field>
+
+  <mat-card class={{competencias.nombre}}>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Imagen</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  </mat-card>
+
+  <section>
+    
+    <div class="example-button-row">
+      <button mat-raised-button (click)="editarCompetencia(competencias.id)">Editar</button>
+      <button mat-raised-button color="primary" routerLink="/admin/competencias">Volver</button>
+      <button mat-raised-button color="warn" (click)="mostrarSweetAlert(competencias.id)">Eliminar</button>
+    </div>
+  </section>
+
+</div>
