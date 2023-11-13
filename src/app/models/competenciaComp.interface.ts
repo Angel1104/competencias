@@ -11,4 +11,5 @@ export interface CompetenciaI {
     costo : Number;
     id_tipoCompetencia : Number;
     imagen: String;
+    estado: string;
 }

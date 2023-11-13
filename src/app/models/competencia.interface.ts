@@ -9,4 +9,6 @@ export interface CompetenciaEditI {
     lugar : string;
     costo : Number;
     id_tipoCompetencia : Number;
+    estado: string;
+    imagen: File;
 }

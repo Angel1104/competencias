@@ -24,6 +24,10 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+  <div class="campo">
+    <label>Imagen:</label>
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
   </section>
   <section>
   <mat-form-field class="campo">
@@ -47,24 +51,17 @@
     <mat-label>Lugar:</mat-label>
     <input matInput formControlName="lugar">
   </mat-form-field>
+  <mat-form-field class="campo">
+    <mat-label>Estado:</mat-label>
+    <input matInput formControlName="estado">
+  </mat-form-field>
   </section>
 </section>
-  <section>
-  <mat-card class="imagen">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Imagen</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </mat-card>
-
-  <section>
-    
+  <section>    
     <div class="example-button-row">
       <button type="submit" color="primary" mat-raised-button>Guardar</button>
       <button mat-raised-button  routerLink="/admin/eventos">Cancelar</button>
     </div>
   </section>
-</section>
 </form>
 </div>

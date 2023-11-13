@@ -1,6 +1,6 @@
 <h1>Crear Competencia</h1>
 <div style="margin:20px 0px 0px 40px">
-<form [formGroup]="crearForm" (ngSubmit)="crearCompetencia(crearForm.value)">
+<form [formGroup]="crearFormC" (ngSubmit)="crearCompetencia(crearFormC.value)">
   <section class="form">
   <section class="f1">
   <mat-form-field class="campo">
@@ -29,6 +29,10 @@
     <mat-label>Costo:</mat-label>
     <input matInput formControlName="costo">
   </mat-form-field>
+  <div class="campo">
+    <label>Imagen:</label>
+    <input  type="file" (change)="onFileSelected($event)" />
+  </div>
   </section>
   <section>
   <mat-form-field class="campo">
@@ -58,18 +62,13 @@
     <input matInput formControlName="email">
   </mat-form-field>
 
-  
-</section>
-</section>
-<section>
-  <mat-card class="imagen">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Imagen</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </mat-card>
+  <mat-form-field class="campo">
+    <mat-label>Estado:</mat-label>
+    <input matInput formControlName="estado">
+  </mat-form-field>
 
+</section>
+</section>
   <section>
     
     <div class="example-button-row">
@@ -77,7 +76,6 @@
       <button mat-raised-button  routerLink="/admin/competencias">Cancelar</button>
     </div>
   </section>
-</section>
 </form>
 </div>
 
