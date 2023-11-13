@@ -1,6 +1,8 @@
 <h1>Edicion del Evento</h1>
 <div style="margin:20px 0px 0px 40px">
 <form [formGroup]="editarForm" (ngSubmit)="editarEvento(editarForm.value,dataEvento.id)">
+  <section class="form">
+  <section class="f1">
   <mat-form-field class="campo">
     <mat-label>Nombre evento</mat-label>
     <input matInput type="text" formControlName="nombre">
@@ -22,7 +24,8 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-
+  </section>
+  <section>
   <mat-form-field class="campo">
     <mat-label>Fecha de Finalizacion</mat-label>
     <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
@@ -44,8 +47,10 @@
     <mat-label>Lugar:</mat-label>
     <input matInput formControlName="lugar">
   </mat-form-field>
-
-  <mat-card >
+  </section>
+</section>
+  <section>
+  <mat-card class="imagen">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>Imagen</mat-card-title>
@@ -60,5 +65,6 @@
       <button mat-raised-button  routerLink="/admin/eventos">Cancelar</button>
     </div>
   </section>
+</section>
 </form>
 </div>

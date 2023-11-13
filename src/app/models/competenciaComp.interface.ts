@@ -10,4 +10,5 @@ export interface CompetenciaI {
     lugar : string;
     costo : Number;
     id_tipoCompetencia : Number;
+    imagen: String;
 }

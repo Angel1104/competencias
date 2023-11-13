@@ -15,6 +15,7 @@ import { SharedModule } from '../../Reutilizable/shared/shared.module';
 import { VisualizareventoComponent } from './pages/visualizarevento/visualizarevento.component';
 import { CreareventoComponent } from './pages/crearevento/crearevento.component';
 import { EditareventoComponent } from './pages/editarevento/editarevento.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -36,6 +37,7 @@ import { EditareventoComponent } from './pages/editarevento/editarevento.compone
     ReactiveFormsModule,
     MatDatepickerModule,
     SharedModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

@@ -14,7 +14,7 @@
       </div>
       <div class="buscador">
         <mat-form-field class="buscar">
-          <input matInput placeholder="Buscar eventos" >
+          <input matInput placeholder="Buscar evento por nombre" [(ngModel)]="searchTerm" (input)="filterEvents()" >
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
       </div>
@@ -27,11 +27,11 @@
   
       <div class="mat-elevation-z2">
         <div class="section-card">
-          <mat-card class="card" *ngFor="let evento of eventos">
+          <mat-card class="card" *ngFor="let evento of filteredEventos">
             <mat-card-header>
               <mat-card-title> {{evento.nombre}} </mat-card-title>
             </mat-card-header>
-            <img mat-card-image src="../../../../../assets/evento.jpg" alt="Photo of a Shiba Inu">
+            <img mat-card-image src={{evento.imagen}} alt="Photo of a Shiba Inu">
             <mat-card-content>
               <h4>Descripcion: </h4>
               <p>{{evento.descripcion}}</p>

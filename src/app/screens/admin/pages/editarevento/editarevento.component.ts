@@ -79,7 +79,7 @@ export class EditareventoComponent implements OnInit {
     console.log(id);
     
     Swal.fire({
-      title: '¿Estás seguro de edotar el evento?',
+      title: '¿Estás seguro de editar el evento?',
       text: "No se podra deshacer la acción",
       icon: 'warning',
       showCancelButton: true,

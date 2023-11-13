@@ -1,5 +1,7 @@
 <h1>Información de la Competencia</h1>
 <div style="margin:20px 0px 0px 40px">
+  <section class="form">
+    <section class="f1">
   <mat-form-field class="campo">
     <mat-label>Nombre de la Competencia</mat-label>
     <input matInput value={{competencias.nombre}} readonly>
@@ -24,7 +26,15 @@
     <mat-label>Fecha de finalización:</mat-label>
     <input matInput value={{competencias.fechaFin}} readonly>
   </mat-form-field>
-
+  <mat-card class="imagen">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Imagen</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src={{competencias.imagen}} class="img" alt="Photo of a Shiba Inu">
+  </mat-card>
+</section>
+<section>
   <mat-form-field class="campo">
     <mat-label>Encargado:</mat-label>
     <input matInput value={{competencias.encargado}} readonly>
@@ -50,14 +60,8 @@
     <input matInput value={{competencias.costo}} readonly>
   </mat-form-field>
 
-  <mat-card class={{competencias.nombre}}>
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Imagen</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </mat-card>
-
+</section>
+</section>
   <section>
     
     <div class="example-button-row">

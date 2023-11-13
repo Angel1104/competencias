@@ -1,5 +1,7 @@
 <h1>Información del Evento</h1>
-<div style="margin:20px 0px 0px 40px">
+<div style="margin:20px 0px 0px 40px" >
+  <section class="form">
+  <section class="f1">
   <mat-form-field class="campo">
     <mat-label>Nombre evento</mat-label>
     <input matInput value={{evento.nombre}} readonly>
@@ -19,7 +21,16 @@
     <mat-label>Fecha de inicio:</mat-label>
     <input matInput value={{evento.fechaIni}} readonly>
   </mat-form-field>
+  <mat-card class="imagen">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Imagen</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src={{evento.imagen}} alt="Photo of a Shiba Inu" class="img">
+  </mat-card>
 
+</section>
+<section class="f2">
   <mat-form-field class="campo">
     <mat-label>Fecha de finalización:</mat-label>
     <input matInput value={{evento.fechaFin}} readonly>
@@ -39,17 +50,10 @@
     <mat-label>Lugar:</mat-label>
     <input matInput value={{evento.lugar}} readonly>
   </mat-form-field>
-
-  <mat-card class={{evento.nombre}}>
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Imagen</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </mat-card>
-
+</section>
+</section>
+  
   <section>
-    
     <div class="example-button-row">
       <button mat-raised-button (click)="editarEvento(evento.id)">Editar</button>
       <button mat-raised-button color="primary" routerLink="/admin/eventos">Volver</button>

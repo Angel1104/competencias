@@ -7,5 +7,7 @@ export interface EventoI {
     requisitos : string;
     encargado: string;
     lugar : string;
+    estado: string;
+    imagen: string;
     id_tipoEventos : Number;
 }
