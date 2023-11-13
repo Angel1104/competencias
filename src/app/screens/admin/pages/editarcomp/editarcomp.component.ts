@@ -65,7 +65,8 @@ export class EditarcompComponent implements OnInit {
         'lugar': this.dataCompetencia.lugar || '',
         'id_tipoCompetencias': this.dataCompetencia.id_tipoCompetencia.toString() || '',
         'email': this.dataCompetencia.email || '',
-        'costo': this.dataCompetencia.email || '',
+        'costo': this.dataCompetencia.costo.toString() || '',
+
       })
       console.log(this.editarForm.value);
     })
