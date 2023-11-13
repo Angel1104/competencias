@@ -2,10 +2,11 @@ import { Component,OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../../services/api/api.service';
-import { EventoEditI } from "../../../../models/evento.interface";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { EventoI } from 'src/app/models/eventoComp.interface';
+import { EventoEditI } from 'src/app/models/eventoCompEdit.interface';
+// import { EventoI } from 'src/app/models/eventoCompEdit.interface';
+
 
 export const MY_FORMATS = {
   parse: {
@@ -29,7 +30,9 @@ export class EditareventoComponent implements OnInit {
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
 
   // evento!:EventoEditI;
-  dataEvento! : EventoI;
+  dataEvento! : EventoEditI;
+  imagenControl = new FormControl<File | null>(null);
+
   editarForm = new FormGroup({
     nombre: new FormControl('',Validators.required),
     descripcion : new FormControl('',Validators.required),
@@ -39,6 +42,8 @@ export class EditareventoComponent implements OnInit {
     requisitos : new FormControl('',Validators.required),
     lugar : new FormControl('',Validators.required),
     id_tipoEventos : new FormControl('',Validators.required),
+    imagen : this.imagenControl,
+    estado : new FormControl('',Validators.required),
   });
 
   ngOnInit(): void {
@@ -53,8 +58,9 @@ export class EditareventoComponent implements OnInit {
 
   getData(id:Number){
     this.apiService.getEventById(id).subscribe(data=>{
-      // this.evento = data;
-      this.dataEvento = data;
+      const { imagen, ...eventoSinImagen } = data;
+
+      this.dataEvento = eventoSinImagen;
       this.editarForm.setValue({
         'nombre': this.dataEvento.nombre || '',
         'descripcion': this.dataEvento.descripcion || '',
@@ -63,10 +69,23 @@ export class EditareventoComponent implements OnInit {
         'fechaIni': this.dataEvento.fechaIni || '',
         'requisitos': this.dataEvento.requisitos || '',
         'lugar': this.dataEvento.lugar || '',
-        'id_tipoEventos': this.dataEvento.id_tipoEventos.toString() || ''
+        'id_tipoEventos': this.dataEvento.id_tipoEventos.toString() || '',
+        'estado': this.dataEvento.estado || '',
+        'imagen': null
       })
       console.log(this.editarForm.value);
     })
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file);
+
+    if (file) {
+      this.imagenControl.setValue(file);
+    } else {
+      this.imagenControl.setValue(null);
+    }
   }
 
   submit(datos: any){
@@ -78,8 +97,11 @@ export class EditareventoComponent implements OnInit {
     console.log(form);
     console.log(id);
     
+    const formDataConImagen = { ...form, imagen: this.imagenControl.value };
+
+
     Swal.fire({
-      title: '¿Estás seguro de edotar el evento?',
+      title: '¿Estás seguro de editar el evento?',
       text: "No se podra deshacer la acción",
       icon: 'warning',
       showCancelButton: true,
@@ -88,7 +110,7 @@ export class EditareventoComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.editar(form,id);
+        this.editar(formDataConImagen,id);
         Swal.fire(
           'Editado!',
           'Se ha editado el evento con éxito',
@@ -99,7 +121,7 @@ export class EditareventoComponent implements OnInit {
       }
     });
   }
-  editar(data:EventoEditI,id:Number){
+  editar(data:any,id:Number){
     this.apiService.putEvent(data,id).subscribe(data=>{
       console.log(data);
     })

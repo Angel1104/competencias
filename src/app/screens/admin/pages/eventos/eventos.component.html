@@ -3,10 +3,23 @@
 <mat-card style="margin: 20px 40px 40px 40px">
 
     <mat-card-title>
-      <button 
-      mat-raised-button color="primary" 
-      (click)="nuevoEvento()"
-      ><mat-icon mat-list-icon>add</mat-icon> Nuevo Evento</button>
+
+    <div class="contenedorTitulo">
+      <div class="boton">
+        <button mat-raised-button color="primary" 
+          (click)="nuevoEvento()">
+          <mat-icon mat-list-icon>add</mat-icon> 
+          Nuevo Evento
+        </button>
+      </div>
+      <div class="buscador">
+        <mat-form-field class="buscar">
+          <input matInput placeholder="Buscar evento por nombre" [(ngModel)]="searchTerm" (input)="filterEvents()" >
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
     </mat-card-title>
     <mat-divider inset></mat-divider>
   
@@ -14,11 +27,11 @@
   
       <div class="mat-elevation-z2">
         <div class="section-card">
-          <mat-card class="card" *ngFor="let evento of eventos">
+          <mat-card class="card" *ngFor="let evento of filteredEventos">
             <mat-card-header>
               <mat-card-title> {{evento.nombre}} </mat-card-title>
             </mat-card-header>
-            <img mat-card-image src="../../../../../assets/evento.jpg" alt="Photo of a Shiba Inu">
+            <img mat-card-image src={{evento.imagen}} alt="Photo of a Shiba Inu">
             <mat-card-content>
               <h4>Descripcion: </h4>
               <p>{{evento.descripcion}}</p>

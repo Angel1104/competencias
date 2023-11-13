@@ -1,12 +1,14 @@
-export interface EventoEditI {
+export interface CompetenciaEditI {
     nombre : string;
     descripcion : string;
     fechaIni : string;
     fechaFin : string;
     requisitos : string;
     encargado: string;
+    email : string;
     lugar : string;
-    id_tipoEventos : Number;
+    costo : Number;
+    id_tipoCompetencia : Number;
     estado: string;
     imagen: File;
 }

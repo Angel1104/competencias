@@ -28,7 +28,7 @@ export const MY_FORMATS = {
 })
 export class CreareventoComponent{
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
-  
+  imagenSeleccionada: File | null = null;
   dataEvento! : EventoI;
   crearForm = new FormGroup({
     nombre: new FormControl('',Validators.required),
@@ -39,7 +39,18 @@ export class CreareventoComponent{
     requisitos : new FormControl('',Validators.required),
     lugar : new FormControl('',Validators.required),
     id_tipoEventos : new FormControl('',Validators.required),
+    estado: new FormControl('', Validators.required),
+    imagen: new FormControl('', Validators.required),
   });
+  
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file);
+
+    if (file) {
+      this.imagenSeleccionada = file;
+    }
+  }
 
   crearEvento(datos:any){
     const fechaInicio = new Date(datos.fechaIni);
@@ -47,12 +58,20 @@ export class CreareventoComponent{
 
     const fechaInicioISO = fechaInicio.toISOString().split('T')[0];
     const fechaFinISO = fechaFin.toISOString().split('T')[0];
-    const datosConFechasISO = {
-    ...datos,
-    fechaIni: fechaInicioISO,
-    fechaFin: fechaFinISO
-  };
-    console.log(datosConFechasISO);
+
+    const formData = new FormData();
+    formData.append('nombre', datos.nombre);
+    formData.append('descripcion', datos.descripcion);
+    formData.append('encargado', datos.encargado);
+    formData.append('fechaIni', fechaInicioISO);
+    formData.append('fechaFin', fechaFinISO);
+    formData.append('requisitos', datos.requisitos);
+    formData.append('lugar', datos.lugar);
+    formData.append('id_tipoEventos', datos.id_tipoEventos.toString());
+    formData.append('estado', datos.estado);
+    formData.append('imagen', this.imagenSeleccionada as File);
+
+    console.log(formData);
     Swal.fire({
       title: '¿Estás seguro de crear el evento?',
       text: "No se podra deshacer la acción",
@@ -63,7 +82,7 @@ export class CreareventoComponent{
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.crear(datosConFechasISO);
+        this.crear(formData);
         Swal.fire(
           'Creado!',
           'Se ha creado el evento con éxito',
@@ -75,7 +94,7 @@ export class CreareventoComponent{
     });
     
   }
-  crear(data:EventoEditI){
+  crear(data:any){
     this.apiService.postEvent(data).subscribe(data=>{
       console.log(data);
     })

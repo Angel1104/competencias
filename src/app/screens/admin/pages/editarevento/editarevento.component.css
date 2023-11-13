@@ -15,7 +15,7 @@
     }
     
     .campo {
-      width: 100%;
+      width: 90%;
       margin-bottom: 16px;
     }
     
@@ -67,5 +67,12 @@
       display: flex;
       justify-content: center;
       width: 120px;
+    }
+    .imagen {
+      height: 30%;
+      width: 30%;
+    }
+    .form {
+      display: flex;
     }
     

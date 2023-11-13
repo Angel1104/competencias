@@ -1,4 +1,5 @@
 export interface EventoEditI {
+    id : Number;
     nombre : string;
     descripcion : string;
     fechaIni : string;
@@ -6,7 +7,7 @@ export interface EventoEditI {
     requisitos : string;
     encargado: string;
     lugar : string;
-    id_tipoEventos : Number;
     estado: string;
-    imagen: File;
+    // imagen: File;
+    id_tipoEventos : Number;
 }

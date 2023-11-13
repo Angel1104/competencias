@@ -1,6 +1,8 @@
 <h1>Crear Evento</h1>
 <div style="margin:20px 0px 0px 40px">
 <form [formGroup]="crearForm" (ngSubmit)="crearEvento(crearForm.value)">
+  <section class="form">
+    <section class="f1">
   <mat-form-field class="campo">
     <mat-label>Nombre evento</mat-label>
     <input matInput type="text" formControlName="nombre">
@@ -23,6 +25,12 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
+  <div class="campo">
+    <label>Imagen:</label>
+    <input  type="file" (change)="onFileSelected($event)" />
+  </div>
+</section>
+<section>
   <mat-form-field class="campo">
     <mat-label>Fecha de Finalizacion</mat-label>
     <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
@@ -44,14 +52,12 @@
     <mat-label>Lugar:</mat-label>
     <input matInput formControlName="lugar">
   </mat-form-field>
-
-  <mat-card >
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Imagen</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </mat-card>
+  <mat-form-field class="campo">
+    <mat-label>Estado:</mat-label>
+    <input matInput formControlName="estado">
+  </mat-form-field>
+</section>
+</section>
 
   <section>
     

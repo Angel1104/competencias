@@ -4,6 +4,8 @@ import { EventoI } from "../../models/eventoComp.interface";
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { Observable } from "rxjs";
 import { EventoEditI } from 'src/app/models/evento.interface';
+import { CompetenciaI } from "../../models/competenciaComp.interface";
+import { CompetenciaEditI } from 'src/app/models/competencia.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +39,25 @@ export class ApiService {
   postEvent(evento:EventoEditI):Observable<any>{
     return this.http.post<any>(this.url+'Eventos/',evento)
   }
+
+  getAllCompetencias():Observable<CompetenciaI[]>{
+    return this.http.get<any>(this.url+'Competencias');
+  }
+
+  getCompetenciasById(id : Number) : Observable<CompetenciaI> {
+    return this.http.get<any>(this.url+'Competencias/'+id);
+  }
+
+  deleteCompetenciaId(id : Number) : Observable<any>{
+    return this.http.delete<any>(this.url+'Competencias/'+id)
+  }
+
+  putCompetencia(competencias:CompetenciaEditI,id : Number):Observable<any>{
+    return this.http.put<any>(this.url+'Competencias/'+id,competencias)
+  }
+
+  postCompetencia(competencias:CompetenciaEditI):Observable<any>{
+    return this.http.post<any>(this.url+'Competencias/',competencias)
+  }
+
 }

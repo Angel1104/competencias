@@ -15,7 +15,7 @@
     }
     
     .campo {
-      width: 100%;
+      width: 90%;
       margin-bottom: 16px;
     }
     
@@ -68,4 +68,14 @@
       justify-content: center;
       width: 120px;
     }
-    
+    .imagen {
+      height: 60%;
+      width: 60%;
+    }
+    .form {
+      display: flex;
+    }
+    .img {
+      height: 100%;
+      width: 100%;
+    }

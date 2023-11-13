@@ -23,4 +23,37 @@ mat-toolbar {
     width: 25%;
     margin: 20px;
   }
+/* buscador  */
+ 
+.contenedorTitulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Ajusta el espacio entre los elementos según tu preferencia */
+}
+
+.boton {
+  flex: 1; /* Esto hará que el lado izquierdo tome el 50% del espacio disponible */
+}
+
+.buscador {
+  flex: 1; /* Esto hará que el lado derecho tome el 50% del espacio disponible */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+button.mat-button {
+  margin-left: 5px; /* Ajusta el margen izquierdo para el botón "close" según tus preferencias */
+}
+
+/* Agrega cualquier otro estilo que necesites a tus botones, íconos y campos de formulario */
+
+.buscar {
   
+  width: 100%;
+  margin-bottom: 16px;
+}
