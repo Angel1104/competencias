@@ -2,10 +2,10 @@ import { Component,OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../../services/api/api.service';
-import { CompetenciaEditI } from "../../../../models/competencia.interface";
+import { CompEditI } from "../../../../models/competenciaCompEdit.interface";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { CompetenciaI } from 'src/app/models/competenciaComp.interface';
+// import { CompetenciaI } from 'src/app/models/competenciaComp.interface';
 
 export const MY_FORMATS = {
   parse: {
@@ -28,7 +28,10 @@ export const MY_FORMATS = {
 export class EditarcompComponent implements OnInit {
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
 
-  dataCompetencia! : CompetenciaI;
+  // evento!:EventoEditI;
+  dataCompetencia! : CompEditI;
+  imagenControl = new FormControl<File | null>(null);
+
   editarForm = new FormGroup({
     nombre: new FormControl('',Validators.required),
     descripcion : new FormControl('',Validators.required),
@@ -38,23 +41,27 @@ export class EditarcompComponent implements OnInit {
     requisitos : new FormControl('',Validators.required),
     lugar : new FormControl('',Validators.required),
     id_tipoCompetencias : new FormControl('',Validators.required),
-    email : new FormControl('',Validators.required),
-    costo : new FormControl('',Validators.required),
+    imagen : this.imagenControl,
+    estado : new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    costo: new FormControl('',Validators.required),
   });
 
   ngOnInit(): void {
-      let competenciaEditId = this.activaterouter.snapshot.paramMap.get('id');
-      if (competenciaEditId !== null) {
-        this.getData(parseInt(competenciaEditId, 10));
+      let competenciasEditId = this.activaterouter.snapshot.paramMap.get('id');
+      if (competenciasEditId !== null) {
+        this.getData(parseInt(competenciasEditId, 10));
       } else {
         this.getData(0);
       }
-      console.log(competenciaEditId);
+      console.log(competenciasEditId);
   }
 
   getData(id:Number){
-    this.apiService.getCompetenciasById(id).subscribe(data=>{      
-      this.dataCompetencia = data;
+    this.apiService.getCompetenciasById(id).subscribe(data=>{
+      const { imagen, ...competenciasSinImagen } = data;
+
+      this.dataCompetencia = competenciasSinImagen;
       this.editarForm.setValue({
         'nombre': this.dataCompetencia.nombre || '',
         'descripcion': this.dataCompetencia.descripcion || '',
@@ -63,13 +70,26 @@ export class EditarcompComponent implements OnInit {
         'fechaIni': this.dataCompetencia.fechaIni || '',
         'requisitos': this.dataCompetencia.requisitos || '',
         'lugar': this.dataCompetencia.lugar || '',
-        'id_tipoCompetencias': this.dataCompetencia.id_tipoCompetencia.toString() || '',
+        'id_tipoCompetencias': this.dataCompetencia?.id_tipoCompetencia?.toString() || '',
+        'estado': this.dataCompetencia.estado || '',
+        'imagen': null,
         'email': this.dataCompetencia.email || '',
         'costo': this.dataCompetencia.costo.toString() || '',
 
       })
       console.log(this.editarForm.value);
     })
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file);
+
+    if (file) {
+      this.imagenControl.setValue(file);
+    } else {
+      this.imagenControl.setValue(null);
+    }
   }
 
   submit(datos: any){
@@ -81,6 +101,9 @@ export class EditarcompComponent implements OnInit {
     console.log(form);
     console.log(id);
     
+    const formDataConImagen = { ...form, imagen: this.imagenControl.value };
+
+
     Swal.fire({
       title: '¿Estás seguro de editar la competencia?',
       text: "No se podra deshacer la acción",
@@ -91,7 +114,7 @@ export class EditarcompComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.editar(form,id);
+        this.editar(formDataConImagen,id);
         Swal.fire(
           'Editado!',
           'Se ha editado la competencia con éxito',
@@ -102,7 +125,7 @@ export class EditarcompComponent implements OnInit {
       }
     });
   }
-  editar(data:CompetenciaEditI,id:Number){
+  editar(data:any,id:Number){
     this.apiService.putCompetencia(data,id).subscribe(data=>{
       console.log(data);
     })
