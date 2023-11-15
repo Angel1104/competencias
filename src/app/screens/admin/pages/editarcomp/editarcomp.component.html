@@ -16,7 +16,7 @@
 
   <mat-form-field class="campo">
     <mat-label>Descripción:</mat-label>
-    <input matInput formControlName="descripcion">
+    <textarea matInput formControlName="descripcion"></textarea>
   </mat-form-field>
 
   <mat-form-field class="campo">
@@ -25,12 +25,7 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <div class="campo">
-    <label>Imagen:</label>
-    <input type="file" (change)="onFileSelected($event)" />
-  </div>
-  </section>
-  <section>
+
   <mat-form-field class="campo">
     <mat-label>Fecha de Finalizacion</mat-label>
     <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
@@ -38,24 +33,31 @@
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
+  <div class="campo">
+    <label>Imagen:</label>
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+  </section>
+  <section>
+
   <mat-form-field class="campo">
     <mat-label>Encargado:</mat-label>
     <input matInput formControlName="encargado">
   </mat-form-field>
 
   <mat-form-field class="campo">
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="campo">
     <mat-label>Requisitos:</mat-label>
-    <input matInput formControlName="requisitos">
+    <textarea matInput formControlName="requisitos"></textarea>
   </mat-form-field>
 
   <mat-form-field class="campo">
     <mat-label>Lugar:</mat-label>
     <input matInput formControlName="lugar">
-  </mat-form-field>
-
-  <mat-form-field class="campo">
-    <mat-label>Email:</mat-label>
-    <input matInput formControlName="email">
   </mat-form-field>
 
   <mat-form-field class="campo">
