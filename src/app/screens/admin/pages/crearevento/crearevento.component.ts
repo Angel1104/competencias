@@ -39,7 +39,7 @@ export class CreareventoComponent{
     requisitos : new FormControl('',Validators.required),
     lugar : new FormControl('',Validators.required),
     id_tipoEventos : new FormControl('',Validators.required),
-    estado: new FormControl('', Validators.required),
+    estado: new FormControl(false, Validators.required), 
     imagen: new FormControl('', Validators.required),
   });
   
@@ -59,6 +59,8 @@ export class CreareventoComponent{
     const fechaInicioISO = fechaInicio.toISOString().split('T')[0];
     const fechaFinISO = fechaFin.toISOString().split('T')[0];
 
+    const estado = datos.estado ? 'Activo' : 'Inactivo';
+
     const formData = new FormData();
     formData.append('nombre', datos.nombre);
     formData.append('descripcion', datos.descripcion);
@@ -68,7 +70,7 @@ export class CreareventoComponent{
     formData.append('requisitos', datos.requisitos);
     formData.append('lugar', datos.lugar);
     formData.append('id_tipoEventos', datos.id_tipoEventos.toString());
-    formData.append('estado', datos.estado);
+    formData.append('estado', estado);
     formData.append('imagen', this.imagenSeleccionada as File);
 
     console.log(formData);

@@ -9,12 +9,13 @@
 
   <mat-form-field class="campo">
     <mat-label>Tipo de evento:</mat-label>
-    <input matInput value={{evento.id_tipoEventos}} readonly>
+    <input matInput value="{{ tiposEventos[evento.id_tipoEventos.toString()] }}" readonly>
   </mat-form-field>
+  
 
   <mat-form-field class="campo">
     <mat-label>Descripción:</mat-label>
-    <input matInput value={{evento.descripcion}} readonly>
+    <textarea matInput value={{evento.descripcion}} readonly></textarea>
   </mat-form-field>
 
   <mat-form-field class="campo">
@@ -43,13 +44,19 @@
 
   <mat-form-field class="campo">
     <mat-label>Requisitos:</mat-label>
-    <input matInput value={{evento.requisitos}} readonly>
+    <textarea matInput value={{evento.requisitos}} readonly></textarea>
   </mat-form-field>
 
   <mat-form-field class="campo">
     <mat-label>Lugar:</mat-label>
     <input matInput value={{evento.lugar}} readonly>
   </mat-form-field>
+
+  <mat-form-field class="campo">
+    <mat-label>Estado:</mat-label>
+    <input matInput value={{evento.estado}} readonly>
+  </mat-form-field>
+  
 </section>
 </section>
   

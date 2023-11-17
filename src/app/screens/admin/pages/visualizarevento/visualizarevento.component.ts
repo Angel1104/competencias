@@ -14,6 +14,13 @@ export class VisualizareventoComponent implements OnInit {
 
   evento!:EventoI;
 
+  tiposEventos: { [key: string]: string } = {
+    '1': 'Entrenamiento',
+    '2': 'Reclutamiento',
+    '3': 'Clasificatorias Internas',
+    '4': 'Competencia de entrenamiento para la ICPC',
+  };
+
   ngOnInit(): void {
       let eventoId = this.activaterouter.snapshot.paramMap.get('id');
       if (eventoId !== null) {
@@ -24,6 +31,7 @@ export class VisualizareventoComponent implements OnInit {
       console.log(eventoId);
   }
 
+  
   getData(id:Number){
     this.apiService.getEventById(id).subscribe(data=>{
       this.evento = data;

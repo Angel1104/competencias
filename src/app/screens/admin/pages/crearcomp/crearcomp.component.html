@@ -11,7 +11,10 @@
 
   <mat-form-field class="campo">
     <mat-label>Tipo de competencia:</mat-label>
-    <input matInput formControlName="id_tipoCompetencias">
+    <mat-select formControlName="id_tipoCompetencias">
+      <mat-option value="1">Individual</mat-option>
+      <mat-option value="2">Grupal</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="campo">
@@ -65,10 +68,9 @@
     <input matInput formControlName="costo">
   </mat-form-field>
 
-  <mat-form-field class="campo">
-    <mat-label>Estado:</mat-label>
-    <input matInput formControlName="estado">
-  </mat-form-field>
+  <div class="campo">
+    <mat-slide-toggle formControlName="estado">Estado</mat-slide-toggle>
+  </div>  
 
 </section>
 </section>
