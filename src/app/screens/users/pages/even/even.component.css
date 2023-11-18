@@ -1,0 +1,79 @@
+mat-toolbar {
+    justify-content: space-between;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .content > mat-card {
+    margin-bottom: 16px;
+  }
+  
+  .content > mat-card {
+    width: 200px;
+  }
+  
+  .section-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .card {
+    width: 25%;
+    margin: 20px;
+  }
+  
+
+  .card img {
+    width: 100%;
+    height: 200px; /* Ajusta la altura según tu preferencia */
+    object-fit: cover; /* Esto asegura que la imagen se ajuste al tamaño sin distorsionar */
+  }
+
+  .card mat-card-content p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limita a una línea */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el contenido es más largo */
+  }
+
+  .card mat-card-header mat-card-title {
+    height: 3em; /* Ajusta la altura según tu preferencia */
+    overflow: hidden;
+  }
+  
+  /* buscador  */
+ 
+.contenedorTitulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Ajusta el espacio entre los elementos según tu preferencia */
+  margin-left: 0; /* Elimina el margen izquierdo */
+}
+
+
+.buscador {
+  flex: 0 0 50%; /* Ajusta el ancho del buscador al 50% del espacio disponible */
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.mat-form-field {
+  width: 100%;
+}
+
+button.mat-button {
+  margin-left: 5px; /* Ajusta el margen izquierdo para el botón "close" según tus preferencias */
+}
+
+/* Agrega cualquier otro estilo que necesites a tus botones, íconos y campos de formulario */
+
+.buscar {
+  
+  width: 100%;
+  margin-bottom: 16px;
+}
