@@ -18,3 +18,10 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+/* Estilos específicos para la imagen del escudo UMSS */
+.umss-logo {
+    max-width: 85%; /* Establecer el ancho máximo al 100% */
+    height: auto;    /* Altura automática para mantener la proporción */
+    margin: 16px;    /* Ajustar el margen según sea necesario */
+}

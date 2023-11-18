@@ -12,12 +12,6 @@
           Nuevo Evento
         </button>
       </div>
-      <div class="buscador">
-        <mat-form-field class="buscar">
-          <input matInput placeholder="Buscar evento por nombre" [(ngModel)]="searchTerm" (input)="filterEvents()" >
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      </div>
     </div>
 
     </mat-card-title>
@@ -27,29 +21,35 @@
   
       <div class="mat-elevation-z2">
         <div class="section-card">
-          <mat-card class="card" *ngFor="let evento of filteredEventos">
+
+          <mat-card class="card">
             <mat-card-header>
-              <mat-card-title> {{evento.nombre}} </mat-card-title>
+              <mat-card-title> Eventos Activos </mat-card-title>
             </mat-card-header>
-            <img mat-card-image src={{evento.imagen}} alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <h4>Descripcion: </h4>
-              <p>{{evento.descripcion}}</p>
-              <h4>Fecha inicio</h4>
-              <p>{{evento.fechaIni}}</p>
-              <h4>Fecha fin</h4>
-              <p>{{evento.fechaFin}}</p>
-              
-              
-            </mat-card-content>
+            <img mat-card-image src="../../../assets/evento.jpg" >
             <mat-card-actions>
               <button  
                 mat-raised-button color="primary"
                 
-                (click)="visualizarEvento(evento.id)"
-                >Ver mas</button>
+                (click)="VerEventosActivos()"
+                >Ver</button>
             </mat-card-actions>
           </mat-card>
+
+          <mat-card class="card">
+            <mat-card-header>
+              <mat-card-title> Eventos Inactivos </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/EvInactivo.jpeg" >
+            <mat-card-actions>
+              <button  
+                mat-raised-button color="primary"
+                
+                (click)="VerEventosInactivos()"
+                >Ver</button>
+            </mat-card-actions>
+          </mat-card>
+        
         </div>  
       </div>
   

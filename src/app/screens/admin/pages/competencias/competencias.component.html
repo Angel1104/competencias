@@ -9,13 +9,35 @@
           mat-raised-button color="primary" 
           (click)="nuevaCompetencia()"
           ><mat-icon mat-list-icon>add</mat-icon> Nueva Competencia</button>
+          
+          <mat-form-field>
+            <mat-label>Estado:</mat-label>
+            <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="applyEstadoFilter()">
+              <mat-option value="Activo">Activo</mat-option>
+              <mat-option value="Inactivo">Inactivo</mat-option>
+              <!-- Agrega más opciones según sea necesario -->
+            </mat-select>
+          </mat-form-field>
         </div>
+
+        
+
         <div class="buscador">
           <mat-form-field class="buscar">
             <input matInput placeholder="Buscar eventos por nombre" [(ngModel)]="searchTerm" (input)="filteredCompetens()">
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
         </div>
+        <!--
+        <div class="filtro-estado">
+          <mat-form-field>
+            <mat-label>Estado:</mat-label>
+            <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="filteredCompetens()">
+              <mat-option value="Activo">Activo</mat-option>
+              <mat-option value="Inactivo">Inactivo</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> -->
     </div>
     </mat-card-title>
     <mat-divider inset></mat-divider>

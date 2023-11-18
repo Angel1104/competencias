@@ -1,0 +1,43 @@
+/* Estilos para el home */
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    text-align: center; /* Centrar el texto */
+    align-items: center;
+    height: 50vh;
+    padding: 20px;
+}
+
+.welcome-content {
+    max-width: 400px; /* Ajusta el ancho según sea necesario */
+}
+
+.icpc-logo {
+    max-width: 50%; /* Limitar el ancho del contenedor al 50% del espacio disponible */
+}
+
+.icpc-image {
+    max-width: 100%; /* Ajustar el ancho de la imagen al 100% del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+.company-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.company-info {
+    max-width: 400px; /* Ajusta el ancho según sea necesario */
+}
+
+.company-logo {
+    max-width: 50%; /* Limitar el ancho del contenedor al 50% del espacio disponible */
+}
+
+.company-image {
+    max-height: 100px; /* Establecer una altura máxima para el logo de la empresa */
+    width: auto; /* Permitir que el ancho se ajuste automáticamente */
+}

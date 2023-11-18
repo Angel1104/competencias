@@ -19,6 +19,7 @@ export class CompetenciasComponent implements OnInit {
   filteredCompetencias: CompetenciaI[] = [];
 
   competencias!: CompetenciaI[];
+  estadoFiltro: string = 'Activo';
 
   
   ngOnInit () : void {
@@ -45,7 +46,7 @@ export class CompetenciasComponent implements OnInit {
   toggleGridColumns() {
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
-
+/*
   filteredCompetens() {
     if (!this.searchTerm.trim()) {
       this.filteredCompetencias = [...this.competencias];
@@ -55,5 +56,69 @@ export class CompetenciasComponent implements OnInit {
       );
     }
   }
+*/
+  filteredCompetens() {
+    // Aplicar filtro de estado
+    this.applyEstadoFilter();
+  
+    // Aplicar filtro de búsqueda por nombre
+    if (!this.searchTerm.trim()) {
+      return;  // No hay término de búsqueda, no es necesario filtrar por nombre
+    }
+  
+    this.filteredCompetencias = this.filteredCompetencias.filter(competencia =>
+      competencia.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+  /*
+  applyEstadoFilter() {
+    // Aplicar filtro estático por estado
+    this.filteredCompetencias = this.filteredCompetencias.filter(competencia =>
+      competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
+    );
+  }
+  
+
+  applyEstadoFilter() {
+    // Aplicar filtro estático por estado
+    this.filteredCompetencias = this.competencias.filter(competencia =>
+      competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
+    );
+  }
+  */
+  applyEstadoFilter() {
+    // Restablecer el filtro de búsqueda
+    this.filteredCompetencias = [...this.competencias];
+  
+    // Aplicar filtro estático por estado si es diferente de 'Todos'
+    if (this.estadoFiltro.toLowerCase() !== 'todos') {
+      this.filteredCompetencias = this.filteredCompetencias.filter(competencia =>
+        competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
+      );
+    }
+  }
+
+  
+
+  /*
+  filteredCompetens() {
+    if (!this.searchTerm.trim()) {
+      // Filtrar por nombre
+      this.filteredCompetencias = this.competencias.filter(competencia =>
+        competencia.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredCompetencias = this.competencias;
+    }
+  
+    // Aplicar filtro estático por estado
+    this.filteredCompetencias = this.filteredCompetencias.filter(competencia =>
+      competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
+    );
+  
+  }
+  */
+
 
 }

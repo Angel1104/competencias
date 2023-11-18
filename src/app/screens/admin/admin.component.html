@@ -16,7 +16,8 @@
 
 <mat-sidenav-container>
     <mat-sidenav  #sidenav opened="true" mode="side">
-        <mat-toolbar >UMSS</mat-toolbar>
+        <mat-toolbar style="text-align: center">UMSS</mat-toolbar>
+        <img class="umss-logo" src="../../../assets/escudoumss.png" alt="Imagen de presentación">
         <mat-nav-list > 
             <mat-divider></mat-divider>
             <mat-list-item routerLink="/admin/eventos"> 
@@ -29,6 +30,7 @@
                 <div matListItemLine>Competencias</div>
             </mat-list-item>
             <mat-divider></mat-divider>
+            
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

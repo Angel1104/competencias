@@ -19,6 +19,9 @@ import { FormsModule } from '@angular/forms';
 
 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { EventosInactivosComponent } from './pages/eventos-inactivos/eventos-inactivos.component';
+import { EventosActivosComponent } from './pages/eventos-activos/eventos-activos.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     VisualizarcompComponent,
     VisualizareventoComponent,
     CreareventoComponent,
-    EditareventoComponent
+    EditareventoComponent,
+    EventosInactivosComponent,
+    EventosActivosComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
