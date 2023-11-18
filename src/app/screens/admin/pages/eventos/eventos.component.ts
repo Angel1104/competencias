@@ -10,21 +10,32 @@ import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./eventos.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventosComponent {
+export class EventosComponent implements OnInit {
   constructor(private apiService: ApiService, private router:Router, private cdr: ChangeDetectorRef) {}
   title = "Angular Grid Card View";
   gridColumns = 3;
   searchTerm: string = '';
   filteredEventos: EventoI[] = [];
 
+  estadoFiltro: string = 'Activo';
+
   eventos!: EventoI[];
 
-  VerEventosInactivos() {
-    this.router.navigate(['admin/eventos-inactivos'])
+  ngOnInit () : void {
+    this.getData();
+  }
+  getData() {
+    this.apiService.getAllEvents().subscribe(data =>{
+      this.eventos = data;
+      this.filterEvents();
+      this.cdr.detectChanges()
+      console.log(this.eventos);
+    })
   }
 
-  VerEventosActivos() {
-    this.router.navigate(['admin/eventos-activos'])
+  visualizarEvento(id: Number){
+    console.log(id);
+    this.router.navigate(['admin/visualizarevento',id])
   }
 
   nuevoEvento() {
@@ -35,14 +46,31 @@ export class EventosComponent {
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
 
-  
   filterEvents() {
+    // Aplicar filtro de estado
+    this.applyEstadoFilter();
+  
+    // Aplicar filtro de búsqueda por nombre
     if (!this.searchTerm.trim()) {
-      this.filteredEventos = [...this.eventos];
-    } else {
-      this.filteredEventos = this.eventos.filter(evento =>
-        evento.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+      return;  // No hay término de búsqueda, no es necesario filtrar por nombre
+    }
+  
+    this.filteredEventos = this.filteredEventos.filter(evento =>
+      evento.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+
+  applyEstadoFilter() {
+    // Restablecer el filtro de búsqueda
+    this.filteredEventos = [...this.eventos];
+  
+    // Aplicar filtro estático por estado si es diferente de 'Todos'
+    if (this.estadoFiltro.toLowerCase() !== 'todos') {
+      this.filteredEventos = this.filteredEventos.filter(evento =>
+        evento.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
       );
     }
   }
+
 }

@@ -5,12 +5,31 @@
     <mat-card-title>
 
     <div class="contenedorTitulo">
+      <div class="boton-filtro">
       <div class="boton">
         <button mat-raised-button color="primary" 
           (click)="nuevoEvento()">
           <mat-icon mat-list-icon>add</mat-icon> 
           Nuevo Evento
         </button>
+        
+      </div>
+
+      <div class="filtro-estado">
+        <mat-form-field>
+          <mat-label>Estado:</mat-label>
+          <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="applyEstadoFilter()">
+            <mat-option value="Activo">Activo</mat-option>
+            <mat-option value="Inactivo">Inactivo</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+      <div class="buscador">
+        <mat-form-field class="buscar">
+          <input matInput placeholder="Buscar evento por nombre" [(ngModel)]="searchTerm" (input)="filterEvents()" >
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
       </div>
     </div>
 
@@ -21,38 +40,30 @@
   
       <div class="mat-elevation-z2">
         <div class="section-card">
-
-          <mat-card class="card">
+          <mat-card class="card" *ngFor="let evento of filteredEventos">
             <mat-card-header>
-              <mat-card-title> Eventos Activos </mat-card-title>
+              <mat-card-title> {{evento.nombre}} </mat-card-title>
             </mat-card-header>
-            <img mat-card-image src="../../../assets/evento.jpg" >
+            <img mat-card-image src={{evento.imagen}} alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <h4>Descripcion: </h4>
+              <p>{{evento.descripcion}}</p>
+              <p>{{evento.fechaFin}}<strong> al </strong> {{evento.fechaIni}}</p>
+              
+              
+              
+            </mat-card-content>
             <mat-card-actions>
               <button  
                 mat-raised-button color="primary"
                 
-                (click)="VerEventosActivos()"
-                >Ver</button>
+                (click)="visualizarEvento(evento.id)"
+                >Ver mas</button>
             </mat-card-actions>
           </mat-card>
-
-          <mat-card class="card">
-            <mat-card-header>
-              <mat-card-title> Eventos Inactivos </mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="../../../assets/EvInactivo.jpeg" >
-            <mat-card-actions>
-              <button  
-                mat-raised-button color="primary"
-                
-                (click)="VerEventosInactivos()"
-                >Ver</button>
-            </mat-card-actions>
-          </mat-card>
-        
         </div>  
       </div>
-  
     </mat-card-content>
+    
   
   </mat-card>

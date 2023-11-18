@@ -53,8 +53,18 @@ mat-toolbar {
   padding: 10px; /* Ajusta el espacio entre los elementos según tu preferencia */
 }
 
+.boton-filtro {
+  display: flex;
+  align-items: center;
+}
+
 .boton {
-  flex: 1; /* Esto hará que el lado izquierdo tome el 50% del espacio disponible */
+  /*flex: 1; /* Esto hará que el lado izquierdo tome el 50% del espacio disponible */
+  margin-right: 10px; /* Ajusta el espacio entre el botón y el filtro según tus preferencias */
+}
+
+.filtro-estado {
+  margin-right: 10px; /* Ajusta el espacio entre el filtro y el buscador según tus preferencias */
 }
 
 .buscador {
@@ -62,6 +72,7 @@ mat-toolbar {
   display: flex;
   justify-content: flex-end;
 }
+
 
 .mat-form-field {
   width: 100%;

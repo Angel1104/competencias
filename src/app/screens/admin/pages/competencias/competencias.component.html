@@ -4,41 +4,36 @@
 
     <mat-card-title>
       <div class="contenedorTitulo">
-        <div class="boton">
-          <button 
-          mat-raised-button color="primary" 
-          (click)="nuevaCompetencia()"
-          ><mat-icon mat-list-icon>add</mat-icon> Nueva Competencia</button>
-          
+        <div class="boton-filtro">
+          <div class="boton">
+            <button mat-raised-button color="primary" (click)="nuevaCompetencia()">
+              <mat-icon mat-list-icon>add</mat-icon> Nueva Competencia
+            </button>
+          </div>
+        
+      
+        <div class="filtro-estado">
           <mat-form-field>
             <mat-label>Estado:</mat-label>
             <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="applyEstadoFilter()">
               <mat-option value="Activo">Activo</mat-option>
               <mat-option value="Inactivo">Inactivo</mat-option>
-              <!-- Agrega más opciones según sea necesario -->
             </mat-select>
           </mat-form-field>
         </div>
-
-        
-
+      </div>
+      
         <div class="buscador">
           <mat-form-field class="buscar">
             <input matInput placeholder="Buscar eventos por nombre" [(ngModel)]="searchTerm" (input)="filteredCompetens()">
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
         </div>
-        <!--
-        <div class="filtro-estado">
-          <mat-form-field>
-            <mat-label>Estado:</mat-label>
-            <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="filteredCompetens()">
-              <mat-option value="Activo">Activo</mat-option>
-              <mat-option value="Inactivo">Inactivo</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div> -->
-    </div>
+      </div>
+      
+      
+
+    
     </mat-card-title>
     <mat-divider inset></mat-divider>
   
@@ -54,10 +49,10 @@
             <mat-card-content>
               <h4>Descripcion: </h4>
               <p>{{competencias.descripcion}}</p>
-              <h4>Fecha inicio</h4>
-              <p>{{competencias.fechaIni}}</p>
-              <h4>Fecha fin</h4>
-              <p>{{competencias.fechaFin}}</p>
+              <h4>Fecha </h4>
+              <p>{{competencias.fechaFin}}<strong> al </strong> {{competencias.fechaIni}}</p>
+              <h4>Lugar </h4>
+              <p>{{competencias.lugar}}</p>
             </mat-card-content>
             <mat-card-actions>
               <button  
