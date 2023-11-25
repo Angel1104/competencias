@@ -47,12 +47,16 @@
             </mat-card-header>
             <img mat-card-image src={{competencias.imagen}} alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <h4>Descripcion: </h4>
-              <p>{{competencias.descripcion}}</p>
-              <h4>Fecha </h4>
-              <p>{{competencias.fechaFin}}<strong> al </strong> {{competencias.fechaIni}}</p>
-              <h4>Lugar </h4>
-              <p>{{competencias.lugar}}</p>
+              <h1>{{competencias.descripcion}}</h1>
+
+              <p><strong>Fecha: </strong>{{competencias.fechaFin}}<strong> al </strong> {{competencias.fechaIni}}</p>
+              <p><strong>Lugar: </strong> {{competencias.lugar}}<strong> - </strong> {{competencias.horarios}} </p>
+              <p><strong>Costo: </strong> {{competencias.costo}}</p>
+
+              <h4>Requisitos </h4>
+              <h2>{{competencias.requisitos}}</h2>
+
+              <h3>{{competencias.email}}</h3>
             </mat-card-content>
             <mat-card-actions>
               <button  
