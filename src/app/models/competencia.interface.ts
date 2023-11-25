@@ -10,5 +10,6 @@ export interface CompetenciaEditI {
     costo : Number;
     id_tipoCompetencia : Number;
     estado: string;
+    horarios: string;
     imagen: File;
 }

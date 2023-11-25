@@ -45,6 +45,7 @@ export class EditarcompComponent implements OnInit {
     estado : new FormControl('',Validators.required),
     email: new FormControl('',Validators.required),
     costo: new FormControl('',Validators.required),
+    horarios: new FormControl('',Validators.required),
   });
 
   ngOnInit(): void {
@@ -75,6 +76,7 @@ export class EditarcompComponent implements OnInit {
         'imagen': null,
         'email': this.dataCompetencia.email || '',
         'costo': this.dataCompetencia.costo.toString() || '',
+        'horarios': this.dataCompetencia.horarios || '',
 
       })
       console.log(this.editarForm.value);

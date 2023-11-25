@@ -23,17 +23,13 @@
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Fecha de inicio</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="fechaIni">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-label>Lugar:</mat-label>
+    <input matInput formControlName="lugar">
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Fecha de Finalizacion</mat-label>
-    <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
-    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
+    <mat-label>Horiarios:</mat-label>
+    <input matInput formControlName="horarios">
   </mat-form-field>
 
   <div class="campo">
@@ -42,6 +38,22 @@
   </div>
   </section>
   <section>
+
+    <div class="fechas-container">
+      <mat-form-field class="campo">
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaIni">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field class="campo">
+        <mat-label>Fecha Fin</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
 
   <mat-form-field class="campo">
     <mat-label>Encargado:</mat-label>
@@ -56,11 +68,6 @@
   <mat-form-field class="campo">
     <mat-label>Requisitos:</mat-label>
     <textarea matInput formControlName="requisitos"></textarea>
-  </mat-form-field>
-
-  <mat-form-field class="campo">
-    <mat-label>Lugar:</mat-label>
-    <input matInput formControlName="lugar">
   </mat-form-field>
   
   <mat-form-field class="campo">

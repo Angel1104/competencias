@@ -24,6 +24,18 @@
     margin-bottom: 16px;
   }
 
+  /*fechas*/
+
+  .fechas-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+  }
+  
+  .fechas-container .campo {
+    width: 48%; /* Puedes ajustar el porcentaje según tus necesidades */
+  }
+  
   /*imagen*/
 
   .example-card {

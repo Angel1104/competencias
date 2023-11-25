@@ -44,6 +44,9 @@ export class EditareventoComponent implements OnInit {
     id_tipoEventos : new FormControl('',Validators.required),
     imagen : this.imagenControl,
     estado : new FormControl('',Validators.required),
+    costo: new FormControl('',Validators.required),
+    horarios: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
   });
 
   ngOnInit(): void {
@@ -71,7 +74,10 @@ export class EditareventoComponent implements OnInit {
         'lugar': this.dataEvento.lugar || '',
         'id_tipoEventos': this.dataEvento.id_tipoEventos.toString() || '',
         'estado': this.dataEvento.estado || '',
-        'imagen': null
+        'imagen': null,
+        'horarios': this.dataEvento.horarios || '',
+        'email': this.dataEvento.email || '',
+        'costo': this.dataEvento.costo.toString() || '',
       })
       console.log(this.editarForm.value);
     })

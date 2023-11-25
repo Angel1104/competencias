@@ -20,17 +20,15 @@
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Fecha de inicio:</mat-label>
-    <input matInput value={{competencias.fechaIni}} readonly>
+    <mat-label>Lugar:</mat-label>
+    <input matInput value={{competencias.lugar}} readonly>
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Fecha de finalización:</mat-label>
-    <input matInput value={{competencias.fechaFin}} readonly>
+    <mat-label>Horarios:</mat-label>
+    <input matInput value={{competencias.horarios}} readonly>
   </mat-form-field>
-
-
-
+  
   <mat-card class="imagen">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
@@ -42,14 +40,21 @@
 
 <section>
 
+  <div class="fechas-container">
+    <mat-form-field class="campo">
+      <mat-label>Fecha de inicio:</mat-label>
+      <input matInput value={{competencias.fechaIni}} readonly>
+    </mat-form-field>
+  
+    <mat-form-field class="campo">
+      <mat-label>Fecha de finalización:</mat-label>
+      <input matInput value={{competencias.fechaFin}} readonly>
+    </mat-form-field>
+  </div>
+
   <mat-form-field class="campo">
     <mat-label>Encargado:</mat-label>
     <input matInput value={{competencias.encargado}} readonly>
-  </mat-form-field>
-
-  <mat-form-field class="campo">
-    <mat-label>Email:</mat-label>
-    <input matInput value={{competencias.email}} readonly>
   </mat-form-field>
 
   <mat-form-field class="campo">
@@ -58,13 +63,13 @@
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Lugar:</mat-label>
-    <input matInput value={{competencias.lugar}} readonly>
+    <mat-label>Costo:</mat-label>
+    <input matInput value={{competencias.costo}} readonly>
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Costo:</mat-label>
-    <input matInput value={{competencias.costo}} readonly>
+    <mat-label>Email:</mat-label>
+    <input matInput value={{competencias.email}} readonly>
   </mat-form-field>
 
   <mat-form-field class="campo">
