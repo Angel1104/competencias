@@ -30,7 +30,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 //controles para la fecha
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MomentDateModule } from '@angular/material-moment-adapter';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 
@@ -70,7 +69,6 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MomentDateModule,
   ],
   providers: [
     MatDatepickerModule,
