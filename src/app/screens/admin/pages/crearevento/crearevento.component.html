@@ -30,6 +30,11 @@
     <input matInput formControlName="lugar">
   </mat-form-field>
 
+  <mat-form-field class="campo">
+    <mat-label>Horarios:</mat-label>
+    <input matInput formControlName="horarios">
+  </mat-form-field>
+
   <div class="campo">
     <label>Imagen:</label>
     <input  type="file" (change)="onFileSelected($event)" />
@@ -62,7 +67,17 @@
   <mat-form-field class="campo">
     <mat-label>Requisitos:</mat-label>
     <textarea matInput formControlName="requisitos"></textarea>
-  </mat-form-field>  
+  </mat-form-field> 
+
+  <mat-form-field class="campo">
+    <mat-label>Costo:</mat-label>
+    <input type="number" matInput formControlName="costo" />
+  </mat-form-field> 
+
+  <mat-form-field class="campo">
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field> 
 
   <div class="campo">
     <mat-slide-toggle formControlName="estado">Estado</mat-slide-toggle>

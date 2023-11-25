@@ -41,6 +41,9 @@ export class CreareventoComponent{
     id_tipoEventos : new FormControl('',Validators.required),
     estado: new FormControl(false, Validators.required), 
     imagen: new FormControl('', Validators.required),
+    costo: new FormControl('', Validators.required),
+    horarios: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
   });
   
   onFileSelected(event: any) {
@@ -72,6 +75,10 @@ export class CreareventoComponent{
     formData.append('id_tipoEventos', datos.id_tipoEventos.toString());
     formData.append('estado', estado);
     formData.append('imagen', this.imagenSeleccionada as File);
+    formData.append('costo', datos.costo);
+    formData.append('horarios', datos.horarios);
+    formData.append('email', datos.email);
+
 
     console.log(formData);
     Swal.fire({

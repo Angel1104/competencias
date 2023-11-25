@@ -10,4 +10,7 @@ export interface EventoI {
     estado: string;
     imagen: string;
     id_tipoEventos : Number;
+    costo: string;
+    horarios: string;
+    email: string;
 }

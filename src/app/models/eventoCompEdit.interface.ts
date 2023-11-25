@@ -8,6 +8,8 @@ export interface EventoEditI {
     encargado: string;
     lugar : string;
     estado: string;
-    // imagen: File;
     id_tipoEventos : Number;
+    costo: string;
+    horarios: string;
+    email: string;
 }
