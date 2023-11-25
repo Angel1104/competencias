@@ -1,8 +1,10 @@
 <h1>Crear Evento</h1>
 <div style="margin:20px 0px 0px 40px">
 <form [formGroup]="crearForm" (ngSubmit)="crearEvento(crearForm.value)">
+  
   <section class="form">
     <section class="f1">
+  
   <mat-form-field class="campo">
     <mat-label>Nombre evento</mat-label>
     <input matInput type="text" formControlName="nombre">
@@ -10,33 +12,47 @@
 
   <mat-form-field class="campo">
     <mat-label>Tipo de evento:</mat-label>
-    <input matInput formControlName="id_tipoEventos">
+    <mat-select formControlName="id_tipoEventos">
+      <mat-option value="1">Entrenamiento</mat-option>
+      <mat-option value="2">Reclutamiento</mat-option>
+      <mat-option value="3">Clasificatorias Internas</mat-option>
+      <mat-option value="4">Competencia de entrenamiento para la ICPC</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="campo">
     <mat-label>Descripción:</mat-label>
-    <input matInput formControlName="descripcion">
+    <textarea matInput formControlName="descripcion"></textarea>
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Fecha de inicio</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="fechaIni">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-label>Lugar:</mat-label>
+    <input matInput formControlName="lugar">
   </mat-form-field>
 
   <div class="campo">
     <label>Imagen:</label>
     <input  type="file" (change)="onFileSelected($event)" />
   </div>
+
 </section>
 <section>
-  <mat-form-field class="campo">
-    <mat-label>Fecha de Finalizacion</mat-label>
-    <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
-    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
+  
+  <div class="fechas-container">
+    <mat-form-field class="campo">
+      <mat-label>Fecha Inicio</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaIni">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="campo">
+      <mat-label>Fecha Fin</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </div>
 
   <mat-form-field class="campo">
     <mat-label>Encargado:</mat-label>
@@ -45,17 +61,13 @@
 
   <mat-form-field class="campo">
     <mat-label>Requisitos:</mat-label>
-    <input matInput formControlName="requisitos">
-  </mat-form-field>
+    <textarea matInput formControlName="requisitos"></textarea>
+  </mat-form-field>  
 
-  <mat-form-field class="campo">
-    <mat-label>Lugar:</mat-label>
-    <input matInput formControlName="lugar">
-  </mat-form-field>
-  <mat-form-field class="campo">
-    <mat-label>Estado:</mat-label>
-    <input matInput formControlName="estado">
-  </mat-form-field>
+  <div class="campo">
+    <mat-slide-toggle formControlName="estado">Estado</mat-slide-toggle>
+  </div>  
+
 </section>
 </section>
 

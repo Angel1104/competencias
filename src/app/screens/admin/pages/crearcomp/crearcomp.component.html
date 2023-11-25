@@ -3,19 +3,23 @@
 <form [formGroup]="crearFormC" (ngSubmit)="crearCompetencia(crearFormC.value)">
   <section class="form">
   <section class="f1">
-  <mat-form-field class="campo">
+
+    <mat-form-field class="campo">
     <mat-label>Nombre Competencia</mat-label>
     <input matInput type="text" formControlName="nombre">
   </mat-form-field>
 
   <mat-form-field class="campo">
     <mat-label>Tipo de competencia:</mat-label>
-    <input matInput formControlName="id_tipoCompetencias">
+    <mat-select formControlName="id_tipoCompetencias">
+      <mat-option value="1">Individual</mat-option>
+      <mat-option value="2">Grupal</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="campo">
     <mat-label>Descripción:</mat-label>
-    <input matInput formControlName="descripcion">
+    <textarea matInput formControlName="descripcion"></textarea>
   </mat-form-field>
 
   <mat-form-field class="campo">
@@ -26,21 +30,18 @@
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Costo:</mat-label>
-    <input matInput formControlName="costo">
+    <mat-label>Fecha de Finalizacion</mat-label>
+    <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
+    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
+
   <div class="campo">
     <label>Imagen:</label>
     <input  type="file" (change)="onFileSelected($event)" />
   </div>
   </section>
   <section>
-  <mat-form-field class="campo">
-    <mat-label>Fecha de Finalizacion</mat-label>
-    <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
-    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
 
   <mat-form-field class="campo">
     <mat-label>Encargado:</mat-label>
@@ -48,8 +49,13 @@
   </mat-form-field>
 
   <mat-form-field class="campo">
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+  
+  <mat-form-field class="campo">
     <mat-label>Requisitos:</mat-label>
-    <input matInput formControlName="requisitos">
+    <textarea matInput formControlName="requisitos"></textarea>
   </mat-form-field>
 
   <mat-form-field class="campo">
@@ -58,14 +64,13 @@
   </mat-form-field>
   
   <mat-form-field class="campo">
-    <mat-label>Email:</mat-label>
-    <input matInput formControlName="email">
+    <mat-label>Costo:</mat-label>
+    <input matInput formControlName="costo">
   </mat-form-field>
 
-  <mat-form-field class="campo">
-    <mat-label>Estado:</mat-label>
-    <input matInput formControlName="estado">
-  </mat-form-field>
+  <div class="campo">
+    <mat-slide-toggle formControlName="estado">Estado</mat-slide-toggle>
+  </div>  
 
 </section>
 </section>

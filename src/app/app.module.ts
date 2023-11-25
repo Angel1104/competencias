@@ -9,12 +9,14 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { AdminComponent } from './screens/admin/admin.component'
 import { LoginComponent } from './screens/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsersComponent } from './screens/users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

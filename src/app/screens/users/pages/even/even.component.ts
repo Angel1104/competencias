@@ -5,12 +5,12 @@ import {  EventoI} from "../../../../models/eventoComp.interface";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  selector: 'app-eventos',
-  templateUrl: './eventos.component.html',
-  styleUrls: ['./eventos.component.css'],
+  selector: 'app-even',
+  templateUrl: './even.component.html',
+  styleUrls: ['./even.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventosComponent implements OnInit {
+export class EvenComponent implements OnInit {
   constructor(private apiService: ApiService, private router:Router, private cdr: ChangeDetectorRef) {}
   title = "Angular Grid Card View";
   gridColumns = 3;
@@ -35,11 +35,7 @@ export class EventosComponent implements OnInit {
 
   visualizarEvento(id: Number){
     console.log(id);
-    this.router.navigate(['admin/visualizarevento',id])
-  }
-
-  nuevoEvento() {
-    this.router.navigate(['admin/crearevento'])
+    this.router.navigate(['users/visualizarevento',id])
   }
 
   toggleGridColumns() {

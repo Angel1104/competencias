@@ -23,18 +23,6 @@
       font-size: 24px;
       margin-bottom: 16px;
     }
-
-    /*fechas*/
-
-    .fechas-container {
-      display: flex;
-      justify-content: space-between;
-      width: 90%;
-    }
-    
-    .fechas-container .campo {
-      width: 48%; /* Puedes ajustar el porcentaje según tus necesidades */
-    }
   
     /*imagen*/
   
@@ -80,12 +68,14 @@
       justify-content: center;
       width: 120px;
     }
-    
     .imagen {
-      height: 30%;
-      width: 30%;
+      height: 60%;
+      width: 60%;
     }
     .form {
       display: flex;
     }
-    
+    .img {
+      height: 100%;
+      width: 100%;
+    }

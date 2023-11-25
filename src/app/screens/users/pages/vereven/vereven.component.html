@@ -51,20 +51,13 @@
     <mat-label>Lugar:</mat-label>
     <input matInput value={{evento.lugar}} readonly>
   </mat-form-field>
-
-  <mat-form-field class="campo">
-    <mat-label>Estado:</mat-label>
-    <input matInput value={{evento.estado}} readonly>
-  </mat-form-field>
   
 </section>
 </section>
   
   <section>
     <div class="example-button-row">
-      <button mat-raised-button (click)="editarEvento(evento.id)">Editar</button>
-      <button mat-raised-button color="primary" routerLink="/admin/eventos">Volver</button>
-      <button mat-raised-button color="warn" (click)="mostrarSweetAlert(evento.id)">Eliminar</button>
+      <button mat-raised-button color="primary" routerLink="/users/eventos">Volver</button>
     </div>
   </section>
 

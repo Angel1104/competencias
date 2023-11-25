@@ -1,59 +1,91 @@
 mat-toolbar {
-    justify-content: space-between;
-  }
-  
-  .content {
-    padding: 16px;
-  }
-  
-  .content > mat-card {
-    margin-bottom: 16px;
-  }
-  
-  .content > mat-card {
-    width: 200px;
-  }
-  
-  .section-card {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .card {
-    width: 25%;
-    margin: 20px;
-  }
-/* buscador  */
- 
-.contenedorTitulo {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px; /* Ajusta el espacio entre los elementos según tu preferencia */
+}
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  margin-bottom: 16px;
+}
+
+.content > mat-card {
+  width: 200px;
+}
+
+.section-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card {
+  width: 25%;
+  margin: 20px;
+}
+
+
+.card img {
+  width: 100%;
+  height: 200px; /* Ajusta la altura según tu preferencia */
+  object-fit: cover; /* Esto asegura que la imagen se ajuste al tamaño sin distorsionar */
+}
+
+.card mat-card-content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Limita a una línea */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el contenido es más largo */
+}
+
+.card mat-card-header mat-card-title {
+  height: 3em; /* Ajusta la altura según tu preferencia */
+  overflow: hidden;
+}
+
+/* buscador  */
+
+.contenedorTitulo {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px; /* Ajusta el espacio entre los elementos según tu preferencia */
+}
+
+.boton-filtro {
+display: flex;
+align-items: center;
 }
 
 .boton {
-  flex: 1; /* Esto hará que el lado izquierdo tome el 50% del espacio disponible */
+/*flex: 1; /* Esto hará que el lado izquierdo tome el 50% del espacio disponible */
+margin-right: 10px; /* Ajusta el espacio entre el botón y el filtro según tus preferencias */
+}
+
+.filtro-estado {
+margin-right: 10px; /* Ajusta el espacio entre el filtro y el buscador según tus preferencias */
 }
 
 .buscador {
-  flex: 1; /* Esto hará que el lado derecho tome el 50% del espacio disponible */
-  display: flex;
-  justify-content: flex-end;
+flex: 1; /* Esto hará que el lado derecho tome el 50% del espacio disponible */
+display: flex;
+justify-content: flex-end;
 }
 
+
 .mat-form-field {
-  width: 100%;
+width: 100%;
 }
 
 button.mat-button {
-  margin-left: 5px; /* Ajusta el margen izquierdo para el botón "close" según tus preferencias */
+margin-left: 5px; /* Ajusta el margen izquierdo para el botón "close" según tus preferencias */
 }
 
 /* Agrega cualquier otro estilo que necesites a tus botones, íconos y campos de formulario */
 
 .buscar {
-  
-  width: 100%;
-  margin-bottom: 16px;
+
+width: 100%;
+margin-bottom: 16px;
 }

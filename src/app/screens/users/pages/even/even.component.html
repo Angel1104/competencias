@@ -5,26 +5,6 @@
     <mat-card-title>
 
     <div class="contenedorTitulo">
-      <div class="boton-filtro">
-      <div class="boton">
-        <button mat-raised-button color="primary" 
-          (click)="nuevoEvento()">
-          <mat-icon mat-list-icon>add</mat-icon> 
-          Nuevo Evento
-        </button>
-        
-      </div>
-
-      <div class="filtro-estado">
-        <mat-form-field>
-          <mat-label>Estado:</mat-label>
-          <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="applyEstadoFilter()">
-            <mat-option value="Activo">Activo</mat-option>
-            <mat-option value="Inactivo">Inactivo</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
       <div class="buscador">
         <mat-form-field class="buscar">
           <input matInput placeholder="Buscar evento por nombre" [(ngModel)]="searchTerm" (input)="filterEvents()" >

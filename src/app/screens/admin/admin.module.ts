@@ -18,6 +18,8 @@ import { EditareventoComponent } from './pages/editarevento/editarevento.compone
 import { FormsModule } from '@angular/forms';
 
 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -29,13 +31,15 @@ import { FormsModule } from '@angular/forms';
     VisualizarcompComponent,
     VisualizareventoComponent,
     CreareventoComponent,
-    EditareventoComponent
+    EditareventoComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatSlideToggleModule,
     SharedModule,
     FormsModule
   ]

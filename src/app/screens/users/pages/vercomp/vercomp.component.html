@@ -67,19 +67,12 @@
     <input matInput value={{competencias.costo}} readonly>
   </mat-form-field>
 
-  <mat-form-field class="campo">
-    <mat-label>Estado:</mat-label>
-    <input matInput value={{competencias.estado}} readonly>
-  </mat-form-field>
-
 </section>
 </section>
   <section>
     
     <div class="example-button-row">
-      <button mat-raised-button (click)="editarCompetencia(competencias.id)">Editar</button>
-      <button mat-raised-button color="primary" routerLink="/admin/competencias">Volver</button>
-      <button mat-raised-button color="warn" (click)="mostrarSweetAlert(competencias.id)">Eliminar</button>
+      <button mat-raised-button color="primary" routerLink="/users/competencias">Volver</button>
     </div>
   </section>
 
