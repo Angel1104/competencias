@@ -33,7 +33,7 @@ export class ApiService {
   }
 
   putEvent(evento:EventoEditI,id : Number):Observable<any>{
-    return this.http.put<any>(this.url+'Eventos/'+id,evento)
+    return this.http.post<any>(this.url+'Eventos/'+id,evento)
   }
 
   postEvent(evento:EventoEditI):Observable<any>{
@@ -53,7 +53,7 @@ export class ApiService {
   }
 
   putCompetencia(competencias:CompetenciaEditI,id : Number):Observable<any>{
-    return this.http.put<any>(this.url+'Competencias/'+id,competencias)
+    return this.http.post<any>(this.url+'Competencias/'+id,competencias)
   }
 
   postCompetencia(competencias:CompetenciaEditI):Observable<any>{
