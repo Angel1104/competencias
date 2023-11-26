@@ -22,6 +22,9 @@ mat-toolbar {
 .card {
   width: 25%;
   margin: 20px;
+  overflow: hidden;
+  border-radius: 15px; /* Añade bordes redondeados para hacer la tarjeta más estilizada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una suave sombra */
 }
 
 
@@ -29,19 +32,59 @@ mat-toolbar {
   width: 100%;
   height: 200px; /* Ajusta la altura según tu preferencia */
   object-fit: cover; /* Esto asegura que la imagen se ajuste al tamaño sin distorsionar */
+  border-top-left-radius: 15px; /* Añade bordes redondeados solo a la esquina superior izquierda de la imagen */
+  border-top-right-radius: 15px; /* Añade bordes redondeados solo a la esquina superior derecha de la imagen */
+}
+
+.card mat-card-content h1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a una línea */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el contenido es más largo */
+  font-size: 12px;
+  height: 2.5em; /* Ajusta la altura según tu preferencia */
+  font-weight:normal ;
+  text-align: center;
+}
+
+.card mat-card-content h2 {
+  font-size: 16px;
+  font-weight:normal ;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a una línea */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el contenido es más largo */
+  font-size: 12px;
+  height: 2.5em; /* Ajusta la altura según tu preferencia */
+  
+}
+
+.card mat-card-content h3 {
+  font-size: 14px;
+  font-weight:normal ;
+  text-align: right;
+  color: darkblue;
 }
 
 .card mat-card-content p {
+  color: red; /* Color de texto para los párrafos, puedes cambiarlo según tu preferencia */
+  text-align: right;
+  font-size: 14px;
+  margin: 4px 0;
   display: -webkit-box;
   -webkit-line-clamp: 1; /* Limita a una línea */
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis; /* Añade puntos suspensivos si el contenido es más largo */
+  
 }
 
 .card mat-card-header mat-card-title {
-  height: 3em; /* Ajusta la altura según tu preferencia */
+  height: 4.6em; /* Ajusta la altura según tu preferencia */
   overflow: hidden;
+  font-weight: bold;
 }
 
 /* buscador  */

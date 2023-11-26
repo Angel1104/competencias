@@ -26,12 +26,16 @@
             </mat-card-header>
             <img mat-card-image src={{evento.imagen}} alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <h4>Descripcion: </h4>
-              <p>{{evento.descripcion}}</p>
-              <p>{{evento.fechaFin}}<strong> al </strong> {{evento.fechaIni}}</p>
-              
-              
-              
+              <h1>{{evento.descripcion}}</h1>
+
+              <p><strong>Fecha: </strong>{{evento.fechaFin}}<strong> al </strong> {{evento.fechaIni}}</p>
+              <p><strong>Lugar: </strong> {{evento.lugar}}<strong> - </strong> {{evento.horarios}} </p>
+              <p><strong>Costo: </strong> {{evento.costo}}</p>
+
+              <h4>Requisitos </h4>
+              <h2>{{evento.requisitos}}</h2>
+
+              <h3>{{evento.email}}</h3>
             </mat-card-content>
             <mat-card-actions>
               <button  

@@ -43,6 +43,7 @@ export class CrearcompComponent {
     id_tipoCompetencias : new FormControl('',Validators.required),
     email : new FormControl('',Validators.required),
     costo : new FormControl('',Validators.required),
+    horarios: new FormControl('', Validators.required),
     estado: new FormControl(false, Validators.required), 
     imagen: new FormControl('', Validators.required)
   });
@@ -76,6 +77,7 @@ export class CrearcompComponent {
     formData.append('id_tipoCompetencias', datos.id_tipoCompetencias.toString());
     formData.append('email', datos.email);
     formData.append('costo', datos.costo);
+    formData.append('horarios', datos.horarios);
     formData.append('estado', estado);
     formData.append('imagen', this.imagenSeleccionada as File);
 

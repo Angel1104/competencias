@@ -12,4 +12,5 @@ export interface CompEditI {
     costo : Number;
     // imagen: File;
     id_tipoCompetencia : Number;
+    horarios: string;
 }
