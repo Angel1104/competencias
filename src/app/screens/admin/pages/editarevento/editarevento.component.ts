@@ -31,7 +31,8 @@ export class EditareventoComponent implements OnInit {
 
   // evento!:EventoEditI;
   dataEvento! : EventoEditI;
-  imagenControl = new FormControl<File | null>(null);
+  //imagenControl = new FormControl<File | null>(null);
+  imagenControl: File | null = null;
 
   editarForm = new FormGroup({
     nombre: new FormControl('',Validators.required),
@@ -42,7 +43,7 @@ export class EditareventoComponent implements OnInit {
     requisitos : new FormControl('',Validators.required),
     lugar : new FormControl('',Validators.required),
     id_tipoEventos : new FormControl('',Validators.required),
-    imagen : this.imagenControl,
+    imagen : new FormControl('', Validators.required),
     estado : new FormControl('',Validators.required),
     costo: new FormControl('',Validators.required),
     horarios: new FormControl('',Validators.required),
@@ -88,9 +89,11 @@ export class EditareventoComponent implements OnInit {
     console.log(file);
 
     if (file) {
-      this.imagenControl.setValue(file);
+      //this.imagenControl.setValue(file);
+      this.imagenControl = file;
     } else {
-      this.imagenControl.setValue(null);
+      //this.imagenControl.setValue(null);
+      this.imagenControl = null;
     }
   }
 
@@ -103,7 +106,13 @@ export class EditareventoComponent implements OnInit {
     console.log(form);
     console.log(id);
     
-    const formDataConImagen = { ...form, imagen: this.imagenControl.value };
+    //const formDataConImagen = { ...form, imagen: this.imagenControl.value };
+    const formDataConImagen = new FormData();
+    Object.keys(form).forEach(key => {
+    formDataConImagen.append(key, form[key]);
+  });
+
+  formDataConImagen.append('imagen', this.imagenControl as File);
 
 
     Swal.fire({
@@ -129,6 +138,7 @@ export class EditareventoComponent implements OnInit {
   }
   editar(data:any,id:Number){
     this.apiService.putEvent(data,id).subscribe(data=>{
+      
       console.log(data);
     })
   }
