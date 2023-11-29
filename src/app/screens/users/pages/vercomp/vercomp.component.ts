@@ -31,4 +31,8 @@ export class VercompComponent implements OnInit {
       
     })
   }
+
+  registrarEquipo(id:Number){
+    this.router.navigate(['users/registroequipo',id]);
+  }
 }
