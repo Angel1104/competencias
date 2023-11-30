@@ -17,7 +17,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   loginByEmail(form:LoginI):Observable<any>{
-    return this.http.post<any>(this.url+'login',form);
+    return this.http.post<any>(this.url+'Admins/login',form);
   }
 
   getAllEvents():Observable<EventoI[]>{

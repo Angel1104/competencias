@@ -24,7 +24,8 @@ import { UsersComponent } from './screens/users/users.component';
     FormsModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
