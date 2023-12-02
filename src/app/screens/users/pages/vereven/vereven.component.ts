@@ -39,4 +39,9 @@ export class VerevenComponent implements OnInit {
       
     })
   }
+
+  registrarInteresado(id:Number){
+    this.router.navigate(['/users/registointeresado',id]);
+  }
+
 }

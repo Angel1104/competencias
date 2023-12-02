@@ -18,6 +18,7 @@ import { RegistroequipoComponent } from './pages/registroequipo/registroequipo.c
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RegistrointeresadoComponent } from './pages/registrointeresado/registrointeresado.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     VercompComponent,
     VerevenComponent,
     HomComponent,
-    RegistroequipoComponent
+    RegistroequipoComponent,
+    RegistrointeresadoComponent
   ],
   imports: [
     CommonModule,
