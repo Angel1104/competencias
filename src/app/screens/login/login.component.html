@@ -19,10 +19,12 @@
                 <mat-icon>visibility</mat-icon>
               </button>
             </mat-form-field>
-            <button class="full-width" mat-raised-button color="primary" type="submit" >
+            <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
+            <button class="full-width" mat-raised-button color="primary" type="submit" [disabled]="loading">
               Ingresar
               <mat-icon matSuffix>login</mat-icon>
             </button>
+            
           </div>
         </form>
   

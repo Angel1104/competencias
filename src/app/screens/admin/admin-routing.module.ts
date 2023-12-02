@@ -13,6 +13,8 @@ import { CrearcompComponent } from './pages/crearcomp/crearcomp.component';
 import { VisualizarcompComponent } from './pages/visualizarcomp/visualizarcomp.component';
 import { EditarcompComponent } from './pages/editarcomp/editarcomp.component';
 
+import { VerinteresadosComponent } from './pages/verinteresados/verinteresados.component';
+
 const routes: Routes = [{
     path:"", component: AdminComponent,
     children: [
@@ -25,6 +27,7 @@ const routes: Routes = [{
       {path: "crearcompetencia", component:CrearcompComponent},
       {path: "visualizarcompetencia/:id", component:VisualizarcompComponent},
       {path: "editarcompetencia/:id", component:EditarcompComponent},
+      {path: "verinteresados/:id", component:VerinteresadosComponent},
     ]
   }];
   

@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HomeComponent } from './pages/home/home.component';
+import { VerinteresadosComponent } from './pages/verinteresados/verinteresados.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HomeComponent } from './pages/home/home.component';
     VisualizareventoComponent,
     CreareventoComponent,
     EditareventoComponent,
-    HomeComponent
+    HomeComponent,
+    VerinteresadosComponent
   ],
   imports: [
     CommonModule,

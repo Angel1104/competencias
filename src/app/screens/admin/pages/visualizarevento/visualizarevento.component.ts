@@ -69,4 +69,10 @@ export class VisualizareventoComponent implements OnInit {
   editarEvento(id:Number){
     this.router.navigate(['/admin/editarevento',id]);
   }
+
+  verInteresados(id: Number){
+    //console.log(id);
+    this.router.navigate(['admin/verinteresados',id])
+  }
+
 }

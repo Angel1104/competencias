@@ -7,6 +7,9 @@ import { EventoEditI } from 'src/app/models/evento.interface';
 import { CompetenciaI } from "../../models/competenciaComp.interface";
 import { CompetenciaEditI } from 'src/app/models/competencia.interface';
 
+import { InteresadoI } from "../../models/interesadoComp.interface";
+import { InteresadoEditI } from "../../models/interesado.interface";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +20,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   loginByEmail(form:LoginI):Observable<any>{
-    return this.http.post<any>(this.url+'login',form);
+    return this.http.post<any>(this.url+'Admins/login',form);
   }
 
   getAllEvents():Observable<EventoI[]>{
@@ -59,5 +62,46 @@ export class ApiService {
   postCompetencia(competencias:CompetenciaEditI):Observable<any>{
     return this.http.post<any>(this.url+'Competencias/',competencias)
   }
+ //Interesados
+getAllInteresados(): Observable<InteresadoI[]> {
+  return this.http.get<InteresadoI[]>(`${this.url}Interesados`);
+}
 
+getInteresadoById(id: number): Observable<InteresadoI> {
+  return this.http.get<InteresadoI>(`${this.url}Interesados/${id}`);
+}
+
+deleteInteresadoById(id: number): Observable<any> {
+  return this.http.delete<any>(`${this.url}Interesados/${id}`);
+}
+
+// Crear Interesado
+createInteresado(interesado: InteresadoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Interesados`, interesado);
+}
+
+// Asociar un Interesado con un Evento
+associateInteresadoWithEvento(eventoId: number, interesado: InteresadoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Eventos/${eventoId}/Interesados`, interesado);
+}
+
+// Obtener Interesados para un Evento específico
+getInteresadosByEventoId(eventoId: number): Observable<InteresadoI[]> {
+  return this.http.get<InteresadoI[]>(`${this.url}Eventos/${eventoId}/Interesados`);
+}
+
+// Crear participante
+createParticipante(interesado: InteresadoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Participantes`, interesado);
+}
+
+// Asociar un participante con una competencias
+associateParticipanteWithComp(eventoId: number, interesado: InteresadoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Competencias/${eventoId}/Participantes`, interesado);
+}
+
+// Obtener particpantes para una competencia específico
+getParticipanteByCompId(eventoId: number): Observable<InteresadoI[]> {
+  return this.http.get<InteresadoI[]>(`${this.url}Competencias/${eventoId}/Participantes`);
+}
 }

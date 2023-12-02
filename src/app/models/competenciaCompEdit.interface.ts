@@ -11,6 +11,6 @@ export interface CompEditI {
     estado: string;
     costo : Number;
     // imagen: File;
-    id_tipoCompetencia : Number;
+    id_tipoCompetencias : Number;
     horarios: string;
 }

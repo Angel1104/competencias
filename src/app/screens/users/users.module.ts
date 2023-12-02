@@ -14,6 +14,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { SharedModule } from '../../Reutilizable/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { RegistroequipoComponent } from './pages/registroequipo/registroequipo.component';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { RegistrointeresadoComponent } from './pages/registrointeresado/registrointeresado.component';
+import { RegistroindivComponent } from './pages/registroindiv/registroindiv.component';
 
 
 @NgModule({
@@ -22,7 +28,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     EvenComponent,
     VercompComponent,
     VerevenComponent,
-    HomComponent
+    HomComponent,
+    RegistroequipoComponent,
+    RegistrointeresadoComponent,
+    RegistroindivComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +40,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDatepickerModule,
     MatSlideToggleModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
   ]
 })
 export class UsersModule { }

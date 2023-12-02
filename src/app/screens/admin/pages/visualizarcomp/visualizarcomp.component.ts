@@ -13,6 +13,10 @@ export class VisualizarcompComponent  implements OnInit {
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
 
   competencias!:CompetenciaI;
+  tiposCompetencias: { [key: string]: string } = {
+    '1': 'Individual',
+    '2': 'Grupal',
+  };
 
   ngOnInit(): void {
       let competenciasId = this.activaterouter.snapshot.paramMap.get('id');
@@ -27,8 +31,8 @@ export class VisualizarcompComponent  implements OnInit {
   getData(id:Number){
     this.apiService.getCompetenciasById(id).subscribe(data=>{
       this.competencias = data;
+      console.log("este es el punto");
       console.log(this.competencias);
-      
     })
   }
   mostrarSweetAlert(id:Number) {

@@ -7,6 +7,10 @@ import { CompComponent } from './pages/comp/comp.component';
 import { VerevenComponent } from './pages/vereven/vereven.component';
 import { EvenComponent } from './pages/even/even.component';
 import { VercompComponent } from './pages/vercomp/vercomp.component';
+import { RegistroequipoComponent } from './pages/registroequipo/registroequipo.component';
+import { RegistrointeresadoComponent } from './pages/registrointeresado/registrointeresado.component';
+import { RegistroindivComponent } from './pages/registroindiv/registroindiv.component';
+
 
 const routes: Routes = [{
     path:"", component: UsersComponent,
@@ -16,7 +20,9 @@ const routes: Routes = [{
       {path: "eventos", component:EvenComponent},
       {path: "visualizarevento/:id", component:VerevenComponent},
       {path: "visualizarcompetencia/:id", component:VercompComponent},
-      
+      {path: "registroequipo/:id", component:RegistroequipoComponent},
+      {path: "registointeresado/:id", component:RegistrointeresadoComponent},
+      {path: "registoindiv/:id", component:RegistroindivComponent},
     ]
   }];
   
