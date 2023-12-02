@@ -71,7 +71,7 @@ export class EditarcompComponent implements OnInit {
         'fechaIni': this.dataCompetencia.fechaIni || '',
         'requisitos': this.dataCompetencia.requisitos || '',
         'lugar': this.dataCompetencia.lugar || '',
-        'id_tipoCompetencias': this.dataCompetencia?.id_tipoCompetencia?.toString() || '',
+        'id_tipoCompetencias': this.dataCompetencia?.id_tipoCompetencias?.toString() || '',
         'estado': this.dataCompetencia.estado || '',
         'imagen': null,
         'email': this.dataCompetencia.email || '',

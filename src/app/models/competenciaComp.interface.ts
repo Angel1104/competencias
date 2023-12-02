@@ -9,7 +9,7 @@ export interface CompetenciaI {
     email : string;
     lugar : string;
     costo : Number;
-    id_tipoCompetencia : Number;
+    id_tipoCompetencias : Number;
     imagen: String;
     estado: string;
     horarios: string;

@@ -11,7 +11,7 @@
 
   <mat-form-field class="campo">
     <mat-label>Tipo de competencia:</mat-label>
-    <input matInput value={{competencias.id_tipoCompetencia}} readonly>
+    <input matInput value="{{ tiposCompetencias[competencias.id_tipoCompetencias.toString()] }}" readonly>
   </mat-form-field>
 
   <mat-form-field class="campo">

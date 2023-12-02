@@ -11,7 +11,12 @@
 
   <mat-form-field class="campo">
     <mat-label>Tipo de evento:</mat-label>
-    <input matInput formControlName="id_tipoEventos">
+    <mat-select matInput formControlName="id_tipoEventos">
+      <mat-option value="1">Entrenamiento</mat-option>
+      <mat-option value="2">Reclutamiento</mat-option>
+      <mat-option value="3">Clasificatorias Internas</mat-option>
+      <mat-option value="4">Competencia de entrenamiento para la ICPC</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="campo">

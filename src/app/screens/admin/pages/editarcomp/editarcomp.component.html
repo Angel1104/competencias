@@ -11,7 +11,10 @@
 
   <mat-form-field class="campo">
     <mat-label>Tipo de competencia:</mat-label>
-    <input matInput formControlName="id_tipoCompetencias">
+    <mat-select matInput formControlName="id_tipoCompetencias">
+      <mat-option value="1">Individual</mat-option>
+      <mat-option value="2">Grupal</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="campo">

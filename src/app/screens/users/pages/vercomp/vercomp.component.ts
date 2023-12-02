@@ -13,6 +13,10 @@ export class VercompComponent implements OnInit {
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
 
   competencias!:CompetenciaI;
+  tiposCompetencias: { [key: string]: string } = {
+    '1': 'Individual',
+    '2': 'Grupal',
+  };
 
   ngOnInit(): void {
       let competenciasId = this.activaterouter.snapshot.paramMap.get('id');
@@ -32,7 +36,12 @@ export class VercompComponent implements OnInit {
     })
   }
 
-  registrarEquipo(id:Number){
-    this.router.navigate(['users/registroequipo',id]);
+  registrarEquipo(id:Number, idTipo:Number){
+    console.log(idTipo);
+    if (idTipo == 1) {
+      this.router.navigate(['users/registoindiv',id]);
+    } else {
+      this.router.navigate(['users/registroequipo',id]);
+    }
   }
 }

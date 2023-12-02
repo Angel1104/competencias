@@ -89,4 +89,19 @@ associateInteresadoWithEvento(eventoId: number, interesado: InteresadoI): Observ
 getInteresadosByEventoId(eventoId: number): Observable<InteresadoI[]> {
   return this.http.get<InteresadoI[]>(`${this.url}Eventos/${eventoId}/Interesados`);
 }
+
+// Crear participante
+createParticipante(interesado: InteresadoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Participantes`, interesado);
+}
+
+// Asociar un participante con una competencias
+associateParticipanteWithComp(eventoId: number, interesado: InteresadoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Competencias/${eventoId}/Participantes`, interesado);
+}
+
+// Obtener particpantes para una competencia específico
+getParticipanteByCompId(eventoId: number): Observable<InteresadoI[]> {
+  return this.http.get<InteresadoI[]>(`${this.url}Competencias/${eventoId}/Participantes`);
+}
 }
