@@ -46,17 +46,6 @@ export class CompetenciasComponent implements OnInit {
   toggleGridColumns() {
     this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
-/*
-  filteredCompetens() {
-    if (!this.searchTerm.trim()) {
-      this.filteredCompetencias = [...this.competencias];
-    } else {
-      this.filteredCompetencias = this.competencias.filter(competencia =>
-        competencia.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    }
-  }
-*/
   filteredCompetens() {
     // Aplicar filtro de estado
     this.applyEstadoFilter();
@@ -71,22 +60,6 @@ export class CompetenciasComponent implements OnInit {
     );
   }
 
-  /*
-  applyEstadoFilter() {
-    // Aplicar filtro estático por estado
-    this.filteredCompetencias = this.filteredCompetencias.filter(competencia =>
-      competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
-    );
-  }
-  
-
-  applyEstadoFilter() {
-    // Aplicar filtro estático por estado
-    this.filteredCompetencias = this.competencias.filter(competencia =>
-      competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
-    );
-  }
-  */
   applyEstadoFilter() {
     // Restablecer el filtro de búsqueda
     this.filteredCompetencias = [...this.competencias];
@@ -98,27 +71,5 @@ export class CompetenciasComponent implements OnInit {
       );
     }
   }
-
-  
-
-  /*
-  filteredCompetens() {
-    if (!this.searchTerm.trim()) {
-      // Filtrar por nombre
-      this.filteredCompetencias = this.competencias.filter(competencia =>
-        competencia.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    } else {
-      this.filteredCompetencias = this.competencias;
-    }
-  
-    // Aplicar filtro estático por estado
-    this.filteredCompetencias = this.filteredCompetencias.filter(competencia =>
-      competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
-    );
-  
-  }
-  */
-
 
 }

@@ -25,10 +25,13 @@ export const MY_FORMATS = {
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
 })
 
-export class RegistroindivComponent {
+export class RegistroindivComponent implements OnInit {
+  competenciasId! : string;
 
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
-
+  ngOnInit(): void {
+    this.competenciasId = this.activaterouter.snapshot.paramMap.get('id') || '';
+  }
   dataEvento! : InteresadoI;
   crearInteresadoForm = new FormGroup({
     nombre : new FormControl('',Validators.required),
@@ -70,7 +73,7 @@ export class RegistroindivComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(formData);
-        this.crear(formData);
+        this.crear(formData, parseInt(this.competenciasId,10) );
         Swal.fire(
           'Creado!',
           'Se ha registrado el interesado con éxito',
@@ -82,10 +85,14 @@ export class RegistroindivComponent {
     });
     
   }
-
-  crear(data:any){
+  crear(data:any, idComp:number){
     this.apiService.createParticipante(data).subscribe(data=>{
       console.log(data);
     })
+    this.apiService.associateParticipanteWithComp(idComp, data.id).subscribe(data2=>{
+      console.log(data2);
+    })
   }
 }
+
+

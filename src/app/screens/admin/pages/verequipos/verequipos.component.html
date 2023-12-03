@@ -1,0 +1,53 @@
+<h1 style="margin: 20px 0px 0px 40px">Equipos</h1>
+
+<!-- <div style="margin: 20px 40px 40px 40px">
+  <mat-form-field style="margin-left: 20px;">
+    <input matInput placeholder="Buscar equipos por nombre de líder" [(ngModel)]="searchTerm" (input)="filterTeams()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div> -->
+
+<table mat-table [dataSource]="equipos" class="mat-elevation-z8" style="width: 100%; margin: 20px 40px;">
+  <ng-container matColumnDef="nombreLider">
+    <th mat-header-cell *matHeaderCellDef> Nombre Líder </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreLider }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="numeroLider">
+    <th mat-header-cell *matHeaderCellDef> Número Líder </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.numeroLider }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre1">
+    <th mat-header-cell *matHeaderCellDef> Integrante 1 </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombre1 }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre2">
+    <th mat-header-cell *matHeaderCellDef> Integrante 2 </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombre2 }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre3">
+    <th mat-header-cell *matHeaderCellDef> Integrante 3 </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombre3 }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre4">
+    <th mat-header-cell *matHeaderCellDef> Integrante 4 </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombre4 }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre5">
+    <th mat-header-cell *matHeaderCellDef> Integrante 5 </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombre5 }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre6">
+    <th mat-header-cell *matHeaderCellDef> Integrante 6 </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombre6 }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['nombreLider', 'numeroLider', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['nombreLider', 'numeroLider', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
+</table>

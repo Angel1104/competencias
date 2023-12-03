@@ -65,4 +65,13 @@ export class VisualizarcompComponent  implements OnInit {
   editarCompetencia(id:Number){
     this.router.navigate(['/admin/editarcompetencia',id]);
   }
+  verInteresados(id: Number, idTipo:Number){
+    //console.log(id);
+    if (idTipo ==1) {
+      this.router.navigate(['admin/verparticipantes',id])
+    }else {
+      this.router.navigate(['admin/verequipos',id])
+    }
+    
+  }
 }

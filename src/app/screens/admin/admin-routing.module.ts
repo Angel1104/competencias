@@ -14,6 +14,8 @@ import { VisualizarcompComponent } from './pages/visualizarcomp/visualizarcomp.c
 import { EditarcompComponent } from './pages/editarcomp/editarcomp.component';
 
 import { VerinteresadosComponent } from './pages/verinteresados/verinteresados.component';
+import { VerparticipantesComponent } from './pages/verparticipantes/verparticipantes.component';
+import { VerequiposComponent } from './pages/verequipos/verequipos.component';
 
 const routes: Routes = [{
     path:"", component: AdminComponent,
@@ -28,6 +30,8 @@ const routes: Routes = [{
       {path: "visualizarcompetencia/:id", component:VisualizarcompComponent},
       {path: "editarcompetencia/:id", component:EditarcompComponent},
       {path: "verinteresados/:id", component:VerinteresadosComponent},
+      {path: "verparticipantes/:id", component:VerparticipantesComponent},
+      {path: "verequipos/:id", component:VerequiposComponent},
     ]
   }];
   

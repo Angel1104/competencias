@@ -1,1 +1,286 @@
-<p>Funciona</p>
+<!-- crear-interesado.component.html -->
+<h1>Registrar Participante individual</h1>
+<div style="margin:20px 0px 0px 40px">
+  <form [formGroup]="crearInteresadoForm" (ngSubmit)="crearInteresado(crearInteresadoForm.value)">
+    <h2>Lider</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo">
+        <mat-label>Nombre:</mat-label>
+        <input matInput formControlName="nombreLider">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Numero:</mat-label>
+        <input matInput formControlName="numeroLider">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Universidad:</mat-label>
+        <input matInput formControlName="universidadLider" />
+      </mat-form-field> 
+
+      <mat-form-field class="campo">
+        <mat-label>Edad:</mat-label>
+        <input matInput formControlName="edadLider">
+      </mat-form-field>
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo">
+        <mat-label>Carrera:</mat-label>
+        <input matInput formControlName="carreraLider" />
+      </mat-form-field> 
+    
+      <mat-form-field class="campo">
+        <mat-label>Email:</mat-label>
+        <input matInput formControlName="emailLider" />
+      </mat-form-field> 
+      
+      <mat-form-field class="campo">
+        <mat-label>codSIS:</mat-label>
+        <input matInput formControlName="codSISLider" />
+      </mat-form-field> 
+
+      <mat-form-field class="campo">
+        <mat-label>Semestre:</mat-label>
+        <input matInput formControlName="semestreLider" />
+      </mat-form-field> 
+
+    </section>
+    </section>
+
+    <hr>
+    <h2>Primer particpante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo">
+        <mat-label>Nombre:</mat-label>
+        <input matInput formControlName="nombre1">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Edad:</mat-label>
+        <input matInput formControlName="edad1">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Universidad:</mat-label>
+        <input matInput formControlName="universidad1" />
+      </mat-form-field> 
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo">
+        <mat-label>Carrera:</mat-label>
+        <input matInput formControlName="carrera1" />
+      </mat-form-field> 
+      
+      <mat-form-field class="campo">
+        <mat-label>codSIS:</mat-label>
+        <input matInput formControlName="codSIS1" />
+      </mat-form-field> 
+
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Segundo particpante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo">
+        <mat-label>Nombre:</mat-label>
+        <input matInput formControlName="nombre2">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Edad:</mat-label>
+        <input matInput formControlName="edad2">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Universidad:</mat-label>
+        <input matInput formControlName="universidad2" />
+      </mat-form-field> 
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo">
+        <mat-label>Carrera:</mat-label>
+        <input matInput formControlName="carrera2" />
+      </mat-form-field> 
+      
+      <mat-form-field class="campo">
+        <mat-label>codSIS:</mat-label>
+        <input matInput formControlName="codSIS2" />
+      </mat-form-field> 
+
+    </section>
+    
+    </section>
+
+    <hr>
+    <h2>Tercer particpante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo">
+        <mat-label>Nombre:</mat-label>
+        <input matInput formControlName="nombre3">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Edad:</mat-label>
+        <input matInput formControlName="edad3">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Universidad:</mat-label>
+        <input matInput formControlName="universidad3" />
+      </mat-form-field> 
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo">
+        <mat-label>Carrera:</mat-label>
+        <input matInput formControlName="carrera3" />
+      </mat-form-field> 
+      
+      <mat-form-field class="campo">
+        <mat-label>codSIS:</mat-label>
+        <input matInput formControlName="codSIS3" />
+      </mat-form-field> 
+
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Cuarto particpante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo">
+        <mat-label>Nombre:</mat-label>
+        <input matInput formControlName="nombre4">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Edad:</mat-label>
+        <input matInput formControlName="edad4">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Universidad:</mat-label>
+        <input matInput formControlName="universidad4" />
+      </mat-form-field> 
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo">
+        <mat-label>Carrera:</mat-label>
+        <input matInput formControlName="carrera4" />
+      </mat-form-field> 
+      
+      <mat-form-field class="campo">
+        <mat-label>codSIS:</mat-label>
+        <input matInput formControlName="codSIS4" />
+      </mat-form-field> 
+
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Quinto particpante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo">
+        <mat-label>Nombre:</mat-label>
+        <input matInput formControlName="nombre5">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Edad:</mat-label>
+        <input matInput formControlName="edad5">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Universidad:</mat-label>
+        <input matInput formControlName="universidad5" />
+      </mat-form-field> 
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo">
+        <mat-label>Carrera:</mat-label>
+        <input matInput formControlName="carrera5" />
+      </mat-form-field> 
+      
+      <mat-form-field class="campo">
+        <mat-label>codSIS:</mat-label>
+        <input matInput formControlName="codSIS5" />
+      </mat-form-field> 
+
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Sexto particpante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo">
+        <mat-label>Nombre:</mat-label>
+        <input matInput formControlName="nombre6">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Edad:</mat-label>
+        <input matInput formControlName="edad6">
+      </mat-form-field>
+
+      <mat-form-field class="campo">
+        <mat-label>Universidad:</mat-label>
+        <input matInput formControlName="universidad6" />
+      </mat-form-field> 
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo">
+        <mat-label>Carrera:</mat-label>
+        <input matInput formControlName="carrera6" />
+      </mat-form-field> 
+      
+      <mat-form-field class="campo">
+        <mat-label>codSIS:</mat-label>
+        <input matInput formControlName="codSIS6" />
+      </mat-form-field> 
+
+    </section>
+
+    
+    </section>
+    <div class="example-button-row">
+      <button type="submit" color="primary" mat-raised-button>Guardar</button>
+      <button mat-raised-button routerLink="/users/eventos">Cancelar</button>
+    </div>
+  </form>
+</div>

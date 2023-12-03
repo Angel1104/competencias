@@ -8,6 +8,8 @@ import { CompetenciaI } from "../../models/competenciaComp.interface";
 import { CompetenciaEditI } from 'src/app/models/competencia.interface';
 
 import { InteresadoI } from "../../models/interesadoComp.interface";
+import { EquipoI } from "../../models/equipoComp.interface";
+
 import { InteresadoEditI } from "../../models/interesado.interface";
 
 @Injectable({
@@ -95,13 +97,34 @@ createParticipante(interesado: InteresadoI): Observable<any> {
   return this.http.post<any>(`${this.url}Participantes`, interesado);
 }
 
+// Crear equipos
+createEquipo(equipo: EquipoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Equipos`, equipo);
+}
+
 // Asociar un participante con una competencias
 associateParticipanteWithComp(eventoId: number, interesado: InteresadoI): Observable<any> {
   return this.http.post<any>(`${this.url}Competencias/${eventoId}/Participantes`, interesado);
 }
 
-// Obtener particpantes para una competencia específico
-getParticipanteByCompId(eventoId: number): Observable<InteresadoI[]> {
-  return this.http.get<InteresadoI[]>(`${this.url}Competencias/${eventoId}/Participantes`);
+// Asociar un equipo con una competencias
+associateEquipoWithComp(eventoId: number, equipo: EquipoI): Observable<any> {
+  return this.http.post<any>(`${this.url}Competencias/${eventoId}/Equipos`, equipo);
 }
+
+// Obtener particpantes para una competencia específico
+getParticipanteByCompId(eventoId: number): Observable<any[]> {
+  return this.http.get<any[]>(`${this.url}Competencias/${eventoId}/Participantes`);
+}
+
+ //participantes
+ getAllParticipantes(): Observable<InteresadoI[]> {
+  return this.http.get<InteresadoI[]>(`${this.url}Participantes`);
+}
+
+//equipos
+getAllEquipos(): Observable<EquipoI[]> {
+  return this.http.get<EquipoI[]>(`${this.url}Equipos`);
+}
+
 }
