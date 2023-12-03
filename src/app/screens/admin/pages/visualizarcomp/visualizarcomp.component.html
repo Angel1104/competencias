@@ -85,6 +85,8 @@
       <button mat-raised-button (click)="editarCompetencia(competencias.id)">Editar</button>
       <button mat-raised-button color="primary" routerLink="/admin/competencias">Volver</button>
       <button mat-raised-button color="warn" (click)="mostrarSweetAlert(competencias.id)">Eliminar</button>
+      <button mat-raised-button (click)="verInteresados(competencias.id, competencias.id_tipoCompetencias)">Ver Interesados</button>
+
     </div>
   </section>
 
