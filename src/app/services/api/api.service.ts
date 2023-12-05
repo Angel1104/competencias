@@ -130,4 +130,8 @@ getAllEquipos(): Observable<EquipoI[]> {
   return this.http.get<EquipoI[]>(`${this.url}Equipos`);
 }
 
+getAllEquiposByComId(compId:number):Observable<any[]> {
+  return this.http.get<any[]>(`${this.url}Competencias/${compId}/Equipos`)
+}
+
 }

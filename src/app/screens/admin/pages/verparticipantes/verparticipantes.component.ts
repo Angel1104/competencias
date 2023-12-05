@@ -18,12 +18,7 @@ export class VerparticipantesComponent implements OnInit {
   ngOnInit(): void {
     let compId = this.activaterouter.snapshot.paramMap.get('id');
     if (compId !== null) {
-      // this.apiService.getParticipanteByCompId(parseInt(compId,10)).subscribe(data => {
-      //   this.interesados = data;
-      //   console.log("estos son los interesados");
-      //   console.log(this.interesados);
-      // });
-      this.apiService.getAllParticipantes().subscribe(data => {
+      this.apiService.getParticipanteByCompId(parseInt(compId,10)).subscribe(data => {
         this.interesados = data;
         console.log("estos son los interesados");
         console.log(this.interesados);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../../services/api/api.service';
 import { EquipoI } from "../../../../models/equipoComp.interface";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-verequipos',
@@ -9,22 +10,23 @@ import { EquipoI } from "../../../../models/equipoComp.interface";
 })
 export class VerequiposComponent implements OnInit {
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService,private activaterouter:ActivatedRoute) {}
   
   searchTerm: string = '';
   filteredEquipos: EquipoI[] = [];
   equipos!: EquipoI[];
 
   ngOnInit(): void {
-    this.getData();
-  }
-
-  getData() {
-    this.apiService.getAllEquipos().subscribe(data => {
-      this.equipos = data;
-      this.filterTeams();
-      console.log(this.equipos);
-    });
+    let compId = this.activaterouter.snapshot.paramMap.get('id');
+    if (compId !== null) {
+      this.apiService.getAllEquiposByComId(parseInt(compId,10)).subscribe(data => {
+        this.equipos = data;
+        this.filterTeams();
+        console.log(this.equipos);
+      });
+    } else {
+      
+    }
   }
 
   filterTeams() {

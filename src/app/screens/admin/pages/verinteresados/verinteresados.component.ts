@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../../services/api/api.service';
 import { InteresadoI } from "../../../../models/interesadoComp.interface";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-verinteresados',
@@ -12,12 +13,17 @@ export class VerinteresadosComponent implements OnInit {
 
   interesados: InteresadoI[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService,private activaterouter:ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.apiService.getAllInteresados().subscribe(data => {
-      this.interesados = data;
-      console.log(this.interesados);
-    });
+    let evenId = this.activaterouter.snapshot.paramMap.get('id');
+    if (evenId !== null) {
+      this.apiService.getInteresadosByEventoId(parseInt(evenId,10)).subscribe(data => {
+        this.interesados = data;
+        console.log(this.interesados);
+      });
+    } else {
+      
+    }
   }
 }
