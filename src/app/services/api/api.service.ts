@@ -79,12 +79,14 @@ deleteInteresadoById(id: number): Observable<any> {
 
 // Crear Interesado
 createInteresado(interesado: InteresadoI): Observable<any> {
+  console.log("llega");
+  console.log(interesado);
   return this.http.post<any>(`${this.url}Interesados`, interesado);
 }
 
 // Asociar un Interesado con un Evento
-associateInteresadoWithEvento(eventoId: number, interesado: InteresadoI): Observable<any> {
-  return this.http.post<any>(`${this.url}Eventos/${eventoId}/Interesados`, interesado);
+associateInteresadoWithEvento(eventoId: number, interesado: number): Observable<any> {
+  return this.http.post<any>(`${this.url}Eventos/${eventoId}/Interesados/${interesado}`, interesado);
 }
 
 // Obtener Interesados para un Evento específico
@@ -104,12 +106,13 @@ createEquipo(equipo: EquipoI): Observable<any> {
 
 // Asociar un participante con una competencias
 associateParticipanteWithComp(eventoId: number, interesado: InteresadoI): Observable<any> {
-  return this.http.post<any>(`${this.url}Competencias/${eventoId}/Participantes`, interesado);
+  console.log(interesado);
+  return this.http.post<any>(`${this.url}Competencias/${eventoId}/Participantes/${interesado}`, interesado);
 }
 
 // Asociar un equipo con una competencias
 associateEquipoWithComp(eventoId: number, equipo: EquipoI): Observable<any> {
-  return this.http.post<any>(`${this.url}Competencias/${eventoId}/Equipos`, equipo);
+  return this.http.post<any>(`${this.url}Competencias/${eventoId}/Equipos/${equipo}`, equipo);
 }
 
 // Obtener particpantes para una competencia específico

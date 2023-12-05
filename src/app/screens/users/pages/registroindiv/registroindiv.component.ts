@@ -88,9 +88,9 @@ export class RegistroindivComponent implements OnInit {
   crear(data:any, idComp:number){
     this.apiService.createParticipante(data).subscribe(data=>{
       console.log(data);
-    })
-    this.apiService.associateParticipanteWithComp(idComp, data.id).subscribe(data2=>{
-      console.log(data2);
+      this.apiService.associateParticipanteWithComp(idComp, data.id).subscribe(data2=>{
+        console.log(data2);
+      })
     })
   }
 }

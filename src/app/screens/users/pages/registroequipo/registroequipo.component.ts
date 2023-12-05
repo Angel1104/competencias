@@ -146,9 +146,9 @@ export class RegistroequipoComponent {
     
     this.apiService.createEquipo(data).subscribe(data=>{
       console.log(data);
-    })
-    this.apiService.associateEquipoWithComp(idComp, data.id).subscribe(data2=>{
-      console.log(data2);
+      this.apiService.associateEquipoWithComp(idComp, data.id).subscribe(data2=>{
+        console.log(data2);
+      })
     })
   }
   

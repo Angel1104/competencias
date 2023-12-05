@@ -26,9 +26,13 @@ export const MY_FORMATS = {
 })
 
 export class RegistrointeresadoComponent {
-
+  eventosId! : string;
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
   
+  ngOnInit(): void {
+    this.eventosId = this.activaterouter.snapshot.paramMap.get('id') || '';
+  }
+
   dataEvento! : InteresadoI;
   crearInteresadoForm = new FormGroup({
     nombre : new FormControl('',Validators.required),
@@ -70,7 +74,7 @@ export class RegistrointeresadoComponent {
       confirmButtonText: 'Aceptar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.crear(formData);
+        this.crear(formData, parseInt(this.eventosId,10));
         Swal.fire(
           'Creado!',
           'Se ha registrado el interesado con éxito',
@@ -83,9 +87,13 @@ export class RegistrointeresadoComponent {
     
   }
 
-  crear(data:any){
+  crear(data:any, idEv:number){
     this.apiService.createInteresado(data).subscribe(data=>{
       console.log(data);
+      const idIn = data.id;
+      this.apiService.associateInteresadoWithEvento(idEv, idIn).subscribe(data2=>{
+        console.log("relacion");
+      })
     })
   }
 }
