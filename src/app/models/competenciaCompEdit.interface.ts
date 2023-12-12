@@ -13,4 +13,6 @@ export interface CompEditI {
     // imagen: File;
     id_tipoCompetencias : Number;
     horarios: string;
+    umss: string;
+    reporte: string;
 }

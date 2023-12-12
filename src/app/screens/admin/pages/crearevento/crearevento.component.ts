@@ -35,7 +35,7 @@ export class CreareventoComponent{
   
   this.crearForm = this.fb.group({
     nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
-    descripcion : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,100}$/)]],
+    descripcion : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,300}$/)]],
     encargado : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,70}$/)]],
     fechaFin : ['', Validators.required],
     fechaIni : ['', Validators.required],

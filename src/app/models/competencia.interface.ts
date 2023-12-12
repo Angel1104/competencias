@@ -12,4 +12,6 @@ export interface CompetenciaEditI {
     estado: string;
     horarios: string;
     imagen: File;
+    umss: string;
+    reporte: string;
 }
