@@ -1,66 +1,82 @@
 <!-- crear-interesado.component.html -->
 <h1>Crear Interesado</h1>
 <div style="margin:20px 0px 0px 40px">
-  <form [formGroup]="crearInteresadoForm" (ngSubmit)="crearInteresado(crearInteresadoForm.value)">
+  <form [formGroup]="crearForm" (ngSubmit)="crearInteresado()">
     
     <section class="form">
-        <section class="f1">
-      
-      <mat-form-field class="campo">
-        <mat-label>Nombre:</mat-label>
-        <input matInput type="text" formControlName="nombre">
-      </mat-form-field>
+      <section class="f1">
     
-      <mat-form-field class="campo">
-        <mat-label>Apellidos:</mat-label>
-        <input matInput formControlName="apellidos">
-      </mat-form-field>
-    
-      <mat-form-field class="campo">
-        <mat-label>Telefono:</mat-label>
-        <input matInput formControlName="telefono">
-      </mat-form-field>
-    
-      <mat-form-field class="campo">
-        <mat-label>Semestre:</mat-label>
-        <input matInput formControlName="semestre" />
-      </mat-form-field> 
-    
-    </section>
-    <section>
-      
-      <div class="fechas-container">
-        <mat-form-field class="campo">
-          <mat-label>Fecha Nacimiento</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha_Nacimiento">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+        <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+          <mat-label>Nombre:</mat-label> 
+          <input matInput #nombreInput maxlength="30" formControlName="nombre" required>
+          <mat-hint align="end">{{nombreInput.value.length}}/30</mat-hint>
+          <mat-error *ngIf="crearForm?.get('nombre')?.invalid">{{getNombreErrorMessage()}}</mat-error>
         </mat-form-field>
-    
-        <mat-form-field class="campo">
-            <mat-label>CI:</mat-label>
-            <input matInput formControlName="ci">
-          </mat-form-field>
-      </div>
-    
-    
-      <mat-form-field class="campo">
-        <mat-label>Carrera:</mat-label>
-        <input matInput formControlName="carrera" />
-      </mat-form-field> 
-    
-      <mat-form-field class="campo">
-        <mat-label>Email:</mat-label>
-        <input matInput formControlName="email" />
-      </mat-form-field> 
-      
-      <mat-form-field class="campo">
-        <mat-label>codSIS:</mat-label>
-        <input matInput formControlName="codSIS" />
-      </mat-form-field> 
 
-    </section>
-    </section>
+        <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+          <mat-label>Apellidos:</mat-label> 
+          <input matInput #aInput maxlength="30" formControlName="apellidos" required>
+          <mat-hint align="end">{{aInput.value.length}}/30</mat-hint>
+          <mat-error *ngIf="crearForm?.get('apellidos')?.invalid">{{getApellidoErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 8 caracteres">
+          <mat-label>Telefono:</mat-label> 
+          <input matInput #tInput maxlength="8" formControlName="telefono" required>
+          <mat-hint align="end">{{tInput.value.length}}/8</mat-hint>
+          <mat-error *ngIf="crearForm?.get('telefono')?.invalid">{{getTelefonoErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 10 caracteres">
+          <mat-label>Semestre:</mat-label> 
+          <input matInput #sInput maxlength="10" formControlName="semestre" required>
+          <mat-hint align="end">{{sInput.value.length}}/10</mat-hint>
+          <mat-error *ngIf="crearForm?.get('semestre')?.invalid">{{getSemestreErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+  </section>
+  <section>
+    
+    <div class="fechas-container">
+      <mat-form-field class="campo" hintLabel="Elije una fecha">
+        <mat-label>Fecha Nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha_Nacimiento" required>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="crearForm?.get('fecha_Nacimiento')?.invalid">{{getFechaErrorMessage()}}</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
+        <mat-label>CI:</mat-label> 
+        <input matInput #sisInput maxlength="50" formControlName="ci" required>
+        <mat-hint align="end">{{sisInput.value.length}}/50</mat-hint>
+        <mat-error *ngIf="crearForm?.get('ci')?.invalid">{{getCiErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+  
+    <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+      <mat-label>Carrera:</mat-label> 
+      <input matInput #cInput maxlength="20" formControlName="carrera" required>
+      <mat-hint align="end">{{cInput.value.length}}/20</mat-hint>
+      <mat-error *ngIf="crearForm?.get('carrera')?.invalid">{{getCarreraErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
+      <mat-label>Email:</mat-label> 
+      <input matInput #emailInput maxlength="50" formControlName="email" required>
+      <mat-hint align="end">{{emailInput.value.length}}/50</mat-hint>
+      <mat-error *ngIf="crearForm?.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
+      <mat-label>codSIS:</mat-label> 
+      <input matInput #sisInput maxlength="50" formControlName="codSIS" required>
+      <mat-hint align="end">{{sisInput.value.length}}/50</mat-hint>
+      <mat-error *ngIf="crearForm?.get('codSIS')?.invalid">{{getCodSisErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+  </section>
+  </section>
 
     <div class="example-button-row">
       <button type="submit" color="primary" mat-raised-button>Guardar</button>

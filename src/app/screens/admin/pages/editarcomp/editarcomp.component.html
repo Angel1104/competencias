@@ -32,6 +32,11 @@
     <input matInput formControlName="horarios">
   </mat-form-field>
 
+  <mat-form-field class="campo">
+    <mat-label>Umss:</mat-label>
+    <input matInput formControlName="umss">
+  </mat-form-field>
+
   <div class="campo">
     <label>Imagen:</label>
     <input type="file" (change)="onFileSelected($event)" />
@@ -55,10 +60,10 @@
       </mat-form-field>
     </div>
 
-  <mat-form-field class="campo">
-    <mat-label>Encargado:</mat-label>
-    <input matInput formControlName="encargado">
-  </mat-form-field>
+    <mat-form-field class="campo">
+      <mat-label>Costo:</mat-label>
+      <input matInput formControlName="costo">
+    </mat-form-field>
 
   <mat-form-field class="campo">
     <mat-label>Requisitos:</mat-label>
@@ -66,8 +71,8 @@
   </mat-form-field>
   
   <mat-form-field class="campo">
-    <mat-label>Costo:</mat-label>
-    <input matInput formControlName="costo">
+    <mat-label>Encargado:</mat-label>
+    <input matInput formControlName="encargado">
   </mat-form-field>
 
   <mat-form-field class="campo">

@@ -11,5 +11,6 @@ export interface EventoEditI {
     costo: string;
     horarios: string;
     email: string;
+    umss: string;
     imagen: File;
 }

@@ -12,5 +12,7 @@ export interface CompetenciaI {
     id_tipoCompetencias : Number;
     imagen: String;
     estado: string;
+    umss: string;
     horarios: string;
+    reporte: string;
 }
