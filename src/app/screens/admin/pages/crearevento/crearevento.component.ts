@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../../services/api/api.service';
 import { EventoEditI } from "../../../../models/evento.interface";
-import { FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { EventoI } from 'src/app/models/eventoComp.interface';
 
@@ -27,25 +27,119 @@ export const MY_FORMATS = {
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
 })
 export class CreareventoComponent{
-  constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
+  crearForm: FormGroup;
   imagenSeleccionada: File | null = null;
   dataEvento! : EventoI;
-  crearForm = new FormGroup({
-    nombre: new FormControl('',Validators.required),
-    descripcion : new FormControl('',Validators.required),
-    encargado : new FormControl('',Validators.required),
-    fechaFin : new FormControl('',Validators.required),
-    fechaIni : new FormControl('',Validators.required),
-    requisitos : new FormControl('',Validators.required),
-    lugar : new FormControl('',Validators.required),
-    id_tipoEventos : new FormControl('',Validators.required),
-    estado: new FormControl(false, Validators.required), 
-    imagen: new FormControl('', Validators.required),
-    costo: new FormControl('', Validators.required),
-    horarios: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-  });
+
+  constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService, private fb: FormBuilder) {
   
+  this.crearForm = this.fb.group({
+    nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
+    descripcion : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,100}$/)]],
+    encargado : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,70}$/)]],
+    fechaFin : ['', Validators.required],
+    fechaIni : ['', Validators.required],
+    requisitos : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,1000}$/)]],
+    lugar : ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{3,60}$/)]],
+    id_tipoEventos : ['', Validators.required],
+    estado: [false, Validators.required],
+    imagen: [''],
+    costo: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]],
+    horarios: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,30}$/)]],
+    email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ@]{4,50}$/)]],
+    umss: [false, Validators.required],
+  });
+}
+  //Controles
+  getNombreErrorMessage() {
+    const n = this.crearForm.get('nombre');
+    if (!n) {return 'Error en el formulario';}
+    if (n.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return n.hasError('pattern') ? 'El nombre debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
+  }
+  getDescripcionErrorMessage() {
+    const d = this.crearForm.get('descripcion');
+    if (!d) {return 'Error en el formulario';}
+    if (d.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return d.hasError('pattern') ? 'La descipcion debe tener entre 4 y 300 caracteres' : '';
+  }
+  getEncargadoErrorMessage() {
+    const e = this.crearForm.get('encargado');
+    if (!e) {return 'Error en el formulario';}
+    if (e.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return e.hasError('pattern') ? 'El encargado debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
+  }
+  getFechaFinErrorMessage() {
+    const fin = this.crearForm.get('fechaFin');
+    if (!fin) {return 'Error en el formulario';}
+    if (fin.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return '';
+  }
+  getFechaIniErrorMessage() {
+    const ini = this.crearForm.get('fechaIni');
+    if (!ini) {return 'Error en el formulario';}
+    if (ini.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return '';
+  }
+  getRequisitosErrorMessage() {
+    const r = this.crearForm.get('requisitos');
+    if (!r) {return 'Error en el formulario';}
+    if (r.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return r.hasError('pattern') ? 'Los Requisitos debe tener entre 4 y 1000 caracteres' : '';
+  }
+  getLugarErrorMessage() {
+    const l = this.crearForm.get('lugar');
+    if (!l) {return 'Error en el formulario';}
+    if (l.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return l.hasError('pattern') ? 'El lugar debe tener entre 3 y 60 caracteres' : '';
+  }
+  getTipoEventosErrorMessage() {
+      const t = this.crearForm.get('id_tipoEventos');
+      if (!t) {return 'Error en el formulario';}
+    if (t.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return '';
+  }
+  getCostoErrorMessage() {
+    const c = this.crearForm.get('costo');
+    if (!c) {return 'Error en el formulario';}
+    if (c.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return c.hasError('pattern') ? 'El costo puede ser gratis' : '';
+  }
+  getHorariosErrorMessage() {
+    const h = this.crearForm.get('horarios');
+    if (!h) {return 'Error en el formulario';}
+    if (h.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return h.hasError('pattern') ? 'El horario debe tener entre 1 y 30 caracteres' : '';
+  }
+  getEmailErrorMessage() {
+    const e = this.crearForm.get('email');
+    if (!e) {return 'Error en el formulario';}
+    if (e.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return e.hasError('pattern') ? 'El email debe tener entre 4 y 50 caracteres' : '';
+  }
+  //fin
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     console.log(file);
@@ -55,7 +149,10 @@ export class CreareventoComponent{
     }
   }
 
-  crearEvento(datos:any){
+  crearEvento(){
+    console.log('Formulario válido:', this.crearForm.valid);
+    if (this.crearForm.valid) {
+    const datos = this.crearForm.value;
     const fechaInicio = new Date(datos.fechaIni);
     const fechaFin = new Date(datos.fechaFin);
 
@@ -63,6 +160,7 @@ export class CreareventoComponent{
     const fechaFinISO = fechaFin.toISOString().split('T')[0];
 
     const estado = datos.estado ? 'Activo' : 'Inactivo';
+    const umss = datos.estado ? 'Si' : 'No';
 
     const formData = new FormData();
     formData.append('nombre', datos.nombre);
@@ -78,35 +176,32 @@ export class CreareventoComponent{
     formData.append('costo', datos.costo);
     formData.append('horarios', datos.horarios);
     formData.append('email', datos.email);
+    formData.append('umss', umss);
 
 
     console.log(formData);
     Swal.fire({
-      title: '¿Estás seguro de crear el evento?',
-      text: "No se podra deshacer la acción",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Aceptar'
-    }).then((result) => {
-      if (result.isConfirmed) {
+      icon: 'success',
+      title: 'Evento creado exitosamente',
+      showConfirmButton: false,
+      timer: 1500
+    }).then(() => {
         this.crear(formData);
-        Swal.fire(
-          'Creado!',
-          'Se ha creado el evento con éxito',
-          'success'
-        ).then(() => {
-          this.router.navigate(['/admin/eventos']);
-        });
-      }
+        this.router.navigate(['/admin/eventos']);
     });
-    
+  }else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Hay errores en el formulario. Por favor, verifica los campos.',
+    });
+  }
   }
   crear(data:any){
     this.apiService.postEvent(data).subscribe(data=>{
       console.log(data);
     })
   }
+  
   
 }

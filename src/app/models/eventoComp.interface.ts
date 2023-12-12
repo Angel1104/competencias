@@ -13,4 +13,5 @@ export interface EventoI {
     costo: string;
     horarios: string;
     email: string;
+    umss: string;
 }

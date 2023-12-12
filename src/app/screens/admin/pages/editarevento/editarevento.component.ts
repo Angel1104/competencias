@@ -48,6 +48,7 @@ export class EditareventoComponent implements OnInit {
     costo: new FormControl('',Validators.required),
     horarios: new FormControl('',Validators.required),
     email: new FormControl('',Validators.required),
+    umss: new FormControl('',Validators.required),
   });
 
   ngOnInit(): void {
@@ -78,6 +79,7 @@ export class EditareventoComponent implements OnInit {
         'imagen': null,
         'horarios': this.dataEvento.horarios || '',
         'email': this.dataEvento.email || '',
+        'umss': this.dataEvento.umss || '',
         'costo': this.dataEvento.costo.toString() || '',
       })
       console.log(this.editarForm.value);
