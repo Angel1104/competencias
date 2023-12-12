@@ -19,17 +19,17 @@
             <mat-error *ngIf="crearForm?.get('apellidos')?.invalid">{{getApellidoErrorMessage()}}</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 15 caracteres">
+          <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 8 caracteres">
             <mat-label>Telefono:</mat-label> 
-            <input matInput #tInput maxlength="15" formControlName="telefono" required>
-            <mat-hint align="end">{{tInput.value.length}}/15</mat-hint>
+            <input matInput #tInput maxlength="8" formControlName="telefono" required>
+            <mat-hint align="end">{{tInput.value.length}}/8</mat-hint>
             <mat-error *ngIf="crearForm?.get('telefono')?.invalid">{{getTelefonoErrorMessage()}}</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
+          <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 10 caracteres">
             <mat-label>Semestre:</mat-label> 
-            <input matInput #sInput maxlength="50" formControlName="semestre" required>
-            <mat-hint align="end">{{sInput.value.length}}/50</mat-hint>
+            <input matInput #sInput maxlength="10" formControlName="semestre" required>
+            <mat-hint align="end">{{sInput.value.length}}/10</mat-hint>
             <mat-error *ngIf="crearForm?.get('semestre')?.invalid">{{getSemestreErrorMessage()}}</mat-error>
           </mat-form-field>
 
@@ -53,10 +53,10 @@
         </mat-form-field>
       </div>
     
-      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
         <mat-label>Carrera:</mat-label> 
-        <input matInput #cInput maxlength="50" formControlName="carrera" required>
-        <mat-hint align="end">{{cInput.value.length}}/50</mat-hint>
+        <input matInput #cInput maxlength="20" formControlName="carrera" required>
+        <mat-hint align="end">{{cInput.value.length}}/20</mat-hint>
         <mat-error *ngIf="crearForm?.get('carrera')?.invalid">{{getCarreraErrorMessage()}}</mat-error>
       </mat-form-field>
 
