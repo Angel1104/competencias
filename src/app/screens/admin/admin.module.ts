@@ -23,6 +23,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { VerinteresadosComponent } from './pages/verinteresados/verinteresados.component';
 import { VerparticipantesComponent } from './pages/verparticipantes/verparticipantes.component';
 import { VerequiposComponent } from './pages/verequipos/verequipos.component';
+import { UsersviewComponent } from './pages/usersview/usersview.component';
+import { UsercreateComponent } from './pages/usercreate/usercreate.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { VerequiposComponent } from './pages/verequipos/verequipos.component';
     HomeComponent,
     VerinteresadosComponent,
     VerparticipantesComponent,
-    VerequiposComponent
+    VerequiposComponent,
+    UsersviewComponent,
+    UsercreateComponent
   ],
   imports: [
     CommonModule,

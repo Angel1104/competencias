@@ -17,6 +17,9 @@ import { VerinteresadosComponent } from './pages/verinteresados/verinteresados.c
 import { VerparticipantesComponent } from './pages/verparticipantes/verparticipantes.component';
 import { VerequiposComponent } from './pages/verequipos/verequipos.component';
 
+import { UsersviewComponent } from "./pages/usersview/usersview.component";
+import { UsercreateComponent } from "./pages/usercreate/usercreate.component";
+
 const routes: Routes = [{
     path:"", component: AdminComponent,
     children: [
@@ -32,6 +35,9 @@ const routes: Routes = [{
       {path: "verinteresados/:id", component:VerinteresadosComponent},
       {path: "verparticipantes/:id", component:VerparticipantesComponent},
       {path: "verequipos/:id", component:VerequiposComponent},
+      {path: "users", component: UsersviewComponent},
+      {path: "crearuser", component: UsercreateComponent},
+
     ]
   }];
   

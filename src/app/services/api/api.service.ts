@@ -134,4 +134,13 @@ getAllEquiposByComId(compId:number):Observable<any[]> {
   return this.http.get<any[]>(`${this.url}Competencias/${compId}/Equipos`)
 }
 
+//usuarios admins
+getUsers(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.url}Admins`);
+}
+
+createUser(interesado: LoginI): Observable<any> {
+  return this.http.post<any>(`${this.url}Admins/register`, interesado);
+}
+
 }
