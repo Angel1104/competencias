@@ -7,7 +7,7 @@
 
   <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
     <mat-label>Nombre evento</mat-label> 
-    <input matInput #nombreInput maxlength="50" formControlName="nombre" required>
+    <input matInput #nombreInput formControlName="nombre">
     <mat-hint align="end">{{nombreInput.value.length}}/50</mat-hint>
     <mat-error *ngIf="crearForm?.get('nombre')?.invalid">{{getNombreErrorMessage()}}</mat-error>
   </mat-form-field>
@@ -24,21 +24,21 @@
 
   <mat-form-field class="campo" hintLabel="Mínimo 4 y máximo 300 caracteres">
     <mat-label>Descripción</mat-label>
-    <textarea matInput #descInput maxlength="300" formControlName="descripcion" required></textarea>
+    <textarea matInput #descInput formControlName="descripcion"></textarea>
     <mat-hint align="end">{{descInput.value.length}}/300</mat-hint>
     <mat-error *ngIf="crearForm?.get('descripcion')?.invalid">{{getDescripcionErrorMessage()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 60 caracteres">
     <mat-label>Lugar:</mat-label>
-    <input matInput #lugarInput maxlength="60" formControlName="lugar" required>
+    <input matInput #lugarInput formControlName="lugar">
     <mat-hint align="end">{{lugarInput.value.length}}/60</mat-hint>
     <mat-error *ngIf="crearForm?.get('lugar')?.invalid">{{getLugarErrorMessage()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 30 caracteres">
     <mat-label>Horarios:</mat-label>
-    <input matInput #hInput maxlength="30" formControlName="horarios" required>
+    <input matInput #hInput formControlName="horarios">
     <mat-hint align="end">{{hInput.value.length}}/30</mat-hint>
     <mat-error *ngIf="crearForm?.get('horarios')?.invalid">{{getHorariosErrorMessage()}}</mat-error>
   </mat-form-field>
@@ -54,7 +54,7 @@
   <div class="fechas-container">
     <mat-form-field class="campo" hintLabel="Elije una fecha inicial">
       <mat-label>Fecha Inicio</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="fechaIni" required>
+      <input matInput [matDatepicker]="picker" formControlName="fechaIni">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="crearForm?.get('fechaIni')?.invalid">{{getFechaIniErrorMessage()}}</mat-error>
@@ -62,7 +62,7 @@
 
     <mat-form-field class="campo" hintLabel="Elije una fecha final">
       <mat-label>Fecha Fin</mat-label>
-      <input matInput [matDatepicker]="picker2" formControlName="fechaFin" required>
+      <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
       <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
       <mat-error *ngIf="crearForm?.get('fechaFin')?.invalid">{{getFechaFinErrorMessage()}}</mat-error>
@@ -71,28 +71,28 @@
 
   <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 6 caracteres">
     <mat-label>Costo:</mat-label>
-    <input matInput #cInput maxlength="6" formControlName="costo" required>
+    <input matInput #cInput formControlName="costo">
     <mat-hint align="end">{{cInput.value.length}}/6</mat-hint>
     <mat-error *ngIf="crearForm?.get('costo')?.invalid">{{getCostoErrorMessage()}}</mat-error>
   </mat-form-field> 
 
   <mat-form-field class="campo" hintLabel="Mínimo 4 y maximo 1000 caracteres">
     <mat-label>Requisitos:</mat-label>
-    <textarea matInput #requisitosInput maxlength="1000" formControlName="requisitos" required></textarea>
+    <textarea matInput #requisitosInput formControlName="requisitos"></textarea>
         <mat-hint align="end">{{requisitosInput.value.length}}/1000</mat-hint>
         <mat-error *ngIf="crearForm?.get('requisitos')?.invalid">{{getRequisitosErrorMessage()}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 70 caracteres">
       <mat-label>Encargado:</mat-label>
-      <input matInput #encargadoInput maxlength="70" formControlName="encargado" required>
+      <input matInput #encargadoInput formControlName="encargado">
       <mat-hint align="end">{{encargadoInput.value.length}}/70</mat-hint>
       <mat-error *ngIf="crearForm?.get('encargado')?.invalid">{{getEncargadoErrorMessage()}}</mat-error>
     </mat-form-field>
 
   <mat-form-field class="campo" hintLabel="Mínimo 4 y máximo 50 caracteres">
     <mat-label>Email:</mat-label>
-    <input matInput #eInput maxlength="50" formControlName="email" required>
+    <input matInput #eInput formControlName="email">
     <mat-hint align="end">{{eInput.value.length}}/50</mat-hint>
     <mat-error *ngIf="crearForm?.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
   </mat-form-field> 

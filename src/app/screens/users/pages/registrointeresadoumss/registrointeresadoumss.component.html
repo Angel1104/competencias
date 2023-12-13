@@ -8,21 +8,21 @@
       
           <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
             <mat-label>Nombre:</mat-label> 
-            <input matInput #nombreInput formControlName="nombre" required>
+            <input matInput #nombreInput formControlName="nombre">
             <mat-hint align="end">{{nombreInput.value.length}}/30</mat-hint>
             <mat-error *ngIf="crearForm?.get('nombre')?.invalid">{{getNombreErrorMessage()}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
             <mat-label>Apellidos:</mat-label> 
-            <input matInput #aInput formControlName="apellidos" required>
+            <input matInput #aInput formControlName="apellidos">
             <mat-hint align="end">{{aInput.value.length}}/30</mat-hint>
             <mat-error *ngIf="crearForm?.get('apellidos')?.invalid">{{getApellidoErrorMessage()}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 8 caracteres">
             <mat-label>Telefono:</mat-label> 
-            <input matInput #tInput formControlName="telefono" required>
+            <input matInput #tInput formControlName="telefono">
             <mat-hint align="end">{{tInput.value.length}}/8</mat-hint>
             <mat-error *ngIf="crearForm?.get('telefono')?.invalid">{{getTelefonoErrorMessage()}}</mat-error>
           </mat-form-field>
@@ -40,7 +40,7 @@
       <div class="fechas-container">
         <mat-form-field class="campo" hintLabel="Elije una fecha">
           <mat-label>Fecha Nacimiento</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha_Nacimiento" required>
+          <input matInput [matDatepicker]="picker" formControlName="fecha_Nacimiento">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="crearForm?.get('fecha_Nacimiento')?.invalid">{{getFechaErrorMessage()}}</mat-error>
@@ -48,7 +48,7 @@
     
         <mat-form-field class="campo" hintLabel="Mínimo 6 y máximo 10 caracteres">
           <mat-label>CI:</mat-label> 
-          <input matInput #sisInput formControlName="ci" required>
+          <input matInput #sisInput formControlName="ci">
           <mat-hint align="end">{{sisInput.value.length}}/10</mat-hint>
           <mat-error *ngIf="crearForm?.get('ci')?.invalid">{{getCiErrorMessage()}}</mat-error>
         </mat-form-field>
@@ -63,14 +63,14 @@
 
       <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
         <mat-label>Email:</mat-label> 
-        <input matInput #emailInput formControlName="email" required>
+        <input matInput #emailInput formControlName="email">
         <mat-hint align="end">{{emailInput.value.length}}/50</mat-hint>
         <mat-error *ngIf="crearForm?.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
         <mat-label>codSIS:</mat-label> 
-        <input matInput #codsisInput formControlName="codSIS" required>
+        <input matInput #codsisInput formControlName="codSIS">
         <mat-hint align="end">{{codsisInput.value.length}}/10</mat-hint>
         <mat-error *ngIf="crearForm?.get('codSIS')?.invalid">{{getCodSisErrorMessage()}}</mat-error>
       </mat-form-field>
