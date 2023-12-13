@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../../services/api/api.service';
-import { FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { EquipoI } from 'src/app/models/equipoComp.interface';
 
 @Component({
@@ -12,64 +12,147 @@ import { EquipoI } from 'src/app/models/equipoComp.interface';
 })
 export class RegistroequipoComponent {
   competenciasId! : string;
-
-  constructor(private router: Router,private apiService: ApiService, private activaterouter:ActivatedRoute) {}
+  dataEvento! : EquipoI;
+  crearForm: FormGroup;
 
   ngOnInit(): void {
     this.competenciasId = this.activaterouter.snapshot.paramMap.get('id') || '';
   }
-
-  dataEvento! : EquipoI;
-  crearInteresadoForm = new FormGroup({
-    nombreCoach: new FormControl('',Validators.required),
-    edadCoach: new FormControl('',Validators.required),
-    carreraCoach: new FormControl('',Validators.required),
-    codSISCoach: new FormControl('',Validators.required),
-    emailCoach: new FormControl('',Validators.required),
-    numeroCoach: new FormControl('',Validators.required),
-    universidadCoach: new FormControl('',Validators.required),
-    semestreCoach: new FormControl('',Validators.required),
-
-    nombre1: new FormControl('',Validators.required),
-    edad1: new FormControl('',Validators.required),
-    carrera1: new FormControl('',Validators.required),
-    codSIS1: new FormControl('',Validators.required),
-    universidad1: new FormControl('',Validators.required),
-
-    nombre2: new FormControl('',Validators.required),
-    edad2: new FormControl('',Validators.required),
-    carrera2: new FormControl('',Validators.required),
-    codSIS2: new FormControl('',Validators.required),
-    universidad2: new FormControl('',Validators.required),
-
-    nombre3: new FormControl('',Validators.required),
-    edad3: new FormControl('',Validators.required),
-    carrera3: new FormControl('',Validators.required),
-    codSIS3: new FormControl('',Validators.required),
-    universidad3: new FormControl('',Validators.required),
-
-    nombre4: new FormControl('',Validators.required),
-    edad4: new FormControl('',Validators.required),
-    carrera4: new FormControl('',Validators.required),
-    codSIS4: new FormControl('',Validators.required),
-    universidad4: new FormControl('',Validators.required),
-
-    nombre5: new FormControl('',Validators.required),
-    edad5: new FormControl('',Validators.required),
-    carrera5: new FormControl('',Validators.required),
-    codSIS5: new FormControl('',Validators.required),
-    universidad5: new FormControl('',Validators.required),
-
-    nombre6: new FormControl('',Validators.required),
-    edad6: new FormControl('',Validators.required),
-    carrera6: new FormControl('',Validators.required),
-    codSIS6: new FormControl('',Validators.required),
-    universidad6: new FormControl('',Validators.required),
-  });
   
+  constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService, private fb: FormBuilder) {
+  
+    this.crearForm = this.fb.group({
+      nombreEquipo: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,30}$/)]],
 
-  crearInteresado(datos:any){
+      nombreCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
+      edadCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
+      carreraCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
+      codSISCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
+      emailCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@est\.umss\.edu$/)]],
+      numeroCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{4,8}$/)]],
+      universidadCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
+      semestreCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,3}$/)]],
+
+      nombre1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
+      edad1: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
+      carrera1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
+      codSIS1: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
+      universidad1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
+
+      nombre2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
+      edad2: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
+      carrera2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
+      codSIS2: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
+      universidad2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
+        
+      nombre3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
+      edad3: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      carrera3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      codSIS3: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      universidad3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
+
+      nombre4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
+      edad4: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      carrera4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      codSIS4: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      universidad4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
+
+      nombre5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
+      edad5: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      carrera5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      codSIS5: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      universidad5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
+
+      nombre6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
+      edad6: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      carrera6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      codSIS6: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      universidad6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
+      
+    });
+  }
+  //controles
+  getNombreEquipoErrorMessage() {
+    const ne = this.crearForm.get('nombreEquipo');
+    if (!ne) {return 'Error en el formulario';}
+    if (ne.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return ne.hasError('pattern') ? 'el nombre del equipo debe tener entre 4 y 30 caracteres' : '';
+  }
+  getNombreErrorMessage(fieldName: string) {
+    const n = this.crearForm.get(fieldName);
+    //const n = this.crearForm.get('nombre');
+    if (!n) {return 'Error en el formulario';}
+    if (n.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return n.hasError('pattern') ? 'El nombre debe tener entre 3 y 30 caracteres, y no permite caracteres especiales ni números' : '';
+  }
+  getEdadErrorMessage(fieldName: string) {
+    const e = this.crearForm.get(fieldName);
+    if (!e) {return 'Error en el formulario';}
+    if (e.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return e.hasError('pattern') ? 'la edad debe tener máximo 2 caracteres y solo permite valores numéricos' : '';
+  }
+  getCarreraErrorMessage(fieldName: string) {
+    const c = this.crearForm.get(fieldName);
+    if (!c) {return 'Error en el formulario';}
+    if (c.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return c.hasError('pattern') ? 'La carrera debe tener entre 3 y 20 caracteres, y no permite caracteres especiales' : '';
+  }
+  getCodSisErrorMessage(fieldName: string) {
+    const sis = this.crearForm.get(fieldName);
+    if (!sis) {return 'Error en el formulario';}
+    if (sis.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return sis.hasError('pattern') ? 'El codSis debe tener máximo 10 caracteres, y solo permite valores numericos' : '';
+  }
+  getEmailErrorMessage() {
+    const e = this.crearForm.get('emailCoach');
+    if (!e) {return 'Error en el formulario';}
+    if (e.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return e.hasError('pattern') ? 'Debe usar un correo institucional' : '';
+  }
+  getNumeroErrorMessage(fieldName: string) {
+    const n = this.crearForm.get(fieldName);
+    if (!n) {return 'Error en el formulario';}
+    if (n.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return n.hasError('pattern') ? 'El número debe tener máximo 8 caracteres y solo permite valores numericos' : '';
+  }
+  getUniversidadErrorMessage(fieldName: string) {
+    const u = this.crearForm.get(fieldName);
+    if (!u) {return 'Error en el formulario';}
+    if (u.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return u.hasError('pattern') ? 'La universidad debe tener entre 3 y 30 caracteres, y no permite caracteres especiales' : '';
+  }
+  getSemestreErrorMessage() {
+    const s = this.crearForm.get('semestreCoach');
+    if (!s) {return 'Error en el formulario';}
+    if (s.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return s.hasError('pattern') ? 'El semestre debe tener entre 1 y 3 caracteres, y solo permite valores numericos' : '';
+  }
+  //fin
+  crearInteresado(){
+    console.log('Formulario válido:', this.crearForm.valid);
+    if (this.crearForm.valid) {
+    const datos = this.crearForm.value;
     const formData = new FormData();
+
+    formData.append('nombreEquipo', datos.nombreEquipo);
 
     formData.append('nombreCoach', datos.nombreCoach);
     formData.append('edadCoach', datos.edadCoach);
@@ -115,30 +198,26 @@ export class RegistroequipoComponent {
     formData.append('carrera6', datos.carrera6);
     formData.append('codSIS6', datos.codSIS6);
     formData.append('universidad6', datos.universidad6);
+    
     console.log(datos);
     console.log(formData);
     Swal.fire({
-      title: '¿Estás seguro de registrar el equipo?',
-      text: "No se podra deshacer la acción",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Aceptar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log(formData);
-        this.crear(formData, parseInt(this.competenciasId,10));
-        Swal.fire(
-          'Creado!',
-          'Se ha registrado el interesado con éxito',
-          'success'
-        ).then(() => {
-          this.router.navigate(['/users/competencias']);
-        });
-      }
+      icon: 'success',
+      title: 'Registrado exitosamente',
+      showConfirmButton: false,
+      timer: 1500
+    }).then(() => {
+      console.log(formData);
+      this.crear(formData, parseInt(this.competenciasId,10) );
+        this.router.navigate(['/users/competencias']);
     });
-    
+  }else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Hay errores en el formulario. Por favor, verifica los campos.',
+    });
+  }
   }
 
   crear(data:any, idComp:number){

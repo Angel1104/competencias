@@ -34,15 +34,15 @@ export class RegistroindivumssComponent implements OnInit {
   
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService, private fb: FormBuilder) {
     this.crearForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
-      apellidos : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
+      apellidos : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       ci : ['', [Validators.required, Validators.pattern(/^[0-9]{6,10}$/)]],
       fecha_Nacimiento : ['', Validators.required],
       telefono : ['', [Validators.required, Validators.pattern(/^[0-9]{3,8}$/)]],
       email : ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@est\.umss\.edu$/)]],
       carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
       semestre : ['', Validators.pattern(/^[0-9]{1,3}$/)],
-      codSIS : ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      codSIS : ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
     });
   }
   //Controles
@@ -52,7 +52,7 @@ export class RegistroindivumssComponent implements OnInit {
     if (n.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return n.hasError('pattern') ? 'El nombre debe tener entre 3 y 30 caracteres, y no permite caracteres especiales' : '';
+    return n.hasError('pattern') ? 'El nombre debe tener entre 3 y 30 caracteres, y no permite caracteres especiales ni números' : '';
   }
   getApellidoErrorMessage() {
     const a = this.crearForm.get('apellidos');
@@ -60,7 +60,7 @@ export class RegistroindivumssComponent implements OnInit {
     if (a.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return a.hasError('pattern') ? 'El apellido debe tener entre 3 y 30 caracteres, y no permite caracteres especiales' : '';
+    return a.hasError('pattern') ? 'El apellido debe tener entre 3 y 30 caracteres, y no permite caracteres especiales ni números' : '';
   }
   getSemestreErrorMessage() {
     const s = this.crearForm.get('semestre');

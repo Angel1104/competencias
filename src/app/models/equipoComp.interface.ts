@@ -1,5 +1,8 @@
 export interface EquipoI {
     id:number;
+
+    nombreEquipo: string;
+    
     nombreCoach: string;
     edadCoach: number;
     carreraCoach: string;

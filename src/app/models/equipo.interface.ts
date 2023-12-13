@@ -1,4 +1,6 @@
 export interface EquipoEditI {
+    nombreEquipo: string;
+    
     nombreCoach: string;
     edadCoach: number;
     carreraCoach: string;
