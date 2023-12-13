@@ -18,21 +18,23 @@ export const MY_FORMATS = {
   },
 };
 
+
 @Component({
-  selector: 'app-registroindiv',
-  templateUrl: './registroindiv.component.html',
-  styleUrls: ['./registroindiv.component.css'],
+  selector: 'app-registrointeresadoumss',
+  templateUrl: './registrointeresadoumss.component.html',
+  styleUrls: ['./registrointeresadoumss.component.css'],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
 })
-
-export class RegistroindivComponent  implements OnInit {
-  competenciasId! : string;
+export class RegistrointeresadoumssComponent {
+  
+  eventosId! : string;
   ngOnInit(): void {
-    this.competenciasId = this.activaterouter.snapshot.paramMap.get('id') || '';
+    this.eventosId = this.activaterouter.snapshot.paramMap.get('id') || '';
   }
   dataEvento! : InteresadoI;
   crearForm: FormGroup;
   
+
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService, private fb: FormBuilder) {
     this.crearForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
@@ -40,9 +42,10 @@ export class RegistroindivComponent  implements OnInit {
       ci : ['', [Validators.required, Validators.pattern(/^[0-9]{6,10}$/)]],
       fecha_Nacimiento : ['', Validators.required],
       telefono : ['', [Validators.required, Validators.pattern(/^[0-9]{3,8}$/)]],
-      email : ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
+      email : ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@est\.umss\.edu$/)]],
       carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
       semestre : ['', Validators.pattern(/^[0-9]{1,3}$/)],
+      codSIS : ['', Validators.pattern(/^[0-9]{5,10}$/)],
     });
   }
   //Controles
@@ -100,7 +103,15 @@ export class RegistroindivComponent  implements OnInit {
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return e.hasError('pattern') ? 'Debe usar un correo valido' : '';
+    return e.hasError('pattern') ? 'Debe usar un correo institucional' : '';
+  }
+  getCodSisErrorMessage() {
+    const sis = this.crearForm.get('codSIS');
+    if (!sis) {return 'Error en el formulario';}
+    if (sis.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return sis.hasError('pattern') ? 'El codSis debe tener máximo 10 caracteres, y solo permite valores numericos' : '';
   }
   getTelefonoErrorMessage() {
     const t = this.crearForm.get('telefono');
@@ -111,7 +122,6 @@ export class RegistroindivComponent  implements OnInit {
     return t.hasError('pattern') ? 'El telefono debe tener máximo 8 caracteres y solo permite valores numericos' : '';
   }
   //fin
-
   crearInteresado(){
     console.log('Formulario válido:', this.crearForm.valid);
     if (this.crearForm.valid) {
@@ -126,9 +136,10 @@ export class RegistroindivComponent  implements OnInit {
     formData.append('ci', datos.ci);
     formData.append('fecha_Nacimiento', fecha_NacimientoISO);
     formData.append('telefono', datos.telefono);
+    formData.append('email', datos.email);
     if (datos.semestre) {formData.append('semestre', datos.semestre);}
     if (datos.carrera) {formData.append('carrera', datos.carrera);}
-    formData.append('semestre', datos.semestre);
+    formData.append('codSIS', datos.codSIS);
 
     console.log(formData);
     Swal.fire({
@@ -138,22 +149,24 @@ export class RegistroindivComponent  implements OnInit {
       timer: 1500
     }).then(() => {
       console.log(formData);
-      this.crear(formData, parseInt(this.competenciasId,10) );
-        this.router.navigate(['/users/competencias']);
+      this.crear(formData, parseInt(this.eventosId,10));
+      this.router.navigate(['/users/eventos']);
     });
-    }else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Hay errores en el formulario. Por favor, verifica los campos.',
-      });
-    }
+  }else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Hay errores en el formulario. Por favor, verifica los campos.',
+    });
   }
-  crear(data:any, idComp:number){
-    this.apiService.createParticipante(data).subscribe(data=>{
+  }
+
+  crear(data:any, idEv:number){
+    this.apiService.createInteresado(data).subscribe(data=>{
       console.log(data);
-      this.apiService.associateParticipanteWithComp(idComp, data.id).subscribe(data2=>{
-        console.log(data2);
+      const idIn = data.id;
+      this.apiService.associateInteresadoWithEvento(idEv, idIn).subscribe(data2=>{
+        console.log("relacion");
       })
     })
   }

@@ -1,7 +1,8 @@
 <!-- crear-interesado.component.html -->
-<h1>Registrar Participante individual</h1>
+<h1>Crear Interesado</h1>
 <div style="margin:20px 0px 0px 40px">
   <form [formGroup]="crearForm" (ngSubmit)="crearInteresado()">
+    
     <section class="form">
         <section class="f1">
       
@@ -67,12 +68,19 @@
         <mat-error *ngIf="crearForm?.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
 
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsisInput formControlName="codSIS" required>
+        <mat-hint align="end">{{codsisInput.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSIS')?.invalid">{{getCodSisErrorMessage()}}</mat-error>
+      </mat-form-field>
+
     </section>
     </section>
 
     <div class="example-button-row">
       <button type="submit" color="primary" mat-raised-button>Guardar</button>
-      <button mat-raised-button routerLink="/users/competencias">Cancelar</button>
+      <button mat-raised-button routerLink="/users/eventos">Cancelar</button>
     </div>
   </form>
 </div>

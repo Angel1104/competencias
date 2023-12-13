@@ -44,7 +44,7 @@ export class CrearcompComponent {
       estado: [false, Validators.required],
       imagen: [''],
       costo: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]],
-      horarios: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,30}$/)]],
+      horarios: ['', Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,30}$/)],
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ@]{4,50}$/)]],
       umss: [false, Validators.required],
     });
@@ -126,10 +126,10 @@ export class CrearcompComponent {
   getHorariosErrorMessage() {
     const h = this.crearForm.get('horarios');
     if (!h) {return 'Error en el formulario';}
-    if (h.hasError('required')) {
-      return 'Este campo es obligatorio';
+    if (h.hasError('pattern')) {
+      return 'El horario debe tener entre 1 y 30 caracteres';
     }
-    return h.hasError('pattern') ? 'El horario debe tener entre 1 y 30 caracteres' : '';
+    return '';
   }
   getEmailErrorMessage() {
     const e = this.crearForm.get('email');
@@ -162,7 +162,7 @@ export class CrearcompComponent {
     const fechaFinISO = fechaFin.toISOString().split('T')[0];
 
     const estado = datos.estado ? 'Activo' : 'Inactivo';
-    const umss = datos.estado ? 'Si' : 'No';
+    const umss = datos.umss ? 'Si' : 'No';
     
     const formData = new FormData();
     formData.append('nombre', datos.nombre);
@@ -175,7 +175,7 @@ export class CrearcompComponent {
     formData.append('id_tipoCompetencias', datos.id_tipoCompetencias.toString());
     formData.append('email', datos.email);
     formData.append('costo', datos.costo);
-    formData.append('horarios', datos.horarios);
+    if (datos.horarios) {formData.append('horarios', datos.horarios);}
     formData.append('estado', estado);
     formData.append('umss', umss);
     formData.append('imagen', this.imagenSeleccionada as File);

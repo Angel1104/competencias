@@ -37,15 +37,14 @@ export class RegistrointeresadoComponent {
 
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService, private fb: FormBuilder) {
     this.crearForm = this.fb.group({
-      nombre : ['', Validators.required],
-      apellidos : ['', Validators.required],
-      ci : ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
+      apellidos : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
+      ci : ['', [Validators.required, Validators.pattern(/^[0-9]{6,10}$/)]],
       fecha_Nacimiento : ['', Validators.required],
-      telefono : ['', Validators.required],
-      email : ['', Validators.required],
-      carrera : ['', Validators.required],
-      semestre : ['', Validators.required],
-      codSIS : ['', Validators.required],
+      telefono : ['', [Validators.required, Validators.pattern(/^[0-9]{3,8}$/)]],
+      email : ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
+      carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      semestre : ['', Validators.pattern(/^[0-9]{1,3}$/)],
     });
   }
   //Controles
@@ -55,7 +54,7 @@ export class RegistrointeresadoComponent {
     if (n.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
+    return n.hasError('pattern') ? 'El nombre debe tener entre 3 y 30 caracteres, y no permite caracteres especiales' : '';
   }
   getApellidoErrorMessage() {
     const a = this.crearForm.get('apellidos');
@@ -63,13 +62,13 @@ export class RegistrointeresadoComponent {
     if (a.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
+    return a.hasError('pattern') ? 'El apellido debe tener entre 3 y 30 caracteres, y no permite caracteres especiales' : '';
   }
   getSemestreErrorMessage() {
     const s = this.crearForm.get('semestre');
     if (!s) {return 'Error en el formulario';}
-    if (s.hasError('required')) {
-      return 'Este campo es obligatorio';
+    if (s.hasError('pattern')) {
+      return 'El semestre debe tener entre 1 y 3 caracteres, y solo permite valores numericos';
     }
     return '';
   }
@@ -87,13 +86,13 @@ export class RegistrointeresadoComponent {
     if (ci.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
+    return ci.hasError('pattern') ? 'El ci debe tener entre 6 y 10 caracteres, y solo permite valores numericos' : '';
   }
   getCarreraErrorMessage() {
     const c = this.crearForm.get('carrera');
     if (!c) {return 'Error en el formulario';}
-    if (c.hasError('required')) {
-      return 'Este campo es obligatorio';
+    if (c.hasError('pattern')) {
+      return 'La carrera debe tener entre 3 y 20 caracteres, y no permite caracteres especiales';
     }
     return '';
   }
@@ -103,15 +102,7 @@ export class RegistrointeresadoComponent {
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
-  }
-  getCodSisErrorMessage() {
-    const sis = this.crearForm.get('codSIS');
-    if (!sis) {return 'Error en el formulario';}
-    if (sis.hasError('required')) {
-      return 'Este campo es obligatorio';
-    }
-    return '';
+    return e.hasError('pattern') ? 'Debe usar un correo valido' : '';
   }
   getTelefonoErrorMessage() {
     const t = this.crearForm.get('telefono');
@@ -119,7 +110,7 @@ export class RegistrointeresadoComponent {
     if (t.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
+    return t.hasError('pattern') ? 'El telefono debe tener máximo 8 caracteres y solo permite valores numericos' : '';
   }
   //fin
   crearInteresado(){
@@ -137,8 +128,8 @@ export class RegistrointeresadoComponent {
     formData.append('fecha_Nacimiento', fecha_NacimientoISO);
     formData.append('telefono', datos.telefono);
     formData.append('email', datos.email);
-    formData.append('carrera', datos.carrera);
-    formData.append('semestre', datos.semestre);
+    if (datos.email) {formData.append('email', datos.email);}
+    if (datos.carrera) {formData.append('carrera', datos.carrera);}
     formData.append('codSIS', datos.codSIS);
 
     console.log(formData);

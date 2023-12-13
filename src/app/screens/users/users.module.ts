@@ -20,6 +20,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegistrointeresadoComponent } from './pages/registrointeresado/registrointeresado.component';
 import { RegistroindivComponent } from './pages/registroindiv/registroindiv.component';
+import { RegistroindivumssComponent } from './pages/registroindivumss/registroindivumss.component';
+import { RegistroequipoumssComponent } from './pages/registroequipoumss/registroequipoumss.component';
+import { RegistrointeresadoumssComponent } from './pages/registrointeresadoumss/registrointeresadoumss.component';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import { RegistroindivComponent } from './pages/registroindiv/registroindiv.comp
     HomComponent,
     RegistroequipoComponent,
     RegistrointeresadoComponent,
-    RegistroindivComponent
+    RegistroindivComponent,
+    RegistroindivumssComponent,
+    RegistroequipoumssComponent,
+    RegistrointeresadoumssComponent
   ],
   imports: [
     CommonModule,

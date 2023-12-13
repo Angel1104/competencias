@@ -36,12 +36,21 @@ export class VercompComponent implements OnInit {
     })
   }
 
-  registrarEquipo(id:Number, idTipo:Number){
+  registrarEquipo(id: Number, idTipo: Number, umss: string) {
     console.log(idTipo);
-    if (idTipo == 1) {
-      this.router.navigate(['users/registoindiv',id]);
+    console.log(umss);
+    if (idTipo === 1) {
+      if (umss.toLowerCase() === 'si') {
+        this.router.navigate(['users/registoindivumss', id]);
+      } else {
+        this.router.navigate(['users/registoindiv', id]);
+      }
     } else {
-      this.router.navigate(['users/registroequipo',id]);
+      if (umss.toLowerCase() === 'si') {
+        this.router.navigate(['users/registroequipoumss', id]);
+      } else {
+        this.router.navigate(['users/registroequipo', id]);
+      }
     }
   }
 }
