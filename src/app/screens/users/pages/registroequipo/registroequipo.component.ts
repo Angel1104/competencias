@@ -21,14 +21,14 @@ export class RegistroequipoComponent {
 
   dataEvento! : EquipoI;
   crearInteresadoForm = new FormGroup({
-    nombreLider: new FormControl('',Validators.required),
-    edadLider: new FormControl('',Validators.required),
-    carreraLider: new FormControl('',Validators.required),
-    codSISLider: new FormControl('',Validators.required),
-    emailLider: new FormControl('',Validators.required),
-    numeroLider: new FormControl('',Validators.required),
-    universidadLider: new FormControl('',Validators.required),
-    semestreLider: new FormControl('',Validators.required),
+    nombreCoach: new FormControl('',Validators.required),
+    edadCoach: new FormControl('',Validators.required),
+    carreraCoach: new FormControl('',Validators.required),
+    codSISCoach: new FormControl('',Validators.required),
+    emailCoach: new FormControl('',Validators.required),
+    numeroCoach: new FormControl('',Validators.required),
+    universidadCoach: new FormControl('',Validators.required),
+    semestreCoach: new FormControl('',Validators.required),
 
     nombre1: new FormControl('',Validators.required),
     edad1: new FormControl('',Validators.required),
@@ -71,14 +71,14 @@ export class RegistroequipoComponent {
   crearInteresado(datos:any){
     const formData = new FormData();
 
-    formData.append('nombreLider', datos.nombreLider);
-    formData.append('edadLider', datos.edadLider);
-    formData.append('carreraLider', datos.carreraLider);
-    formData.append('codSISLider', datos.codSISLider);
-    formData.append('emailLider', datos.emailLider);
-    formData.append('numeroLider', datos.numeroLider);
-    formData.append('universidadLider', datos.universidadLider);
-    formData.append('semestreLider', datos.semestreLider);
+    formData.append('nombreCoach', datos.nombreCoach);
+    formData.append('edadCoach', datos.edadCoach);
+    formData.append('carreraCoach', datos.carreraCoach);
+    formData.append('codSISCoach', datos.codSISCoach);
+    formData.append('emailCoach', datos.emailCoach);
+    formData.append('numeroCoach', datos.numeroCoach);
+    formData.append('universidadCoach', datos.universidadCoach);
+    formData.append('semestreCoach', datos.semestreCoach);
 
     formData.append('nombre1', datos.nombre1);
     formData.append('edad1', datos.edad1);

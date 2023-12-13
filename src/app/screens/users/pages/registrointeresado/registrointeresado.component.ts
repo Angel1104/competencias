@@ -128,7 +128,7 @@ export class RegistrointeresadoComponent {
     formData.append('fecha_Nacimiento', fecha_NacimientoISO);
     formData.append('telefono', datos.telefono);
     formData.append('email', datos.email);
-    if (datos.email) {formData.append('email', datos.email);}
+    if (datos.semestre) {formData.append('semestre', datos.semestre);}
     if (datos.carrera) {formData.append('carrera', datos.carrera);}
     formData.append('codSIS', datos.codSIS);
 

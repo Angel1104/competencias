@@ -35,7 +35,7 @@ export class VerequiposComponent implements OnInit {
     }
   
     this.filteredEquipos = this.equipos.filter(equipo =>
-      equipo.nombreLider.toLowerCase().includes(this.searchTerm.toLowerCase())
+      equipo.nombreCoach.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 }
