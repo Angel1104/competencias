@@ -1,1 +1,370 @@
-<p>registroequipoumss works!</p>
+<!-- crear-interesado.component.html -->
+<h1>Registrar Equipo</h1>
+<div style="margin:20px 0px 0px 40px">
+  <form [formGroup]="crearForm" (ngSubmit)="crearInteresado()">
+    <h2>Equipo</h2>
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre Equipo:</mat-label> 
+        <input matInput #nombreEquipoInput formControlName="nombreEquipo">
+        <mat-hint align="end">{{nombreEquipoInput.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombreEquipo')?.invalid">{{getNombreEquipoErrorMessage()}}</mat-error>
+      </mat-form-field>
+    <hr>
+    <h2>Coach</h2>
+    <section class="form">
+        <section class="f1">
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre:</mat-label> 
+        <input matInput #nombreCInput formControlName="nombreCoach">
+        <mat-hint align="end">{{nombreCInput.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombreCoach')?.invalid">{{getNombreErrorMessage('nombreCoach')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 8 caracteres">
+        <mat-label>Numero:</mat-label>
+        <input matInput #numeroCInput formControlName="numeroCoach">
+        <mat-hint align="end">{{numeroCInput.value.length}}/8</mat-hint>
+        <mat-error *ngIf="crearForm?.get('numeroCoach')?.invalid">{{getNumeroErrorMessage('numeroCoach')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Universidad:</mat-label>
+        <input matInput #uCInput formControlName="universidadCoach">
+        <mat-hint align="end">{{uCInput.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('universidadCoach')?.invalid">{{getUniversidadErrorMessage('universidadCoach')}}</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="campo" hintLabel="Máximo 2 caracteres">
+        <mat-label>Edad:</mat-label>
+        <input matInput #edadCInput formControlName="edadCoach">
+        <mat-hint align="end">{{edadCInput.value.length}}/2</mat-hint>
+        <mat-error *ngIf="crearForm?.get('edadCoach')?.invalid">{{getEdadErrorMessage('edadCoach')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+        <mat-label>Carrera:</mat-label> 
+        <input matInput #carreraCInput formControlName="carreraCoach">
+        <mat-hint align="end">{{carreraCInput.value.length}}/20</mat-hint>
+        <mat-error *ngIf="crearForm?.get('carreraCoach')?.invalid">{{getCarreraErrorMessage('carreraCoach')}}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
+        <mat-label>Email:</mat-label> 
+        <input matInput #emailInput formControlName="emailCoach">
+        <mat-hint align="end">{{emailInput.value.length}}/50</mat-hint>
+        <mat-error *ngIf="crearForm?.get('emailCoach')?.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsisCoachInput formControlName="codSISCoach">
+        <mat-hint align="end">{{codsisCoachInput.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSISCoach')?.invalid">{{getCodSisErrorMessage('codSISCoach')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 3 caracteres">
+        <mat-label>Semestre:</mat-label> 
+        <input matInput #sInput formControlName="semestreCoach" >
+        <mat-hint align="end">{{sInput.value.length}}/3</mat-hint>
+        <mat-error *ngIf="crearForm?.get('semestreCoach')?.invalid">{{getSemestreErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    </section>
+
+    <hr>
+    <h2>Primer participante</h2>
+    <section class="form">
+        <section class="f1">
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre:</mat-label> 
+        <input matInput #nombre1Input formControlName="nombre1">
+        <mat-hint align="end">{{nombre1Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombre1')?.invalid">{{getNombreErrorMessage('nombre1')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Universidad:</mat-label>
+        <input matInput #u1Input formControlName="universidad1">
+        <mat-hint align="end">{{u1Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('universidad1')?.invalid">{{getUniversidadErrorMessage('universidad1')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    <section>
+
+      <mat-form-field class="campo" hintLabel="Máximo 2 caracteres">
+        <mat-label>Edad:</mat-label>
+        <input matInput #edad1Input formControlName="edad1">
+        <mat-hint align="end">{{edad1Input.value.length}}/2</mat-hint>
+        <mat-error *ngIf="crearForm?.get('edad1')?.invalid">{{getEdadErrorMessage('edad1')}}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+        <mat-label>Carrera:</mat-label> 
+        <input matInput #carrera1Input formControlName="carrera1">
+        <mat-hint align="end">{{carrera1Input.value.length}}/20</mat-hint>
+        <mat-error *ngIf="crearForm?.get('carrera1')?.invalid">{{getCarreraErrorMessage('carrera1')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsis1Input formControlName="codSIS1">
+        <mat-hint align="end">{{codsis1Input.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSIS1')?.invalid">{{getCodSisErrorMessage('codSIS1')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Segundo participante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre:</mat-label> 
+        <input matInput #nombre2Input formControlName="nombre2">
+        <mat-hint align="end">{{nombre2Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombre2')?.invalid">{{getNombreErrorMessage('nombre2')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Universidad:</mat-label>
+        <input matInput #u2Input formControlName="universidad2">
+        <mat-hint align="end">{{u2Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('universidad2')?.invalid">{{getUniversidadErrorMessage('universidad2')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo" hintLabel="Máximo 2 caracteres">
+        <mat-label>Edad:</mat-label>
+        <input matInput #edad2Input formControlName="edad2">
+        <mat-hint align="end">{{edad2Input.value.length}}/2</mat-hint>
+        <mat-error *ngIf="crearForm?.get('edad2')?.invalid">{{getEdadErrorMessage('edad2')}}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+        <mat-label>Carrera:</mat-label> 
+        <input matInput #carrera2Input formControlName="carrera2">
+        <mat-hint align="end">{{carrera2Input.value.length}}/20</mat-hint>
+        <mat-error *ngIf="crearForm?.get('carrera2')?.invalid">{{getCarreraErrorMessage('carrera2')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsis2Input formControlName="codSIS2">
+        <mat-hint align="end">{{codsis2Input.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSIS2')?.invalid">{{getCodSisErrorMessage('codSIS2')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    
+    </section>
+
+    <hr>
+    <h2>Tercer participante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre:</mat-label> 
+        <input matInput #nombre3Input formControlName="nombre3">
+        <mat-hint align="end">{{nombre3Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombre3')?.invalid">{{getNombreErrorMessage('nombre3')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Universidad:</mat-label>
+        <input matInput #u3Input formControlName="universidad3">
+        <mat-hint align="end">{{u3Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('universidad3')?.invalid">{{getUniversidadErrorMessage('universidad3')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo" hintLabel="Máximo 2 caracteres">
+        <mat-label>Edad:</mat-label>
+        <input matInput #edad3Input formControlName="edad3">
+        <mat-hint align="end">{{edad3Input.value.length}}/2</mat-hint>
+        <mat-error *ngIf="crearForm?.get('edad3')?.invalid">{{getEdadErrorMessage('edad3')}}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+        <mat-label>Carrera:</mat-label> 
+        <input matInput #carrera3Input formControlName="carrera3">
+        <mat-hint align="end">{{carrera3Input.value.length}}/20</mat-hint>
+        <mat-error *ngIf="crearForm?.get('carrera3')?.invalid">{{getCarreraErrorMessage('carrera3')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsis3Input formControlName="codSIS3">
+        <mat-hint align="end">{{codsis3Input.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSIS3')?.invalid">{{getCodSisErrorMessage('codSIS3')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Cuarto participante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre:</mat-label> 
+        <input matInput #nombre4Input formControlName="nombre4">
+        <mat-hint align="end">{{nombre4Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombre4')?.invalid">{{getNombreErrorMessage('nombre4')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Universidad:</mat-label>
+        <input matInput #u4Input formControlName="universidad4">
+        <mat-hint align="end">{{u4Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('universidad4')?.invalid">{{getUniversidadErrorMessage('universidad4')}}</mat-error>
+      </mat-form-field> 
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo" hintLabel="Máximo 2 caracteres">
+        <mat-label>Edad:</mat-label>
+        <input matInput #edad4Input formControlName="edad4">
+        <mat-hint align="end">{{edad4Input.value.length}}/2</mat-hint>
+        <mat-error *ngIf="crearForm?.get('edad4')?.invalid">{{getEdadErrorMessage('edad4')}}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+        <mat-label>Carrera:</mat-label> 
+        <input matInput #carrera4Input formControlName="carrera4">
+        <mat-hint align="end">{{carrera4Input.value.length}}/20</mat-hint>
+        <mat-error *ngIf="crearForm?.get('carrera4')?.invalid">{{getCarreraErrorMessage('carrera4')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsis4Input formControlName="codSIS4">
+        <mat-hint align="end">{{codsis4Input.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSIS4')?.invalid">{{getCodSisErrorMessage('codSIS4')}}</mat-error>
+      </mat-form-field>
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Quinto participante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre:</mat-label> 
+        <input matInput #nombre5Input formControlName="nombre5">
+        <mat-hint align="end">{{nombre5Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombre5')?.invalid">{{getNombreErrorMessage('nombre5')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Universidad:</mat-label>
+        <input matInput #u5Input formControlName="universidad5">
+        <mat-hint align="end">{{u5Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('universidad5')?.invalid">{{getUniversidadErrorMessage('universidad5')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo" hintLabel="Máximo 2 caracteres">
+        <mat-label>Edad:</mat-label>
+        <input matInput #edad5Input formControlName="edad5">
+        <mat-hint align="end">{{edad5Input.value.length}}/2</mat-hint>
+        <mat-error *ngIf="crearForm?.get('edad5')?.invalid">{{getEdadErrorMessage('edad5')}}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+        <mat-label>Carrera:</mat-label> 
+        <input matInput #carrera5Input formControlName="carrera5">
+        <mat-hint align="end">{{carrera5Input.value.length}}/20</mat-hint>
+        <mat-error *ngIf="crearForm?.get('carrera5')?.invalid">{{getCarreraErrorMessage('carrera5')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsis5Input formControlName="codSIS5">
+        <mat-hint align="end">{{codsis5Input.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSIS5')?.invalid">{{getCodSisErrorMessage('codSIS5')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+
+    
+    </section>
+
+    <hr>
+    <h2>Sexto participante</h2>
+    <section class="form">
+        <section class="f1">
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Nombre:</mat-label> 
+        <input matInput #nombre6Input formControlName="nombre6">
+        <mat-hint align="end">{{nombre6Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('nombre6')?.invalid">{{getNombreErrorMessage('nombre6')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+        <mat-label>Universidad:</mat-label>
+        <input matInput #u6Input formControlName="universidad6">
+        <mat-hint align="end">{{u6Input.value.length}}/30</mat-hint>
+        <mat-error *ngIf="crearForm?.get('universidad6')?.invalid">{{getUniversidadErrorMessage('universidad6')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+    <section>
+    
+      <mat-form-field class="campo" hintLabel="Máximo 2 caracteres">
+        <mat-label>Edad:</mat-label>
+        <input matInput #edad6Input formControlName="edad6">
+        <mat-hint align="end">{{edad6Input.value.length}}/2</mat-hint>
+        <mat-error *ngIf="crearForm?.get('edad6')?.invalid">{{getEdadErrorMessage('edad6')}}</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 20 caracteres">
+        <mat-label>Carrera:</mat-label> 
+        <input matInput #carrera6Input formControlName="carrera6">
+        <mat-hint align="end">{{carrera6Input.value.length}}/20</mat-hint>
+        <mat-error *ngIf="crearForm?.get('carrera6')?.invalid">{{getCarreraErrorMessage('carrera6')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+        <mat-label>codSIS:</mat-label> 
+        <input matInput #codsis6Input formControlName="codSIS6">
+        <mat-hint align="end">{{codsis6Input.value.length}}/10</mat-hint>
+        <mat-error *ngIf="crearForm?.get('codSIS6')?.invalid">{{getCodSisErrorMessage('codSIS6')}}</mat-error>
+      </mat-form-field>
+
+    </section>
+
+    
+    </section>
+    <div class="example-button-row">
+      <button type="submit" color="primary" mat-raised-button>Guardar</button>
+      <button mat-raised-button routerLink="/users/eventos">Cancelar</button>
+    </div>
+  </form>
+</div>

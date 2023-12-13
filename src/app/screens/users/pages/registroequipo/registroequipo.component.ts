@@ -27,8 +27,7 @@ export class RegistroequipoComponent {
       nombreCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edadCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
       carreraCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
-      codSISCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
-      emailCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@est\.umss\.edu$/)]],
+      emailCoach: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
       numeroCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{4,8}$/)]],
       universidadCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
       semestreCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,3}$/)]],
@@ -36,37 +35,31 @@ export class RegistroequipoComponent {
       nombre1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edad1: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
       carrera1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
-      codSIS1: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
       universidad1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
 
       nombre2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edad2: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
       carrera2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
-      codSIS2: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
       universidad2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
         
       nombre3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad3: ['', Validators.pattern(/^[0-9]{1,2}$/)],
       carrera3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
-      codSIS3: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad4: ['', Validators.pattern(/^[0-9]{1,2}$/)],
       carrera4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
-      codSIS4: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad5: ['', Validators.pattern(/^[0-9]{1,2}$/)],
       carrera5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
-      codSIS5: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad6: ['', Validators.pattern(/^[0-9]{1,2}$/)],
       carrera6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
-      codSIS6: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
       
     });
@@ -105,21 +98,13 @@ export class RegistroequipoComponent {
     }
     return c.hasError('pattern') ? 'La carrera debe tener entre 3 y 20 caracteres, y no permite caracteres especiales' : '';
   }
-  getCodSisErrorMessage(fieldName: string) {
-    const sis = this.crearForm.get(fieldName);
-    if (!sis) {return 'Error en el formulario';}
-    if (sis.hasError('required')) {
-      return 'Este campo es obligatorio';
-    }
-    return sis.hasError('pattern') ? 'El codSis debe tener máximo 10 caracteres, y solo permite valores numericos' : '';
-  }
   getEmailErrorMessage() {
     const e = this.crearForm.get('emailCoach');
     if (!e) {return 'Error en el formulario';}
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return e.hasError('pattern') ? 'Debe usar un correo institucional' : '';
+    return e.hasError('pattern') ? 'el email debe ser valido' : '';
   }
   getNumeroErrorMessage(fieldName: string) {
     const n = this.crearForm.get(fieldName);
@@ -157,7 +142,6 @@ export class RegistroequipoComponent {
     formData.append('nombreCoach', datos.nombreCoach);
     formData.append('edadCoach', datos.edadCoach);
     formData.append('carreraCoach', datos.carreraCoach);
-    formData.append('codSISCoach', datos.codSISCoach);
     formData.append('emailCoach', datos.emailCoach);
     formData.append('numeroCoach', datos.numeroCoach);
     formData.append('universidadCoach', datos.universidadCoach);
@@ -166,37 +150,31 @@ export class RegistroequipoComponent {
     formData.append('nombre1', datos.nombre1);
     formData.append('edad1', datos.edad1);
     formData.append('carrera1', datos.carrera1);
-    formData.append('codSIS1', datos.codSIS1);
     formData.append('universidad1', datos.universidad1);
 
     formData.append('nombre2', datos.nombre2);
     formData.append('edad2', datos.edad2);
     formData.append('carrera2', datos.carrera2);
-    formData.append('codSIS2', datos.codSIS2);
     formData.append('universidad2', datos.universidad2);
 
     formData.append('nombre3', datos.nombre3);
     formData.append('edad3', datos.edad3);
     formData.append('carrera3', datos.carrera3);
-    formData.append('codSIS3', datos.codSIS3);
     formData.append('universidad3', datos.universidad3);
 
     formData.append('nombre4', datos.nombre4);
     formData.append('edad4', datos.edad4);
     formData.append('carrera4', datos.carrera4);
-    formData.append('codSIS4', datos.codSIS4);
     formData.append('universidad4', datos.universidad4);
 
     formData.append('nombre5', datos.nombre5);
     formData.append('edad5', datos.edad5);
     formData.append('carrera5', datos.carrera5);
-    formData.append('codSIS5', datos.codSIS5);
     formData.append('universidad5', datos.universidad5);
 
     formData.append('nombre6', datos.nombre6);
     formData.append('edad6', datos.edad6);
     formData.append('carrera6', datos.carrera6);
-    formData.append('codSIS6', datos.codSIS6);
     formData.append('universidad6', datos.universidad6);
     
     console.log(datos);
