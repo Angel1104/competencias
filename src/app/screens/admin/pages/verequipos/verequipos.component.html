@@ -8,14 +8,19 @@
 </div> -->
 
 <table mat-table [dataSource]="equipos" class="mat-elevation-z8" style="width: 100%; margin: 20px 40px;">
-  <ng-container matColumnDef="nombreLider">
+  <ng-container matColumnDef="nombreEquipo">
+    <th mat-header-cell *matHeaderCellDef> Nombre Equipo </th>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreEquipo }} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="nombreCoach">
     <th mat-header-cell *matHeaderCellDef> Nombre Couch </th>
-    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreLider }} </td>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreCoach }} </td>
   </ng-container>
 
-  <ng-container matColumnDef="numeroLider">
+  <ng-container matColumnDef="numeroCoach">
     <th mat-header-cell *matHeaderCellDef> Número Couch </th>
-    <td mat-cell *matCellDef="let equipo"> {{ equipo.numeroLider }} </td>
+    <td mat-cell *matCellDef="let equipo"> {{ equipo.numeroCoach }} </td>
   </ng-container>
 
   <ng-container matColumnDef="nombre1">
@@ -48,6 +53,6 @@
     <td mat-cell *matCellDef="let equipo"> {{ equipo.nombre6 }} </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="['nombreLider', 'numeroLider', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
-  <tr mat-row *matRowDef="let row; columns: ['nombreLider', 'numeroLider', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
+  <tr mat-header-row *matHeaderRowDef="['nombreEquipo', 'nombreCoach', 'numeroCoach', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['nombreEquipo', 'nombreCoach', 'numeroCoach', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
 </table>

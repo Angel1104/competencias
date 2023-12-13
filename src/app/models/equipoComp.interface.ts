@@ -1,13 +1,16 @@
 export interface EquipoI {
     id:number;
-    nombreLider: string;
-    edadLider: number;
-    carreraLider: string;
-    codSISLider: number;
-    emailLider: string;
-    numeroLider: number;
-    universidadLider: string;
-    semestreLider: number;
+
+    nombreEquipo: string;
+    
+    nombreCoach: string;
+    edadCoach: number;
+    carreraCoach: string;
+    codSISCoach: number;
+    emailCoach: string;
+    numeroCoach: number;
+    universidadCoach: string;
+    semestreCoach: number;
 
     // Espacio
     nombre1: string;

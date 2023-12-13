@@ -8,8 +8,11 @@ import { VerevenComponent } from './pages/vereven/vereven.component';
 import { EvenComponent } from './pages/even/even.component';
 import { VercompComponent } from './pages/vercomp/vercomp.component';
 import { RegistroequipoComponent } from './pages/registroequipo/registroequipo.component';
+import { RegistroequipoumssComponent } from './pages/registroequipoumss/registroequipoumss.component';
 import { RegistrointeresadoComponent } from './pages/registrointeresado/registrointeresado.component';
+import { RegistrointeresadoumssComponent } from './pages/registrointeresadoumss/registrointeresadoumss.component';
 import { RegistroindivComponent } from './pages/registroindiv/registroindiv.component';
+import { RegistroindivumssComponent } from './pages/registroindivumss/registroindivumss.component';
 
 
 const routes: Routes = [{
@@ -21,8 +24,11 @@ const routes: Routes = [{
       {path: "visualizarevento/:id", component:VerevenComponent},
       {path: "visualizarcompetencia/:id", component:VercompComponent},
       {path: "registroequipo/:id", component:RegistroequipoComponent},
+      {path: "registroequipoumss/:id", component:RegistroequipoumssComponent},
       {path: "registointeresado/:id", component:RegistrointeresadoComponent},
+      {path: "registointeresadoumss/:id", component:RegistrointeresadoumssComponent},
       {path: "registoindiv/:id", component:RegistroindivComponent},
+      {path: "registoindivumss/:id", component:RegistroindivumssComponent},
     ]
   }];
   

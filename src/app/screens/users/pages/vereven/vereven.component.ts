@@ -40,8 +40,13 @@ export class VerevenComponent implements OnInit {
     })
   }
 
-  registrarInteresado(id:Number){
-    this.router.navigate(['/users/registointeresado',id]);
+  registrarInteresado(id:Number, umss: string){
+    console.log(umss);
+    if (umss.toLowerCase() === 'si') {
+      this.router.navigate(['/users/registointeresadoumss',id]);
+    } else {
+      this.router.navigate(['/users/registointeresado',id]);
+    }
   }
 
 }

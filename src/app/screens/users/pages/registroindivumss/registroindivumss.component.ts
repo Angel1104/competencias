@@ -19,13 +19,12 @@ export const MY_FORMATS = {
 };
 
 @Component({
-  selector: 'app-registroindiv',
-  templateUrl: './registroindiv.component.html',
-  styleUrls: ['./registroindiv.component.css'],
+  selector: 'app-registroindivumss',
+  templateUrl: './registroindivumss.component.html',
+  styleUrls: ['./registroindivumss.component.css'],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
 })
-
-export class RegistroindivComponent  implements OnInit {
+export class RegistroindivumssComponent implements OnInit {
   competenciasId! : string;
   ngOnInit(): void {
     this.competenciasId = this.activaterouter.snapshot.paramMap.get('id') || '';
@@ -40,9 +39,10 @@ export class RegistroindivComponent  implements OnInit {
       ci : ['', [Validators.required, Validators.pattern(/^[0-9]{6,10}$/)]],
       fecha_Nacimiento : ['', Validators.required],
       telefono : ['', [Validators.required, Validators.pattern(/^[0-9]{3,8}$/)]],
-      email : ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
+      email : ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@est\.umss\.edu$/)]],
       carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
       semestre : ['', Validators.pattern(/^[0-9]{1,3}$/)],
+      codSIS : ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
     });
   }
   //Controles
@@ -100,7 +100,15 @@ export class RegistroindivComponent  implements OnInit {
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return e.hasError('pattern') ? 'Debe usar un correo valido' : '';
+    return e.hasError('pattern') ? 'Debe usar un correo institucional' : '';
+  }
+  getCodSisErrorMessage() {
+    const sis = this.crearForm.get('codSIS');
+    if (!sis) {return 'Error en el formulario';}
+    if (sis.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return sis.hasError('pattern') ? 'El codSis debe tener máximo 10 caracteres, y solo permite valores numericos' : '';
   }
   getTelefonoErrorMessage() {
     const t = this.crearForm.get('telefono');
@@ -129,6 +137,7 @@ export class RegistroindivComponent  implements OnInit {
     if (datos.semestre) {formData.append('semestre', datos.semestre);}
     if (datos.carrera) {formData.append('carrera', datos.carrera);}
     formData.append('semestre', datos.semestre);
+    formData.append('codSIS', datos.codSIS);
 
     console.log(formData);
     Swal.fire({
