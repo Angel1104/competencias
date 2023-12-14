@@ -45,7 +45,7 @@ export class CrearcompComponent {
       imagen: [''],
       costo: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]],
       horarios: ['', Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,30}$/)],
-      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ@]{4,50}$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
       umss: [false, Validators.required],
     });
   }
@@ -137,7 +137,7 @@ export class CrearcompComponent {
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return e.hasError('pattern') ? 'El email debe tener entre 4 y 50 caracteres' : '';
+    return e.hasError('pattern') ? 'El email debe ser válido' : '';
   }
   //fin
 
