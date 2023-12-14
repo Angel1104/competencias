@@ -33,22 +33,127 @@ export class EditarcompComponent implements OnInit {
   imagenControl: File | null = null;
 
   editarForm = new FormGroup({
-    nombre: new FormControl('',Validators.required),
-    descripcion : new FormControl('',Validators.required),
-    encargado : new FormControl('',Validators.required),
+    nombre: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]),
+    descripcion : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,300}$/)]),
+    encargado : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,70}$/)]),
     fechaFin : new FormControl('',Validators.required),
     fechaIni : new FormControl('',Validators.required),
-    requisitos : new FormControl('',Validators.required),
-    lugar : new FormControl('',Validators.required),
+    requisitos : new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,1000}$/)]),
+    lugar : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{3,60}$/)]),
     id_tipoCompetencias : new FormControl('',Validators.required),
-    imagen : new FormControl('',Validators.required),
-    estado : new FormControl('',Validators.required),
-    umss : new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
-    costo: new FormControl('',Validators.required),
-    horarios: new FormControl('',Validators.required),
+    imagen : new FormControl(''),
+    estado : new FormControl('',[Validators.required, Validators.pattern(/^(activo|inactivo)$/i)]),
+    costo: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]),
+    horarios: new FormControl('', Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,30}$/)),
+    email: new FormControl('', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]),
+    umss: new FormControl('',[Validators.required, Validators.pattern(/^(si|no)$/i)]),
   });
-
+//controles
+getNombreErrorMessage() {
+  const n = this.editarForm.get('nombre');
+  if (!n) {return 'Error en el formulario';}
+  if (n.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return n.hasError('pattern') ? 'El nombre debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
+}
+getDescripcionErrorMessage() {
+  const d = this.editarForm.get('descripcion');
+  if (!d) {return 'Error en el formulario';}
+  if (d.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return d.hasError('pattern') ? 'La descipcion debe tener entre 4 y 300 caracteres' : '';
+}
+getEncargadoErrorMessage() {
+  const e = this.editarForm.get('encargado');
+  if (!e) {return 'Error en el formulario';}
+  if (e.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return e.hasError('pattern') ? 'El encargado debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
+}
+getFechaFinErrorMessage() {
+  const fin = this.editarForm.get('fechaFin');
+  if (!fin) {return 'Error en el formulario';}
+  if (fin.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return '';
+}
+getFechaIniErrorMessage() {
+  const ini = this.editarForm.get('fechaIni');
+  if (!ini) {return 'Error en el formulario';}
+  if (ini.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return '';
+}
+getRequisitosErrorMessage() {
+  const r = this.editarForm.get('requisitos');
+  if (!r) {return 'Error en el formulario';}
+  if (r.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return r.hasError('pattern') ? 'Los Requisitos debe tener entre 4 y 1000 caracteres' : '';
+}
+getLugarErrorMessage() {
+  const l = this.editarForm.get('lugar');
+  if (!l) {return 'Error en el formulario';}
+  if (l.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return l.hasError('pattern') ? 'El lugar debe tener entre 3 y 60 caracteres' : '';
+}
+getTipoEventosErrorMessage() {
+    const t = this.editarForm.get('id_tipoEventos');
+    if (!t) {return 'Error en el formulario';}
+  if (t.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return '';
+}
+getCostoErrorMessage() {
+  const c = this.editarForm.get('costo');
+  if (!c) {return 'Error en el formulario';}
+  if (c.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return c.hasError('pattern') ? 'El costo puede ser gratis' : '';
+}
+getHorariosErrorMessage() {
+  const h = this.editarForm.get('horarios');
+  if (!h) {return 'Error en el formulario';}
+  if (h.hasError('pattern')) {
+    return 'El horario debe tener entre 1 y 30 caracteres';
+  }
+  return '';
+}
+getEmailErrorMessage() {
+  const e = this.editarForm.get('email');
+  if (!e) {return 'Error en el formulario';}
+  if (e.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return e.hasError('pattern') ? 'El email debe ser válido' : '';
+}
+getUmssErrorMessage() {
+  const um = this.editarForm.get('umss');
+  if (!um) {return 'Error en el formulario';}
+  if (um.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return um.hasError('pattern') ? 'El campo solo acepta los valores "Si" y "No"' : '';
+}
+getEstadoErrorMessage() {
+  const est = this.editarForm.get('estado');
+  if (!est) {return 'Error en el formulario';}
+  if (est.hasError('required')) {
+    return 'Este campo es obligatorio';
+  }
+  return est.hasError('pattern') ? 'El campo solo acepta los valores "Activo" y "Inactivo"' : '';
+}
+//fin
   ngOnInit(): void {
       let competenciasEditId = this.activaterouter.snapshot.paramMap.get('id');
       if (competenciasEditId !== null) {
@@ -65,20 +170,20 @@ export class EditarcompComponent implements OnInit {
 
       this.dataCompetencia = competenciasSinImagen;
       this.editarForm.setValue({
-        'nombre': this.dataCompetencia.nombre || '',
-        'descripcion': this.dataCompetencia.descripcion || '',
-        'encargado': this.dataCompetencia.encargado || '',
-        'fechaFin': this.dataCompetencia.fechaFin || '',
-        'fechaIni': this.dataCompetencia.fechaIni || '',
-        'requisitos': this.dataCompetencia.requisitos || '',
-        'lugar': this.dataCompetencia.lugar || '',
-        'id_tipoCompetencias': this.dataCompetencia?.id_tipoCompetencias?.toString() || '',
-        'estado': this.dataCompetencia.estado || '',
-        'umss': this.dataCompetencia.umss || '',
-        'imagen': null,
-        'email': this.dataCompetencia.email || '',
-        'costo': this.dataCompetencia.costo.toString() || '',
-        'horarios': this.dataCompetencia.horarios || '',
+        nombre: this.dataCompetencia.nombre || '',
+        descripcion: this.dataCompetencia.descripcion || '',
+        encargado: this.dataCompetencia.encargado || '',
+        fechaFin: this.dataCompetencia.fechaFin || '',
+        fechaIni: this.dataCompetencia.fechaIni || '',
+        requisitos: this.dataCompetencia.requisitos || '',
+        lugar: this.dataCompetencia.lugar || '',
+        id_tipoCompetencias: this.dataCompetencia?.id_tipoCompetencias?.toString() || '',
+        estado: this.dataCompetencia.estado || '',
+        umss: this.dataCompetencia.umss || '',
+        imagen: null,
+        email: this.dataCompetencia.email || '',
+        costo: this.dataCompetencia.costo.toString() || '',
+        horarios: this.dataCompetencia.horarios || '',
 
       })
       console.log(this.editarForm.value);
@@ -104,6 +209,8 @@ export class EditarcompComponent implements OnInit {
   editarCompetencia(form:any, id:Number){
     console.log(form);
     console.log(id);
+    console.log(this.editarForm.valid);
+    if (this.editarForm.valid) {
     
     const formDataConImagen = new FormData();
     Object.keys(form).forEach(key => {
@@ -112,27 +219,22 @@ export class EditarcompComponent implements OnInit {
 
   formDataConImagen.append('imagen', this.imagenControl as File);
 
-
     Swal.fire({
-      title: '¿Estás seguro de editar la competencia?',
-      text: "No se podra deshacer la acción",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Aceptar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.editar(formDataConImagen,id);
-        Swal.fire(
-          'Editado!',
-          'Se ha editado la competencia con éxito',
-          'success'
-        ).then(() => {
-          this.router.navigate(['/admin/competencias']);
-        });
-      }
+      icon: 'success',
+      title: 'Se ha editado la competencia con éxito',
+      showConfirmButton: false,
+      timer: 1500
+    }).then(() => {
+      this.editar(formDataConImagen,id);
+      this.router.navigate(['/admin/competencias']);
     });
+  }else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Hay errores en el formulario. Por favor, verifica los campos.',
+    });
+  }
   }
   editar(data:any,id:Number){
     this.apiService.putCompetencia(data,id).subscribe(data=>{
