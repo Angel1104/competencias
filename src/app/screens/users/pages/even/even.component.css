@@ -70,7 +70,7 @@ mat-toolbar {
 }
 
 .card mat-card-content p {
-  color: red; /* Color de texto para los párrafos, puedes cambiarlo según tu preferencia */
+  color: darkblue; /* Color de texto para los párrafos, puedes cambiarlo según tu preferencia */
   text-align: right;
   font-size: 14px;
   margin: 4px 0;
