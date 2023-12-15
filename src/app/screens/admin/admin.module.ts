@@ -26,6 +26,7 @@ import { VerequiposComponent } from './pages/verequipos/verequipos.component';
 import { UsersviewComponent } from './pages/usersview/usersview.component';
 import { UsercreateComponent } from './pages/usercreate/usercreate.component';
 import { NotifeventComponent } from './pages/notifevent/notifevent.component';
+import { NotifcompComponent } from './pages/notifcomp/notifcomp.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { NotifeventComponent } from './pages/notifevent/notifevent.component';
     VerequiposComponent,
     UsersviewComponent,
     UsercreateComponent,
-    NotifeventComponent
+    NotifeventComponent,
+    NotifcompComponent
   ],
   imports: [
     CommonModule,

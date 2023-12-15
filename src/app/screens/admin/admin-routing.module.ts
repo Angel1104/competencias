@@ -21,6 +21,7 @@ import { UsersviewComponent } from "./pages/usersview/usersview.component";
 import { UsercreateComponent } from "./pages/usercreate/usercreate.component";
 
 import { NotifeventComponent } from './pages/notifevent/notifevent.component';
+import { NotifcompComponent } from './pages/notifcomp/notifcomp.component';
 
 const routes: Routes = [{
     path:"", component: AdminComponent,
@@ -40,6 +41,7 @@ const routes: Routes = [{
       {path: "users", component: UsersviewComponent},
       {path: "crearuser", component: UsercreateComponent},
       {path: "reportevent/:id", component: NotifeventComponent},
+      {path: "reportcomp/:id", component: NotifcompComponent},
 
     ]
   }];

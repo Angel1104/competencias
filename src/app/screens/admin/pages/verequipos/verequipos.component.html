@@ -6,7 +6,7 @@
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 </div> -->
-
+<div style="margin:20px 0px 0px 40px">
 <table mat-table [dataSource]="equipos" class="mat-elevation-z8" style="width: 100%; margin: 20px 40px;">
   <ng-container matColumnDef="nombreEquipo">
     <th mat-header-cell *matHeaderCellDef> Nombre Equipo </th>
@@ -56,3 +56,10 @@
   <tr mat-header-row *matHeaderRowDef="['nombreEquipo', 'nombreCoach', 'numeroCoach', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
   <tr mat-row *matRowDef="let row; columns: ['nombreEquipo', 'nombreCoach', 'numeroCoach', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
 </table>
+
+<section>
+  <div class="example-button-row">
+    <button mat-raised-button routerLink="/admin/competencias">Volver</button>
+  </div>
+</section>
+</div>

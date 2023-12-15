@@ -155,5 +155,12 @@ getGanadoresIndividuales(competenciaId: number): Observable<any[]> {
 enviarcorreoEvent(evento:EventoEditI,id : Number):Observable<any>{
   return this.http.post<any>(this.url+'enviar-correoEventos/'+id,evento)
 }
+//Mandar correos competencias
+enviarcorreoCompInd(competencias:CompetenciaEditI,id : Number):Observable<any>{
+  return this.http.post<any>(this.url+'enviar-correoCompetenciasIndi/'+id,competencias)
+}
+enviarcorreoCompGru(competencias:CompetenciaEditI,id : Number):Observable<any>{
+  return this.http.post<any>(this.url+'enviar-correoCompetenciasGru/'+id,competencias)
+}
 
 }

@@ -30,7 +30,7 @@ export class NotifeventComponent implements OnInit {
     horarios: new FormControl(''),
     email: new FormControl(''),
     umss: new FormControl(''),
-    reporte: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,300}$/)]),
+    reporte: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,100}$/)]),
   });
 //controles
   getReporteErrorMessage() {
@@ -89,16 +89,14 @@ editarEvento(form: any, id: Number) {
   console.log(id);
   console.log(this.editarForm.valid);
   if (this.editarForm.valid) {
+    this.editar(form, id);
     Swal.fire({
       icon: 'success',
-      title: 'Se ha editado el evento con éxito',
+      title: 'Se ha enviado la notificación con éxito',
       showConfirmButton: false,
       timer: 1500
     }).then(() => {
-      //console.log(form.reporte);
-      this.editar(form, id);
-      //this.reportar(form, id);
-      //this.reportar(form.reporte, id); // Pasa solo el valor del campo 'reporte'
+      this.reportar(form, id);
       this.router.navigate(['/admin/eventos']);
       
     });

@@ -59,11 +59,10 @@
               <h3>{{competencias.email}}</h3>
             </mat-card-content>
             <mat-card-actions>
-              <button  
-                mat-raised-button color="primary"
-                
-                (click)="visualizarCompetencia(competencias.id)"
-                >Ver mas</button>
+              <div class="example-button-row">
+                <button mat-raised-button color="primary"(click)="visualizarCompetencia(competencias.id)">Ver mas</button>
+                <button mat-raised-button (click)="notificarCompetencia(competencias.id)">Notificar</button>
+              </div>
             </mat-card-actions>
           </mat-card>
         </div>  
