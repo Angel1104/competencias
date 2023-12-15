@@ -23,7 +23,7 @@ export class RegistroequipoumssComponent {
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService, private fb: FormBuilder) {
   
     this.crearForm = this.fb.group({
-      nombreEquipo: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{4,30}$/)]],
+      nombreEquipo: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,30}$/)]],
 
       nombreCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edadCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
