@@ -142,5 +142,25 @@ getUsers(): Observable<any[]> {
 createUser(interesado: LoginI): Observable<any> {
   return this.http.post<any>(`${this.url}Admins/register`, interesado);
 }
+//ganadores
+postGanadorIndividual(competenciaId: number, ganadorId: number): Observable<any> {
+  return this.http.post<any>(`${this.url}Competencias/${competenciaId}/GanadorIndividual/${ganadorId}`, {});
+}
+
+getGanadoresIndividuales(competenciaId: number): Observable<any[]> {
+  return this.http.get<any[]>(`${this.url}Competencias/${competenciaId}/GanadoresIndividuales`);
+}
+
+// Mandar correos para eventos
+enviarcorreoEvent(evento:EventoEditI,id : Number):Observable<any>{
+  return this.http.post<any>(this.url+'enviar-correoEventos/'+id,evento)
+}
+//Mandar correos competencias
+enviarcorreoCompInd(competencias:CompetenciaEditI,id : Number):Observable<any>{
+  return this.http.post<any>(this.url+'enviar-correoCompetenciasIndi/'+id,competencias)
+}
+enviarcorreoCompGru(competencias:CompetenciaEditI,id : Number):Observable<any>{
+  return this.http.post<any>(this.url+'enviar-correoCompetenciasGru/'+id,competencias)
+}
 
 }

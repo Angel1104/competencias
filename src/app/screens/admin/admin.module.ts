@@ -25,6 +25,8 @@ import { VerparticipantesComponent } from './pages/verparticipantes/verparticipa
 import { VerequiposComponent } from './pages/verequipos/verequipos.component';
 import { UsersviewComponent } from './pages/usersview/usersview.component';
 import { UsercreateComponent } from './pages/usercreate/usercreate.component';
+import { NotifeventComponent } from './pages/notifevent/notifevent.component';
+import { NotifcompComponent } from './pages/notifcomp/notifcomp.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { UsercreateComponent } from './pages/usercreate/usercreate.component';
     VerparticipantesComponent,
     VerequiposComponent,
     UsersviewComponent,
-    UsercreateComponent
+    UsercreateComponent,
+    NotifeventComponent,
+    NotifcompComponent
   ],
   imports: [
     CommonModule,

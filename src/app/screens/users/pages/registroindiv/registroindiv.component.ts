@@ -128,7 +128,7 @@ export class RegistroindivComponent  implements OnInit {
     formData.append('telefono', datos.telefono);
     if (datos.semestre) {formData.append('semestre', datos.semestre);}
     if (datos.carrera) {formData.append('carrera', datos.carrera);}
-    formData.append('semestre', datos.semestre);
+    formData.append('email', datos.email);
 
     console.log(formData);
     Swal.fire({

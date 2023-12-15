@@ -1,4 +1,4 @@
-<h1>Visualizar Interesados</h1>
+<h1 style="margin: 20px 0px 0px 40px">Interesados</h1>
 <div style="margin:20px 0px 0px 40px">
   <table mat-table [dataSource]="interesados" class="mat-elevation-z8">
 
@@ -52,4 +52,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <section>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" routerLink="/admin/eventos">Volver</button>
+    </div>
+  </section>
 </div>

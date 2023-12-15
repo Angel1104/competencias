@@ -39,6 +39,10 @@ export class CompetenciasComponent implements OnInit {
     this.router.navigate(['admin/visualizarcompetencia',id])
   }
 
+  notificarCompetencia(id:Number){
+    this.router.navigate(['/admin/reportcomp',id]);
+  }
+
   nuevaCompetencia() {
     this.router.navigate(['admin/crearcompetencia'])
   }

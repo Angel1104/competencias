@@ -25,7 +25,7 @@
       
         <div class="buscador">
           <mat-form-field class="buscar">
-            <input matInput placeholder="Buscar eventos por nombre" [(ngModel)]="searchTerm" (input)="filteredCompetens()">
+            <input matInput placeholder="Buscar competencia por nombre" [(ngModel)]="searchTerm" (input)="filteredCompetens()">
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
         </div>
@@ -59,11 +59,10 @@
               <h3>{{competencias.email}}</h3>
             </mat-card-content>
             <mat-card-actions>
-              <button  
-                mat-raised-button color="primary"
-                
-                (click)="visualizarCompetencia(competencias.id)"
-                >Ver mas</button>
+              <div class="example-button-row">
+                <button mat-raised-button color="primary"(click)="visualizarCompetencia(competencias.id)">Ver mas</button>
+                <button mat-raised-button (click)="notificarCompetencia(competencias.id)">Notificar</button>
+              </div>
             </mat-card-actions>
           </mat-card>
         </div>  
