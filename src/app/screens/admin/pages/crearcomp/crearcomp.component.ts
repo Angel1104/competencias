@@ -183,7 +183,7 @@ export class CrearcompComponent {
     console.log(formData);
     Swal.fire({
       icon: 'success',
-      title: 'Competencia creado exitosamente',
+      title: 'Competencia creada exitosamente',
       showConfirmButton: false,
       timer: 1500
     }).then(() => {

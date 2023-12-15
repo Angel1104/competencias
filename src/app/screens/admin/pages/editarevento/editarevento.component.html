@@ -1,4 +1,4 @@
-<h1>Edicion del Evento</h1>
+<h1>Editar Evento</h1>
 <div style="margin:20px 0px 0px 40px">
 <form [formGroup]="editarForm" (ngSubmit)="editarEvento(editarForm.value,dataEvento.id)">
   <section class="form">
@@ -114,7 +114,7 @@
   <section>    
     <div class="example-button-row">
       <button type="submit" color="primary" mat-raised-button>Guardar</button>
-      <button mat-raised-button  routerLink="/admin/eventos">Cancelar</button>
+      <button mat-raised-button  color="warn" routerLink="/admin/eventos">Cancelar</button>
     </div>
   </section>
 </form>

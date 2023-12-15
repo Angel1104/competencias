@@ -13,4 +13,5 @@ export interface EventoEditI {
     horarios: string;
     email: string;
     umss: string;
+    reporte: string;
 }

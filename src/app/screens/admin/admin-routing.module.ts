@@ -20,6 +20,8 @@ import { VerequiposComponent } from './pages/verequipos/verequipos.component';
 import { UsersviewComponent } from "./pages/usersview/usersview.component";
 import { UsercreateComponent } from "./pages/usercreate/usercreate.component";
 
+import { NotifeventComponent } from './pages/notifevent/notifevent.component';
+
 const routes: Routes = [{
     path:"", component: AdminComponent,
     children: [
@@ -37,6 +39,7 @@ const routes: Routes = [{
       {path: "verequipos/:id", component:VerequiposComponent},
       {path: "users", component: UsersviewComponent},
       {path: "crearuser", component: UsercreateComponent},
+      {path: "reportevent/:id", component: NotifeventComponent},
 
     ]
   }];

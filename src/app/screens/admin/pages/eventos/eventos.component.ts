@@ -38,6 +38,10 @@ export class EventosComponent implements OnInit {
     this.router.navigate(['admin/visualizarevento',id])
   }
 
+  notificarEvento(id:Number){
+    this.router.navigate(['/admin/reportevent',id]);
+  }
+
   nuevoEvento() {
     this.router.navigate(['admin/crearevento'])
   }

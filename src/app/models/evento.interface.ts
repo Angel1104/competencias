@@ -13,4 +13,5 @@ export interface EventoEditI {
     email: string;
     umss: string;
     imagen: File;
+    reporte: string;
 }

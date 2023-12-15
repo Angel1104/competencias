@@ -111,7 +111,7 @@ margin-right: 10px; /* Ajusta el espacio entre el filtro y el buscador según tu
 }
 
 .buscador {
-flex: 1; /* Esto hará que el lado derecho tome el 50% del espacio disponible */
+flex: 0 0 50%; /* Esto hará que el lado derecho tome el 50% del espacio disponible */
 display: flex;
 justify-content: flex-end;
 }
