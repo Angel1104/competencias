@@ -3,6 +3,8 @@ import { ApiService } from '../../../../services/api/api.service';
 import { Router } from "@angular/router";
 import { CompetenciaI } from "../../../../models/competenciaComp.interface";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { NotificarComponent } from "../notificar/notificar.component";
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-competencias',
@@ -12,7 +14,12 @@ import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 })
 export class CompetenciasComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private router:Router, private cdr: ChangeDetectorRef) {}
+  constructor(private apiService: ApiService, 
+    private router:Router, 
+    private cdr: ChangeDetectorRef,
+    private dialog: MatDialog
+  ) {}
+
   title = "Angular Grid Card View";
   gridColumns = 3;
   searchTerm: string = '';
@@ -74,6 +81,13 @@ export class CompetenciasComponent implements OnInit {
         competencia.estado.toLowerCase() === this.estadoFiltro.toLowerCase()
       );
     }
+  }
+
+  notificar(){
+    const dialogRef = this.dialog.open(NotificarComponent, {
+      width: '50%', // Ancho del modal
+      height: '50%', // Altura del modal
+    });
   }
 
 }

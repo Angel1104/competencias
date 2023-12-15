@@ -1,0 +1,58 @@
+<h1 style="margin:20px 0px 0px 40px">Reportes de eventos</h1>
+
+<mat-card class="contenedor-principal">
+
+    <mat-card-title>
+      <div class="contenedor-filtro">
+        <mat-form-field>
+          <mat-label>Estado:</mat-label>
+          <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="applyEstadoFilter()">
+            <mat-option value="Activo">Activo</mat-option>
+            <mat-option value="Inactivo">Inactivo</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha Inicio</mat-label>
+          <input matInput [matDatepicker]="pickerStart" (dateChange)="onStartDateSelected($event.value)">
+          <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerStart></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>Fecha Fin</mat-label>
+          <input matInput [matDatepicker]="pickerEnd" (dateChange)="onEndDateSelected($event.value)">
+          <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+          <mat-datepicker #pickerEnd></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Buscar eventos por nombre" [(ngModel)]="searchTerm" (input)="filteredCompetens()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </mat-card-title>
+
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Lugar</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+          <th>Costo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competencia of filteredCompetencias">
+          <td>{{ competencia.nombre }}</td>
+          <td>{{ competencia.lugar }}</td>
+          <td>{{ competencia.fechaIni }}</td>
+          <td>{{ competencia.fechaFin }}</td>
+          <td>{{ competencia.costo }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+</mat-card>

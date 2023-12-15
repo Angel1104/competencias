@@ -1,0 +1,25 @@
+.contenedor-principal {
+  margin: 20px 40px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.contenedor-filtro {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+th {
+color: rgb(0, 89, 255);
+height: 50px;
+text-align: center;
+padding: 10px;
+border-right: 2px solid black;
+}
+td {
+  height: 40px;
+  padding: 10px;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
