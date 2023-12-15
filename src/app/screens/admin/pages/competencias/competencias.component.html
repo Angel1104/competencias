@@ -58,11 +58,24 @@
 
               <h3>{{competencias.email}}</h3>
             </mat-card-content>
+<<<<<<< HEAD
             <mat-card-actions>
               <div class="example-button-row">
                 <button mat-raised-button color="primary"(click)="visualizarCompetencia(competencias.id)">Ver mas</button>
                 <button mat-raised-button (click)="notificarCompetencia(competencias.id)">Notificar</button>
               </div>
+=======
+            <mat-card-actions class="btn-container">
+              <button  
+                mat-raised-button color="primary"
+                (click)="visualizarCompetencia(competencias.id)"
+                >Ver mas
+              </button>
+              <button
+              mat-raised-button color="secondary"
+              (click)="notificar()"
+              >Notificar</button>
+>>>>>>> 950b5d9 (reportes)
             </mat-card-actions>
           </mat-card>
         </div>  

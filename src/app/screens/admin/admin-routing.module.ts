@@ -23,6 +23,10 @@ import { UsercreateComponent } from "./pages/usercreate/usercreate.component";
 import { NotifeventComponent } from './pages/notifevent/notifevent.component';
 import { NotifcompComponent } from './pages/notifcomp/notifcomp.component';
 
+import { ReportesComponent } from "./pages/reportes/reportes.component";
+import { ReportesEventosComponent } from "./pages/reportes-eventos/reportes-eventos.component";
+
+
 const routes: Routes = [{
     path:"", component: AdminComponent,
     children: [
@@ -43,6 +47,8 @@ const routes: Routes = [{
       {path: "reportevent/:id", component: NotifeventComponent},
       {path: "reportcomp/:id", component: NotifcompComponent},
 
+      {path: "reportesComp", component: ReportesComponent},
+      {path: "reportesEvent", component: ReportesEventosComponent},
     ]
   }];
   
