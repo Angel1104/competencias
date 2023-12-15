@@ -3,7 +3,6 @@ import { ApiService } from '../../../../services/api/api.service';
 import { Router } from "@angular/router";
 import { CompetenciaI } from "../../../../models/competenciaComp.interface";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NotificarComponent } from "../notificar/notificar.component";
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -83,11 +82,5 @@ export class CompetenciasComponent implements OnInit {
     }
   }
 
-  notificar(){
-    const dialogRef = this.dialog.open(NotificarComponent, {
-      width: '50%', // Ancho del modal
-      height: '50%', // Altura del modal
-    });
-  }
 
 }
