@@ -30,7 +30,7 @@ export class NotifeventComponent implements OnInit {
     horarios: new FormControl(''),
     email: new FormControl(''),
     umss: new FormControl(''),
-    reporte: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,100}$/)]),
+    reporte: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_:|!|#|%(|),.\s]{4,400}$/)]),
   });
 //controles
   getReporteErrorMessage() {

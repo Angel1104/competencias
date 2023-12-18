@@ -5,18 +5,19 @@
     <form [formGroup]="editarForm" (ngSubmit)="editarEvento(editarForm.value,dataEvento.id)">
     
 
-        <mat-form-field class="campo" hintLabel="Mínimo 4 y máximo 300 caracteres">
+        <mat-form-field class="campo" hintLabel="Mínimo 4 y máximo 400 caracteres">
             <mat-label>Reporte:</mat-label>
             <textarea matInput #reporteInput formControlName="reporte"></textarea>
-            <mat-hint align="end">{{reporteInput.value.length}}/300</mat-hint>
+            <mat-hint align="end">{{reporteInput.value.length}}/400</mat-hint>
             <mat-error *ngIf="editarForm.get('reporte')?.invalid">{{getReporteErrorMessage()}}</mat-error>
           </mat-form-field>
 
     
+
+  <div class="example-button-row">
+    <button type="submit" color="primary" mat-raised-button>Enviar</button>
+    <button mat-raised-button  routerLink="/admin/eventos">Cancelar</button>
+  </div>
 </form>
-<div class="example-button-row">
-  <button type="submit" color="primary" mat-raised-button>Enviar</button>
-  <button mat-raised-button  routerLink="/admin/eventos">Cancelar</button>
-</div>
 </div>
 </div>
