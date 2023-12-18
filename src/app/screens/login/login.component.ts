@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit{
 
   errorMsg: string = '';
   loading: boolean = false;
+  hidePassword: boolean = true; // Variable para rastrear la visibilidad de la contraseña
 
 
   loginForm = new FormGroup({
@@ -25,6 +26,10 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+  }
+  
+  togglePasswordVisibility(): void {
+    this.hidePassword = !this.hidePassword;
   }
 
   onLogin(form: any) {
