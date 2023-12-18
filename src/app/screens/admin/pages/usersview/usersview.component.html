@@ -38,7 +38,7 @@
         <mat-error *ngIf="crearForm?.get('nombre')?.invalid">{{getNombreErrorMessage()}}</mat-error>
       </mat-form-field>
     
-      <mat-form-field class="campo" hintLabel="email valido">
+      <mat-form-field class="campo" hintLabel="Colocar un email valido">
         <mat-label>Email:</mat-label> 
         <input matInput #emailInput maxlength="50" formControlName="email" required>
         <mat-hint align="end">{{emailInput.value.length}}/50</mat-hint>

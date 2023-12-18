@@ -235,9 +235,9 @@ getEstadoErrorMessage() {
       timer: 1500
     }).then(() => {
       this.editar(formDataConImagen,id);
-      this.router.navigateByUrl('/admin/competencias', { skipLocationChange: true }).then(() => {
+      //this.router.navigateByUrl('/admin/competencias', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/admin/competencias']);
-      });
+      //});
     });
   }else {
     Swal.fire({
