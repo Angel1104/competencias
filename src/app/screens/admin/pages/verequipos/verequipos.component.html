@@ -1,11 +1,5 @@
 <h1 style="margin: 20px 0px 0px 40px">Equipos</h1>
 
-<!-- <div style="margin: 20px 40px 40px 40px">
-  <mat-form-field style="margin-left: 20px;">
-    <input matInput placeholder="Buscar equipos por nombre de líder" [(ngModel)]="searchTerm" (input)="filterTeams()">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-</div> -->
 <div style="margin:20px 0px 0px 40px">
 <table mat-table [dataSource]="equipos" class="mat-elevation-z8" style="width: 100%">
   <ng-container matColumnDef="nombreEquipo">
@@ -57,9 +51,7 @@
   <tr mat-row *matRowDef="let row; columns: ['nombreEquipo', 'nombreCoach', 'numeroCoach', 'nombre1', 'nombre2', 'nombre3', 'nombre4', 'nombre5', 'nombre6']"></tr>
 </table>
 <hr>
-<section>
   <div class="example-button-row">
     <button mat-raised-button color="primary" routerLink="/admin/competencias">Volver</button>
   </div>
-</section>
 </div>

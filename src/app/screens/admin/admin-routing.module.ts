@@ -18,13 +18,16 @@ import { VerparticipantesComponent } from './pages/verparticipantes/verparticipa
 import { VerequiposComponent } from './pages/verequipos/verequipos.component';
 
 import { UsersviewComponent } from "./pages/usersview/usersview.component";
-import { UsercreateComponent } from "./pages/usercreate/usercreate.component";
 
 import { NotifeventComponent } from './pages/notifevent/notifevent.component';
 import { NotifcompComponent } from './pages/notifcomp/notifcomp.component';
 
 import { ReportesComponent } from "./pages/reportes/reportes.component";
 import { ReportesEventosComponent } from "./pages/reportes-eventos/reportes-eventos.component";
+
+import { GanadorIndividualComponent } from "./pages/ganador-individual/ganador-individual.component";
+import { GanadorGrupalComponent } from "./pages/ganador-grupal/ganador-grupal.component";
+
 
 
 const routes: Routes = [{
@@ -43,12 +46,15 @@ const routes: Routes = [{
       {path: "verparticipantes/:id", component:VerparticipantesComponent},
       {path: "verequipos/:id", component:VerequiposComponent},
       {path: "users", component: UsersviewComponent},
-      {path: "crearuser", component: UsercreateComponent},
       {path: "reportevent/:id", component: NotifeventComponent},
       {path: "reportcomp/:id", component: NotifcompComponent},
 
       {path: "reportesComp", component: ReportesComponent},
       {path: "reportesEvent", component: ReportesEventosComponent},
+
+      {path: "ganadorIndividual/:id", component: GanadorIndividualComponent},
+      {path: "ganadorGrpal/:id", component: GanadorGrupalComponent},
+
     ]
   }];
   

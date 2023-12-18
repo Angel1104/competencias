@@ -46,7 +46,7 @@
             <mat-card-content>
               <h1>{{competencias.descripcion}}</h1>
 
-              <p><strong>Fecha: </strong>{{competencias.fechaFin}}<strong> al </strong> {{competencias.fechaIni}}</p>
+              <p><strong>Fecha: </strong>{{competencias.fechaIni}}<strong> al </strong> {{competencias.fechaFin}}</p>
               <p><strong>Lugar: </strong> {{competencias.lugar}}<strong> - </strong> {{competencias.horarios}} </p>
               <p><strong>Costo: </strong> {{competencias.costo}}</p>
 
@@ -55,11 +55,10 @@
 
               <h3>{{competencias.email}}</h3>
             </mat-card-content>
-            <mat-card-actions>
-              <div class="example-button-row">
+            <mat-card-actions  class="example-button-row">
                 <button mat-raised-button color="primary"(click)="visualizarCompetencia(competencias.id)">Ver mas</button>
                 <button mat-raised-button (click)="notificarCompetencia(competencias.id)">Notificar</button>
-              </div>
+                <button mat-raised-button (click)="agregarGanador(competencias.id, competencias.id_tipoCompetencias)">Agregar ganador</button>
             </mat-card-actions>
           </mat-card>
         </div>  

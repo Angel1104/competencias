@@ -82,5 +82,14 @@ export class CompetenciasComponent implements OnInit {
     }
   }
 
+  agregarGanador(id:Number, tipo:Number){
+    if (tipo == 1) {
+      this.router.navigate(['/admin/ganadorIndividual',id]);
+    } else {
+      this.router.navigate(['/admin/ganadorGrpal',id]);
+    }
+  }
+
+
 
 }

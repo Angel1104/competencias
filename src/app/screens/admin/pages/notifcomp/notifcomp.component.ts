@@ -12,7 +12,9 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
   styleUrls: ['./notifcomp.component.css']
 })
 export class NotifcompComponent implements OnInit {
-  constructor(private router: Router, private activaterouter: ActivatedRoute, private apiService: ApiService) {}
+  constructor(private router: Router, 
+    private activaterouter: ActivatedRoute, 
+    private apiService: ApiService) {}
 
   dataCompetencia! : CompEditI;
 

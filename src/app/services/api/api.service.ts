@@ -164,4 +164,20 @@ enviarcorreoCompGru(competencias:CompetenciaEditI,id : Number):Observable<any>{
   return this.http.post<any>(this.url+'enviar-correoCompetenciasGru/'+id,competencias)
 }
 
+//agregar ganador 
+//indiv
+ganadorInd(idComp : Number, id:Number):Observable<any>{
+  return this.http.post<any>(`${this.url}Competencias/${idComp}/GanadorIndividual/${id}`,{})
+}
+getganadorInd(idComp : Number):Observable<any>{
+  return this.http.get<any>(`${this.url}Competencias/${idComp}/GanadoresIndividuales`,{})
+}
+
+ganadorGrup(idComp : Number, id:Number):Observable<any>{
+  return this.http.post<any>(`${this.url}Competencias/${idComp}/GanadorEquipo/${id}`,{})
+}
+getganadorGrup(idComp : Number):Observable<any>{
+  return this.http.get<any>(`${this.url}Competencias/${idComp}/GanadoresEquipos`,{})
+}
+
 }

@@ -1,0 +1,72 @@
+<div class="contenedor">
+  <h1>Agregar ganador grupal</h1>
+    <section class="contenedor-principal">
+      <form [formGroup]="ganadorForm" (ngSubmit)="agregarGanador(ganadorForm.value)" class="formulario">
+
+        <mat-form-field >
+          <mat-label>ID equipo ganador:</mat-label>
+          <input matInput formControlName="id">
+        </mat-form-field>
+
+        <button type="submit" color="primary" mat-raised-button>Enviar</button>
+      </form>
+      <table mat-table [dataSource]="equipos" class="mat-elevation-z8" style="width: 100%">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID Equipo </th>
+          <td mat-cell *matCellDef="let equipo"> {{ equipo.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombreEquipo">
+          <th mat-header-cell *matHeaderCellDef> Nombre Equipo </th>
+          <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreEquipo }} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="nombreCoach">
+          <th mat-header-cell *matHeaderCellDef> Nombre Couch </th>
+          <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreCoach }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="numeroCoach">
+          <th mat-header-cell *matHeaderCellDef> Número Couch </th>
+          <td mat-cell *matCellDef="let equipo"> {{ equipo.numeroCoach }} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="['id','nombreEquipo', 'nombreCoach', 'numeroCoach']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id','nombreEquipo', 'nombreCoach', 'numeroCoach']"></tr>
+      </table>
+    <hr>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" routerLink="/admin/competencias">Volver</button>
+    </div>
+    <hr>
+    <h2>Ganador actual</h2>
+    <table mat-table [dataSource]="ganador" class="mat-elevation-z8" style="width: 100%">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID Equipo </th>
+        <td mat-cell *matCellDef="let equipo"> {{ equipo.id }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreEquipo">
+        <th mat-header-cell *matHeaderCellDef> Nombre Equipo </th>
+        <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreEquipo }} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="nombreCoach">
+        <th mat-header-cell *matHeaderCellDef> Nombre Couch </th>
+        <td mat-cell *matCellDef="let equipo"> {{ equipo.nombreCoach }} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="numeroCoach">
+        <th mat-header-cell *matHeaderCellDef> Número Couch </th>
+        <td mat-cell *matCellDef="let equipo"> {{ equipo.numeroCoach }} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="['id','nombreEquipo', 'nombreCoach', 'numeroCoach']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['id','nombreEquipo', 'nombreCoach', 'numeroCoach']"></tr>
+    </table>
+  </section>
+  
+
+</div>
