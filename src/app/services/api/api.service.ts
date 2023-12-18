@@ -17,7 +17,8 @@ import { InteresadoEditI } from "../../models/interesado.interface";
 })
 export class ApiService {
 
-  private url='http://codefusion.tis.cs.umss.edu.bo/api/'
+  private urlumss='http://codefusion.tis.cs.umss.edu.bo/api/';
+  private url='https://wanting-circle-production.up.railway.app/api/';
 
   constructor(private http: HttpClient) { }
 

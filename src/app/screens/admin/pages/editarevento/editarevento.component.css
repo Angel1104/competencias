@@ -49,8 +49,10 @@
     }
     
     .example-button-row {
-      display: table-cell;
-      max-width: 600px;
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      margin: 20px;
     }
     
     .example-button-row .mat-mdc-button-base {

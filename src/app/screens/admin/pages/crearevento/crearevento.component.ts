@@ -45,7 +45,7 @@ export class CreareventoComponent{
     estado: [false, Validators.required],
     imagen: [''],
     costo: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]],
-    horarios: ['', Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,30}$/)],
+    horarios: ['',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)],
     email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
     umss: [false, Validators.required],
   });
