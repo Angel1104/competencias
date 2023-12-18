@@ -60,7 +60,7 @@
         <input matInput [matDatepicker]="picker" formControlName="fechaIni">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="editarForm.get('fechaIni')?.invalid">{{getFechaIniErrorMessage()}}</mat-error>
+        <!-- <mat-error *ngIf="editarForm.get('fechaIni')?.invalid">{{getFechaIniErrorMessage()}}</mat-error> -->
       </mat-form-field>
   
       <mat-form-field class="campo" hintLabel="Elije una fecha final">
@@ -68,7 +68,7 @@
         <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
         <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
-        <mat-error *ngIf="editarForm.get('fechaFin')?.invalid">{{getFechaFinErrorMessage()}}</mat-error>
+        <!-- <mat-error *ngIf="editarForm.get('fechaFin')?.invalid">{{getFechaFinErrorMessage()}}</mat-error> -->
       </mat-form-field>
     </div>
   
@@ -110,11 +110,9 @@
 
   </section>
 </section>
-  <section>    
     <div class="example-button-row">
       <button type="submit" color="primary" mat-raised-button>Guardar</button>
       <button mat-raised-button  color="warn" routerLink="/admin/competencias">Cancelar</button>
     </div>
-  </section>
 </form>
 </div>

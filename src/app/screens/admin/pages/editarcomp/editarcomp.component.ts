@@ -44,7 +44,7 @@ export class EditarcompComponent implements OnInit {
     imagen : new FormControl(''),
     estado : new FormControl('',[Validators.required, Validators.pattern(/^(activo|inactivo)$/i)]),
     costo: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]),
-    horarios: new FormControl('', Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,30}$/)),
+    horarios: new FormControl('',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)),
     email: new FormControl('', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]),
     umss: new FormControl('',[Validators.required, Validators.pattern(/^(si|no)$/i)]),
   });
@@ -211,10 +211,19 @@ getEstadoErrorMessage() {
     console.log(id);
     console.log(this.editarForm.valid);
     if (this.editarForm.valid) {
-    
-    const formDataConImagen = new FormData();
-    Object.keys(form).forEach(key => {
-    formDataConImagen.append(key, form[key]);
+      const datos = this.editarForm.value;
+      const fechaFinNew = datos.fechaFin ? new Date(datos.fechaFin) : null;
+      const fechaIniNew = datos.fechaIni ? new Date(datos.fechaIni) : null;
+
+      const fechaFinFormateada = fechaFinNew ? fechaFinNew.toISOString().split('T')[0] : null;
+      const fechaIniFormateada = fechaIniNew ? fechaIniNew.toISOString().split('T')[0] : null;
+
+      datos.fechaFin = fechaFinFormateada;
+      datos.fechaIni = fechaIniFormateada;
+      
+      const formDataConImagen = new FormData();
+      Object.keys(form).forEach(key => {
+      formDataConImagen.append(key, form[key]);
     });
 
   formDataConImagen.append('imagen', this.imagenControl as File);
@@ -226,7 +235,7 @@ getEstadoErrorMessage() {
       timer: 1500
     }).then(() => {
       this.editar(formDataConImagen,id);
-      this.router.navigate(['/admin/competencias']);
+      // this.router.navigate(['/admin/competencias']);
     });
   }else {
     Swal.fire({
