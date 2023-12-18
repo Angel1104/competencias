@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./usersview.component.css']
 })
 export class UsersviewComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'email'];
+  displayedColumns: string[] = ['nombre', 'email','acciones'];
 
   dataUser! : LoginI;
   crearForm: FormGroup;
@@ -33,6 +33,7 @@ export class UsersviewComponent implements OnInit {
         this.users = data;
         console.log(this.users);
     });
+    
   } 
 
   crearUser(){
@@ -95,6 +96,41 @@ export class UsersviewComponent implements OnInit {
     }
     return e.hasError('minlength') ? 'El password es minimo 6 caracteres' : '';
   }
+
+  eliminarAdmin(id:number){
+    Swal.fire({
+      title: '¿Estás seguro de eliminar al usuario ?',
+      text: "No se podra deshacer la acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.apiService.deleteUser(id).subscribe(data=>{
+          console.log(data);
+        })
+        
+        Swal.fire(
+          'Eliminado!',
+          'Se ha eliminado el usuario con éxito',
+          'success'
+        ).then(() => {
+          // this.router.navigate(['/admin/users']);
+          this.router.navigateByUrl('/admin/users', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/admin/users']);
+          });
+        });
+      }
+    });
+  }
+
+  shouldDisableButton(id: number): boolean {
+    return id === 1;
+  }
+    
+  
 }
 
 

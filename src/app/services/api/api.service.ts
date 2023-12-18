@@ -143,6 +143,12 @@ getUsers(): Observable<any[]> {
 createUser(interesado: LoginI): Observable<any> {
   return this.http.post<any>(`${this.url}Admins/register`, interesado);
 }
+
+deleteUser(id:number):  Observable<any>{
+  return this.http.delete<any>(this.url+'Admins/'+id)
+}
+
+
 //ganadores
 postGanadorIndividual(competenciaId: number, ganadorId: number): Observable<any> {
   return this.http.post<any>(`${this.url}Competencias/${competenciaId}/GanadorIndividual/${ganadorId}`, {});
