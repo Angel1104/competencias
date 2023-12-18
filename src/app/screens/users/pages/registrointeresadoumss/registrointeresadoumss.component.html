@@ -57,7 +57,7 @@
       <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
         <mat-label>Carrera:</mat-label> 
         <input matInput #cInput formControlName="carrera">
-        <mat-hint align="end">{{cInput.value.length}}/20</mat-hint>
+        <mat-hint align="end">{{cInput.value.length}}/50</mat-hint>
         <mat-error *ngIf="crearForm?.get('carrera')?.invalid">{{getCarreraErrorMessage()}}</mat-error>
       </mat-form-field>
 
