@@ -21,9 +21,10 @@ export class UsersviewComponent implements OnInit {
 
   constructor(private apiService: ApiService,private router: Router, private fb: FormBuilder) {
     this.crearForm = this.fb.group({
-      nombre : ['', Validators.required],
-      email : ['', Validators.required],
-      password : ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+
     });
   }
 
@@ -76,7 +77,7 @@ export class UsersviewComponent implements OnInit {
     if (n.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
+    return n.hasError('pattern') ? 'El nombre debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
   }
   getEmailErrorMessage() {
     const e = this.crearForm.get('email');
@@ -84,7 +85,7 @@ export class UsersviewComponent implements OnInit {
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
+    return e.hasError('pattern') ? 'El email debe ser válido' : '';
   }
   getPassErrorMessage() {
     const e = this.crearForm.get('password');
@@ -92,7 +93,7 @@ export class UsersviewComponent implements OnInit {
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return '';
+    return e.hasError('minlength') ? 'El password es minimo 6 caracteres' : '';
   }
 }
 

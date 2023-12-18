@@ -20,21 +20,21 @@
 <div style="margin:20px 0px 0px 40px" class="form-container">
   <form [formGroup]="crearForm" (ngSubmit)="crearUser()">
     <section class="form">
-      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
         <mat-label>Nombre:</mat-label> 
         <input matInput #nombreInput maxlength="30" formControlName="nombre" required>
         <mat-hint align="end">{{nombreInput.value.length}}/30</mat-hint>
         <mat-error *ngIf="crearForm?.get('nombre')?.invalid">{{getNombreErrorMessage()}}</mat-error>
       </mat-form-field>
     
-      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
+      <mat-form-field class="campo" hintLabel="email valido">
         <mat-label>Email:</mat-label> 
         <input matInput #emailInput maxlength="50" formControlName="email" required>
         <mat-hint align="end">{{emailInput.value.length}}/50</mat-hint>
         <mat-error *ngIf="crearForm?.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 19 caracteres">
+      <mat-form-field class="campo" hintLabel="Mínimo 6 caracteres">
         <mat-label>Password:</mat-label> 
         <input matInput #passInput maxlength="50" formControlName="password" required type="password">
         <mat-hint align="end">{{passInput.value.length}}/19</mat-hint>

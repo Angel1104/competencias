@@ -3,7 +3,7 @@
 <div style="margin:20px 0px 0px 40px">
   <form [formGroup]="crearForm" (ngSubmit)="crearInteresado()">
     <h2>Equipo</h2>
-      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 30 caracteres">
+      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
         <mat-label>Nombre Equipo:</mat-label> 
         <input matInput #nombreEquipoInput formControlName="nombreEquipo">
         <mat-hint align="end">{{nombreEquipoInput.value.length}}/30</mat-hint>

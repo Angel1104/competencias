@@ -43,7 +43,7 @@ export class RegistrointeresadoComponent {
       fecha_Nacimiento : ['', Validators.required],
       telefono : ['', [Validators.required, Validators.pattern(/^[0-9]{3,8}$/)]],
       email : ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
-      carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       semestre : ['', Validators.pattern(/^[0-9]{1,3}$/)],
     });
   }

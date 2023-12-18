@@ -27,7 +27,7 @@ export class RegistroequipoumssComponent {
 
       nombreCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edadCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
-      carreraCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
+      carreraCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
       codSISCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
       emailCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@est\.umss\.edu$/)]],
       numeroCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{4,8}$/)]],
@@ -36,37 +36,37 @@ export class RegistroequipoumssComponent {
 
       nombre1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edad1: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
-      carrera1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
+      carrera1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
       codSIS1: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
       universidad1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
 
       nombre2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edad2: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
-      carrera2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
+      carrera2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
       codSIS2: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
       universidad2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
         
       nombre3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad3: ['', Validators.pattern(/^[0-9]{1,2}$/)],
-      carrera3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      carrera3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       codSIS3: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad4: ['', Validators.pattern(/^[0-9]{1,2}$/)],
-      carrera4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      carrera4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       codSIS4: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad5: ['', Validators.pattern(/^[0-9]{1,2}$/)],
-      carrera5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      carrera5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       codSIS5: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad6: ['', Validators.pattern(/^[0-9]{1,2}$/)],
-      carrera6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      carrera6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       codSIS6: ['', Validators.pattern(/^[0-9]{5,10}$/)],
       universidad6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
       

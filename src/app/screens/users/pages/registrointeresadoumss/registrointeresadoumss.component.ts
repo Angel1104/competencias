@@ -43,7 +43,7 @@ export class RegistrointeresadoumssComponent {
       fecha_Nacimiento : ['', Validators.required],
       telefono : ['', [Validators.required, Validators.pattern(/^[0-9]{3,8}$/)]],
       email : ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@est\.umss\.edu$/)]],
-      carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)],
+      carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       semestre : ['', Validators.pattern(/^[0-9]{1,3}$/)],
       codSIS : ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
     });

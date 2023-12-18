@@ -6,7 +6,7 @@
   <section class="f1">
 
     <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 50 caracteres">
-      <mat-label>Nombre evento</mat-label> 
+      <mat-label>Nombre competencia:</mat-label> 
       <input matInput #nombreInput formControlName="nombre">
       <mat-hint align="end">{{nombreInput.value.length}}/50</mat-hint>
       <mat-error *ngIf="crearForm?.get('nombre')?.invalid">{{getNombreErrorMessage()}}</mat-error>
