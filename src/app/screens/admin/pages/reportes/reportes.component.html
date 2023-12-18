@@ -55,5 +55,15 @@
         </tr>
       </tbody>
     </table> 
+    <section class="contenedor-grafico">
+      <section class="botones">
+        <button (click)="generarGraficoPie()" mat-raised-button color="primary">Generar grafico pie de activos e inactivos</button>
+        <button (click)="generarGraficoBarra()" mat-raised-button color="primary">Generar grafico bar de activos e inactivos</button>
+      </section>
+      
+      <div id="chartbar"></div>
+      <div id="chartpie"></div>
 
+    </section>
+    
 </mat-card>
