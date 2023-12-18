@@ -187,7 +187,9 @@ export class CreareventoComponent{
       timer: 1500
     }).then(() => {
         this.crear(formData);
-        this.router.navigate(['/admin/eventos']);
+        this.router.navigateByUrl('/admin/eventos', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/admin/eventos']);
+        });
     });
   }else {
     Swal.fire({
