@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 
+
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -82,6 +83,5 @@ export class ReportesEventosComponent implements OnInit {
     const tipo = parseInt(idTipo, 10); // Convertir a número
     return tipo === 2 ? 'Grupal' : tipo === 1 ? 'Individual' : 'Otro';
   }
-  
   
 }
