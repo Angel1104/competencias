@@ -4,7 +4,8 @@ import { CompetenciaI } from '../../../../models/competenciaComp.interface';
 import { EventoI } from '../../../../models/eventoComp.interface';
 import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-
+import * as ApexCharts from 'apexcharts';
+import { ApexOptions } from 'apexcharts';
 
 
 export const MY_FORMATS = {
@@ -82,6 +83,53 @@ export class ReportesEventosComponent implements OnInit {
   getTipo(idTipo: string): string {
     const tipo = parseInt(idTipo, 10); // Convertir a número
     return tipo === 2 ? 'Grupal' : tipo === 1 ? 'Individual' : 'Otro';
+  }
+
+  generarGraficoBarra(): void {
+    const activos = this.competencias.filter(competencia => competencia.estado === 'Activo').length;
+    const inactivos = this.competencias.filter(competencia => competencia.estado === 'Inactivo').length;
+
+    const chartOptions: ApexOptions = {
+      series: [{ data: [activos, inactivos] }],
+      chart: {
+        type: 'bar',
+        height: 350,
+      },
+      xaxis: {
+        categories: ['Activos', 'Inactivos'],
+      },
+    };
+
+    const chart = new ApexCharts(document.querySelector('#chartbar'), chartOptions);
+    chart.render();
+  }
+
+  generarGraficoPie(): void {
+    const activos = this.competencias.filter(competencia => competencia.estado === 'Activo').length;
+    const inactivos = this.competencias.filter(competencia => competencia.estado === 'Inactivo').length;
+
+    const chartOptions: ApexOptions = {
+      series: [activos, inactivos],
+      chart: {
+        type: 'pie',
+        height: 350,
+      },
+      labels: ['Activos', 'Inactivos'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+
+    const chart = new ApexCharts(document.querySelector('#chartpie'), chartOptions);
+    chart.render();
   }
   
 }
