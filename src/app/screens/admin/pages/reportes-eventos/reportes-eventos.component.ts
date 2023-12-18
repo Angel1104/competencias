@@ -132,4 +132,42 @@ export class ReportesEventosComponent implements OnInit {
     chart.render();
   }
   
+  generarGraficoFechas(): void {
+    const competenciasEnFechas = this.filteredCompetencias.filter(competencia => {
+      const fechaIni = new Date(competencia.fechaIni);
+      const fechaFin = new Date(competencia.fechaFin);
+      return (
+        this.pickerStart &&
+        this.pickerEnd &&
+        fechaIni >= this.pickerStart &&
+        fechaFin <= this.pickerEnd
+      );
+    });
+  
+    const competenciasPorFecha: Record<string, number> = {};
+    competenciasEnFechas.forEach(competencia => {
+      const fecha = competencia.fechaIni;
+      if (!competenciasPorFecha[fecha]) {
+        competenciasPorFecha[fecha] = 0;
+      }
+      competenciasPorFecha[fecha]++;
+    });
+  
+    const fechas = Object.keys(competenciasPorFecha);
+    const cantidades = Object.values(competenciasPorFecha);
+  
+    const chartOptions: ApexCharts.ApexOptions = {
+      series: [{ data: cantidades }],
+      chart: {
+        type: 'bar',
+        height: 350,
+      },
+      xaxis: {
+        categories: fechas,
+      },
+    };
+  
+    const chart = new ApexCharts(document.querySelector('#chartfechas'), chartOptions);
+    chart.render();
+  }
 }
