@@ -8,6 +8,8 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  width: 30%;
+  height: 30%;
 }
 
 .botones {
@@ -19,4 +21,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.campo {
+  width: 90%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
