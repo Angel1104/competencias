@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ApiService } from '../../../../services/api/api.service';
 import { Router } from "@angular/router";
 import { CompetenciaI } from "../../../../models/competenciaComp.interface";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-competencias',
@@ -12,6 +14,9 @@ import { MatDialog } from '@angular/material/dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompetenciasComponent implements OnInit {
+
+  @ViewChild('pdf', { static: false }) pdfContent!: ElementRef;
+
 
   constructor(private apiService: ApiService, 
     private router:Router, 
@@ -90,6 +95,19 @@ export class CompetenciasComponent implements OnInit {
     }
   }
 
+  generarPDF(): void {
+    const pdf = new jsPDF('p', 'px', 'a4');
+    const content: HTMLElement = this.pdfContent.nativeElement;
 
+    html2canvas(content).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+
+      const width = pdf.internal.pageSize.getWidth();
+      const height = (canvas.height * width) / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+      pdf.save('documento.pdf');
+    });
+  }
 
 }

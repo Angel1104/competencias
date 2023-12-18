@@ -35,14 +35,13 @@
     <mat-divider inset></mat-divider>
   
     <mat-card-content class="dashboard-card-content">
-  
       <div class="mat-elevation-z2">
-        <div class="section-card">
+        <div class="section-card" #pdf>
           <mat-card class="card" *ngFor="let competencias of filteredCompetencias">
             <mat-card-header>
-              <mat-card-title> {{competencias.nombre}} </mat-card-title>
+              <mat-card-title>{{competencias.nombre}}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image src={{competencias.imagen}} alt="Photo of a Shiba Inu">
+            <img mat-card-image [src]="competencias.imagen" alt="Photo of a Shiba Inu">
             <mat-card-content>
               <h1>{{competencias.descripcion}}</h1>
 
@@ -55,11 +54,13 @@
 
               <h3>{{competencias.email}}</h3>
             </mat-card-content>
+
             <mat-card-actions  class="example-button-row">
                 <button mat-raised-button color="primary"(click)="visualizarCompetencia(competencias.id)">Ver mas</button>
                 <button mat-raised-button (click)="notificarCompetencia(competencias.id)">Notificar</button>
                 <button mat-raised-button (click)="agregarGanador(competencias.id, competencias.id_tipoCompetencias)">Agregar ganador</button>
-            </mat-card-actions>
+                <button mat-raised-button color="primary" (click)="generarPDF()">Descargar PDF</button>
+              </mat-card-actions>
           </mat-card>
         </div>  
       </div>
