@@ -235,9 +235,7 @@ getEstadoErrorMessage() {
       timer: 1500
     }).then(() => {
       this.editar(formDataConImagen,id);
-      //this.router.navigateByUrl('/admin/competencias', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/admin/competencias']);
-      //});
+      //this.router.navigate(['/admin/competencias']);
     });
   }else {
     Swal.fire({
@@ -250,6 +248,7 @@ getEstadoErrorMessage() {
   editar(data:any,id:Number){
     this.apiService.putCompetencia(data,id).subscribe(data=>{
       console.log(data);
+      window.location.href = '/admin/competencias';
     })
   }
 }

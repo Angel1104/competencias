@@ -241,9 +241,6 @@ export class EditareventoComponent implements OnInit {
       timer: 1500
     }).then(() => {
       this.editar(formDataConImagen,id);
-      //this.router.navigateByUrl('/admin/eventos', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/admin/eventos']);
-    //});
     });
   } else {
     Swal.fire({
@@ -255,8 +252,8 @@ export class EditareventoComponent implements OnInit {
   }
   editar(data:any,id:Number){
     this.apiService.putEvent(data,id).subscribe(data=>{
-      
       console.log(data);
+      window.location.href = '/admin/eventos';
     })
   }
 }

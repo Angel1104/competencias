@@ -187,9 +187,6 @@ export class CreareventoComponent{
       timer: 1500
     }).then(() => {
         this.crear(formData);
-        //this.router.navigateByUrl('/admin/eventos', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/admin/eventos']);
-        //});
     });
   }else {
     Swal.fire({
@@ -202,6 +199,7 @@ export class CreareventoComponent{
   crear(data:any){
     this.apiService.postEvent(data).subscribe(data=>{
       console.log(data);
+      window.location.href = '/admin/eventos';
     })
   }
   
