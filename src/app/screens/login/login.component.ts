@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit{
       (error) => {
         // Manejar errores de la llamada API
         console.error(error);
-        this.errorMsg = 'Error al intentar iniciar sesión. Verifica tus credenciales.';
+        this.errorMsg = 'Error al intentar iniciar sesión como ADMINISTRADOR. Verifica tus credenciales.';
       }
     ).add(() => {
       // Deshabilita el estado de carga después de que la solicitud se complete (ya sea exitosa o con error)

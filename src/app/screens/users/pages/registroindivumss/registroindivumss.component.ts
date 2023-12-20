@@ -42,7 +42,7 @@ export class RegistroindivumssComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@(est\.umss\.edu|fcyt\.umss\.edu\.bo)$/)]],
       carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       semestre: ['', Validators.pattern(/^[1-9]$/)],
-      codSIS : ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
+      codSIS: ['', [Validators.required, Validators.pattern(/^[1-2]\d{8}$/)]],
     });
   }
   //Controles
@@ -115,7 +115,7 @@ export class RegistroindivumssComponent implements OnInit {
     if (sis.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return sis.hasError('pattern') ? 'El codSis debe tener máximo 10 caracteres, y solo permite valores numericos' : '';
+    return sis.hasError('pattern') ? 'El codSis solo acepta 9 dígitos, y solo permite comenzar con los valores "1" o "2"' : '';
   }
   getTelefonoErrorMessage() {
     const t = this.crearForm.get('telefono');

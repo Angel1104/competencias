@@ -97,12 +97,14 @@
     </mat-form-field> 
   
     <div class="campo">
-      <mat-slide-toggle formControlName="umss">Umss</mat-slide-toggle>
+      <mat-slide-toggle formControlName="umss">Umss:</mat-slide-toggle>
+      <span style="margin-left: 10px;">{{ crearForm.get('umss')?.value ? 'Pertenece' : 'No Pertenece' }}</span>
     </div>  
   
     <div class="campo">
-      <mat-slide-toggle formControlName="estado">Estado</mat-slide-toggle>
-    </div>  
+      <mat-slide-toggle formControlName="estado">Estado:</mat-slide-toggle>
+      <span style="margin-left: 10px;">{{ crearForm.get('estado')?.value ? 'Activo' : 'Inactivo' }}</span>
+    </div>    
 
 </section>
   </section>

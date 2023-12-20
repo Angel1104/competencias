@@ -28,7 +28,7 @@ export class RegistroequipoumssComponent {
       nombreCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edadCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carreraCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
-      codSISCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
+      codSISCoach: ['', [Validators.required, Validators.pattern(/^[1-2]\d{8}$/)]],
       emailCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\d._%+-]+@(est\.umss\.edu|fcyt\.umss\.edu\.bo)$/)]],
       numeroCoach: ['', [Validators.required, Validators.pattern(/^[467][0-9]{7,8}$/)]],
       universidadCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
@@ -37,37 +37,37 @@ export class RegistroequipoumssComponent {
       nombre1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edad1: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
-      codSIS1: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
+      codSIS1: ['', [Validators.required, Validators.pattern(/^[1-2]\d{8}$/)]],
       universidad1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
 
       nombre2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       edad2: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
-      codSIS2: ['', [Validators.required, Validators.pattern(/^[0-9]{5,10}$/)]],
+      codSIS2: ['', [Validators.required, Validators.pattern(/^[1-2]\d{8}$/)]],
       universidad2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
         
       nombre3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad3: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
-      codSIS3: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      codSIS3: ['', Validators.pattern(/^[1-2]\d{8}$/)],
       universidad3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad4: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
-      codSIS4: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      codSIS4: ['', Validators.pattern(/^[1-2]\d{8}$/)],
       universidad4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad5: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
-      codSIS5: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      codSIS5: ['', Validators.pattern(/^[1-2]\d{8}$/)],
       universidad5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
       edad6: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
-      codSIS6: ['', Validators.pattern(/^[0-9]{5,10}$/)],
+      codSIS6: ['', Validators.pattern(/^[1-2]\d{8}$/)],
       universidad6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
       
     });
@@ -114,7 +114,7 @@ export class RegistroequipoumssComponent {
     if (sis.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return sis.hasError('pattern') ? 'El codSis debe tener máximo 10 caracteres, y solo permite valores numericos' : '';
+    return sis.hasError('pattern') ? 'El codSis solo acepta 9 dígitos, y solo permite comenzar con los valores "1" o "2"' : '';
   }
   getEmailErrorMessage() {
     const e = this.crearForm.get('emailCoach');

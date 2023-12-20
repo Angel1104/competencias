@@ -67,10 +67,10 @@
         <mat-error *ngIf="crearForm?.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="campo" hintLabel="Mínimo 5 y máximo 10 caracteres">
+      <mat-form-field class="campo" hintLabel="9 dígitos">
         <mat-label>codSIS:</mat-label> 
         <input matInput #codsisInput formControlName="codSIS">
-        <mat-hint align="end">{{codsisInput.value.length}}/10</mat-hint>
+        <mat-hint align="end">{{codsisInput.value.length}}/9</mat-hint>
         <mat-error *ngIf="crearForm?.get('codSIS')?.invalid">{{getCodSisErrorMessage()}}</mat-error>
       </mat-form-field>
 
