@@ -40,13 +40,6 @@
     <mat-error *ngIf="editarForm.get('horarios')?.invalid">{{getHorariosErrorMessage()}}</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="campo" hintLabel="Si o No pertenece">
-    <mat-label>Umss:</mat-label>
-    <input matInput #umssInput formControlName="umss">
-    <mat-hint align="end">{{umssInput.value.length}}/2</mat-hint>
-    <mat-error *ngIf="editarForm.get('umss')?.invalid">{{getUmssErrorMessage()}}</mat-error>
-  </mat-form-field>
-
   <div class="campo">
     <label>Imagen:</label>
     <input type="file" (change)="onFileSelected($event)" />
@@ -100,13 +93,15 @@
       <mat-error *ngIf="editarForm.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
     </mat-form-field>
     
-    <mat-form-field class="campo" hintLabel="Activo o Inactivo">
-      <mat-label>Estado:</mat-label>
-      <input matInput #estInput formControlName="estado">
-      <mat-hint align="end">{{estInput.value.length}}/2</mat-hint>
-      <mat-error *ngIf="editarForm.get('estado')?.invalid">{{getEstadoErrorMessage()}}</mat-error>
-    </mat-form-field>
-  
+    <div class="campo">
+      <mat-slide-toggle formControlName="estado">Estado:</mat-slide-toggle>
+      <span style="margin-left: 10px;">{{ editarForm.get('estado')?.value ? 'Activo' : 'Inactivo' }}</span>
+    </div>
+    
+    <div class="campo">
+      <mat-slide-toggle formControlName="umss">Umss:</mat-slide-toggle>
+      <span style="margin-left: 10px;">{{ editarForm.get('umss')?.value ? 'Pertenece' : 'No Pertenece' }}</span>
+    </div>
 
   </section>
 </section>

@@ -45,11 +45,11 @@ export class EditareventoComponent implements OnInit {
     lugar : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{3,60}$/)]),
     id_tipoEventos : new FormControl('',Validators.required),
     imagen : new FormControl(''),
-    estado : new FormControl('',[Validators.required, Validators.pattern(/^(activo|inactivo)$/i)]),
+    estado: new FormControl(false || true),
+    umss: new FormControl(false || true),
     costo: new FormControl('',[Validators.required, Validators.pattern(/^(0|[1-9][0-9]{0,2})$/)]),
     horarios: new FormControl('',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)),
     email: new FormControl('', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]),
-    umss: new FormControl('',[Validators.required, Validators.pattern(/^(si|no)$/i)]),
   });
 //controles
   getNombreErrorMessage() {
@@ -140,22 +140,6 @@ export class EditareventoComponent implements OnInit {
     }
     return e.hasError('pattern') ? 'El email debe ser válido' : '';
   }
-  getUmssErrorMessage() {
-    const um = this.editarForm.get('umss');
-    if (!um) {return 'Error en el formulario';}
-    if (um.hasError('required')) {
-      return 'Este campo es obligatorio';
-    }
-    return um.hasError('pattern') ? 'El campo solo acepta los valores "Si" y "No"' : '';
-  }
-  getEstadoErrorMessage() {
-    const est = this.editarForm.get('estado');
-    if (!est) {return 'Error en el formulario';}
-    if (est.hasError('required')) {
-      return 'Este campo es obligatorio';
-    }
-    return est.hasError('pattern') ? 'El campo solo acepta los valores "Activo" y "Inactivo"' : '';
-  }
 //fin
   ngOnInit(): void {
       let eventoEditId = this.activaterouter.snapshot.paramMap.get('id');
@@ -172,6 +156,9 @@ export class EditareventoComponent implements OnInit {
       const { imagen, ...eventoSinImagen } = data;
 
       this.dataEvento = eventoSinImagen;
+      const estado = this.dataEvento.estado === 'Activo';
+      const umss = this.dataEvento.umss === 'Si';
+
       this.editarForm.setValue({
         //'nombre': this.dataEvento.nombre || '',
         nombre: this.dataEvento.nombre || '',
@@ -182,11 +169,11 @@ export class EditareventoComponent implements OnInit {
         requisitos: this.dataEvento.requisitos || '',
         lugar: this.dataEvento.lugar || '',
         id_tipoEventos: this.dataEvento.id_tipoEventos.toString() || '',
-        estado: this.dataEvento.estado || '',
+        estado:estado,
+        umss: umss,
         imagen: null,
         horarios: this.dataEvento.horarios || '',
         email: this.dataEvento.email || '',
-        umss: this.dataEvento.umss || '',
         costo: this.dataEvento.costo.toString() || '',
       })
       console.log(this.editarForm.value);
@@ -226,12 +213,17 @@ export class EditareventoComponent implements OnInit {
       datos.fechaFin = fechaFinFormateada;
       datos.fechaIni = fechaIniFormateada;
 
+      const estado = datos.estado ? 'Activo' : 'Inactivo';
+      const umss = datos.umss ? 'Si' : 'No';
+
       const formDataConImagen = new FormData();
       Object.keys(form).forEach((key) => {
       formDataConImagen.append(key, form[key]);
   });
 
   formDataConImagen.append('imagen', this.imagenControl as File);
+  formDataConImagen.set('estado', estado);
+  formDataConImagen.set('umss', umss);
 
     
     Swal.fire({

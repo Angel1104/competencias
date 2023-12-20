@@ -42,11 +42,14 @@ export class EditarcompComponent implements OnInit {
     lugar : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{3,60}$/)]),
     id_tipoCompetencias : new FormControl('',Validators.required),
     imagen : new FormControl(''),
-    estado : new FormControl('',[Validators.required, Validators.pattern(/^(activo|inactivo)$/i)]),
     costo: new FormControl('',[Validators.required, Validators.pattern(/^(0|[1-9][0-9]{0,2})$/)]),
     horarios: new FormControl('',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)),
     email: new FormControl('', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]),
-    umss: new FormControl('',[Validators.required, Validators.pattern(/^(si|no)$/i)]),
+    //estado : new FormControl('',[Validators.required, Validators.pattern(/^(activo|inactivo)$/i)]),
+    //umss: new FormControl('',[Validators.required, Validators.pattern(/^(si|no)$/i)]),
+    estado: new FormControl(false || true),
+    umss: new FormControl(false || true),
+
   });
 //controles
 getNombreErrorMessage() {
@@ -137,22 +140,6 @@ getEmailErrorMessage() {
   }
   return e.hasError('pattern') ? 'El email debe ser válido' : '';
 }
-getUmssErrorMessage() {
-  const um = this.editarForm.get('umss');
-  if (!um) {return 'Error en el formulario';}
-  if (um.hasError('required')) {
-    return 'Este campo es obligatorio';
-  }
-  return um.hasError('pattern') ? 'El campo solo acepta los valores "Si" y "No"' : '';
-}
-getEstadoErrorMessage() {
-  const est = this.editarForm.get('estado');
-  if (!est) {return 'Error en el formulario';}
-  if (est.hasError('required')) {
-    return 'Este campo es obligatorio';
-  }
-  return est.hasError('pattern') ? 'El campo solo acepta los valores "Activo" y "Inactivo"' : '';
-}
 //fin
   ngOnInit(): void {
       let competenciasEditId = this.activaterouter.snapshot.paramMap.get('id');
@@ -168,7 +155,11 @@ getEstadoErrorMessage() {
     this.apiService.getCompetenciasById(id).subscribe(data=>{
       const { imagen, ...competenciasSinImagen } = data;
 
+
       this.dataCompetencia = competenciasSinImagen;
+      const estado = this.dataCompetencia.estado === 'Activo';
+      const umss = this.dataCompetencia.umss === 'Si';
+
       this.editarForm.setValue({
         nombre: this.dataCompetencia.nombre || '',
         descripcion: this.dataCompetencia.descripcion || '',
@@ -178,8 +169,8 @@ getEstadoErrorMessage() {
         requisitos: this.dataCompetencia.requisitos || '',
         lugar: this.dataCompetencia.lugar || '',
         id_tipoCompetencias: this.dataCompetencia?.id_tipoCompetencias?.toString() || '',
-        estado: this.dataCompetencia.estado || '',
-        umss: this.dataCompetencia.umss || '',
+        estado: estado,
+        umss: umss,
         imagen: null,
         email: this.dataCompetencia.email || '',
         costo: this.dataCompetencia.costo.toString() || '',
@@ -220,6 +211,9 @@ getEstadoErrorMessage() {
 
       datos.fechaFin = fechaFinFormateada;
       datos.fechaIni = fechaIniFormateada;
+
+      const estado = datos.estado ? 'Activo' : 'Inactivo';
+      const umss = datos.umss ? 'Si' : 'No';
       
       const formDataConImagen = new FormData();
       Object.keys(form).forEach(key => {
@@ -227,6 +221,9 @@ getEstadoErrorMessage() {
     });
 
   formDataConImagen.append('imagen', this.imagenControl as File);
+  formDataConImagen.set('estado', estado);
+  formDataConImagen.set('umss', umss);
+  
 
     Swal.fire({
       icon: 'success',

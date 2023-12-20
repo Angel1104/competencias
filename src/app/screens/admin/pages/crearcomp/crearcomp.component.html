@@ -12,94 +12,9 @@
       <mat-error *ngIf="crearForm?.get('nombre')?.invalid">{{getNombreErrorMessage()}}</mat-error>
     </mat-form-field>
 
-  <mat-form-field class="campo">
-    <mat-label>Tipo de competencia:</mat-label>
-    <mat-select formControlName="id_tipoCompetencias">
-      <mat-option value="1">Individual</mat-option>
-      <mat-option value="2">Grupal</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="campo" hintLabel="Mínimo 4 y máximo 400 caracteres">
-    <mat-label>Descripción</mat-label>
-    <textarea matInput #descInput formControlName="descripcion"></textarea>
-    <mat-hint align="end">{{descInput.value.length}}/400</mat-hint>
-    <mat-error *ngIf="crearForm?.get('descripcion')?.invalid">{{getDescripcionErrorMessage()}}</mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 60 caracteres">
-    <mat-label>Lugar:</mat-label>
-    <input matInput #lugarInput formControlName="lugar">
-    <mat-hint align="end">{{lugarInput.value.length}}/60</mat-hint>
-    <mat-error *ngIf="crearForm?.get('lugar')?.invalid">{{getLugarErrorMessage()}}</mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 30 caracteres">
-    <mat-label>Horarios:</mat-label>
-    <input matInput #hInput formControlName="horarios">
-    <mat-hint align="end">{{hInput.value.length}}/30</mat-hint>
-    <mat-error *ngIf="crearForm?.get('horarios')?.invalid">{{getHorariosErrorMessage()}}</mat-error>
-  </mat-form-field>
-
-  <div class="campo">
-    <label>Imagen:</label>
-    <input  type="file" (change)="onFileSelected($event)" />
-  </div>
+  
   </section>
   <section>
-
-    <div class="fechas-container">
-      <mat-form-field class="campo" hintLabel="Elije una fecha inicial">
-        <mat-label>Fecha Inicio</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechaIni">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="crearForm?.get('fechaIni')?.invalid">{{getFechaIniErrorMessage()}}</mat-error>
-      </mat-form-field>
-  
-      <mat-form-field class="campo" hintLabel="Elije una fecha final">
-        <mat-label>Fecha Fin</mat-label>
-        <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
-        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-        <mat-error *ngIf="crearForm?.get('fechaFin')?.invalid">{{getFechaFinErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </div>
-
-    <mat-form-field class="campo" hintLabel="Máximo 3 dígitos">
-      <mat-label>Costo:</mat-label>
-      <mat-icon matPrefix>attach_money</mat-icon>
-      <input matInput #cInput formControlName="costo">
-      <span matSuffix style="font-weight: bold;">Bs.</span>
-      <mat-hint align="end">{{cInput.value.length}}/3</mat-hint>
-      <mat-error *ngIf="crearForm?.get('costo')?.invalid">{{getCostoErrorMessage()}}</mat-error>
-    </mat-form-field> 
-  
-    <mat-form-field class="campo" hintLabel="Mínimo 4 y maximo 1000 caracteres">
-      <mat-label>Requisitos:</mat-label>
-      <textarea matInput #requisitosInput formControlName="requisitos"></textarea>
-          <mat-hint align="end">{{requisitosInput.value.length}}/1000</mat-hint>
-          <mat-error *ngIf="crearForm?.get('requisitos')?.invalid">{{getRequisitosErrorMessage()}}</mat-error>
-      </mat-form-field>
-  
-      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 70 caracteres">
-        <mat-label>Encargado:</mat-label>
-        <input matInput #encargadoInput formControlName="encargado">
-        <mat-hint align="end">{{encargadoInput.value.length}}/70</mat-hint>
-        <mat-error *ngIf="crearForm?.get('encargado')?.invalid">{{getEncargadoErrorMessage()}}</mat-error>
-      </mat-form-field>
-  
-    <mat-form-field class="campo" hintLabel="Mínimo 4 y máximo 50 caracteres">
-      <mat-label>Email:</mat-label>
-      <input matInput #eInput formControlName="email">
-      <mat-hint align="end">{{eInput.value.length}}/50</mat-hint>
-      <mat-error *ngIf="crearForm?.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
-    </mat-form-field> 
-  
-    <div class="campo">
-      <mat-slide-toggle formControlName="umss">Umss:</mat-slide-toggle>
-      <span style="margin-left: 10px;">{{ crearForm.get('umss')?.value ? 'Pertenece' : 'No Pertenece' }}</span>
-    </div>  
   
     <div class="campo">
       <mat-slide-toggle formControlName="estado">Estado:</mat-slide-toggle>
