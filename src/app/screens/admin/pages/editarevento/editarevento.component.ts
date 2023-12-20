@@ -38,7 +38,7 @@ export class EditareventoComponent implements OnInit {
     //nombre: new FormControl('',Validators.required),
     nombre: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]),
     descripcion : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,300}$/)]),
-    encargado : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,70}$/)]),
+    encargado : new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,70}$/)]),
     fechaFin : new FormControl('',Validators.required),
     fechaIni : new FormControl('',Validators.required),
     requisitos : new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,1000}$/)]),
@@ -74,7 +74,7 @@ export class EditareventoComponent implements OnInit {
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return e.hasError('pattern') ? 'El encargado debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
+    return e.hasError('pattern') ? 'El encargado debe tener entre 3 y 70 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
   }
   getFechaFinErrorMessage() {
     const fin = this.editarForm.get('fechaFin');
