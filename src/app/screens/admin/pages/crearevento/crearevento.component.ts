@@ -44,7 +44,7 @@ export class CreareventoComponent{
     id_tipoEventos : ['', Validators.required],
     estado: [false, Validators.required],
     imagen: [''],
-    costo: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]],
+    costo: ['', [Validators.required, Validators.pattern(/^(0|[1-9][0-9]{0,2})$/)]],
     horarios: ['',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)],
     email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
     umss: [false, Validators.required],
@@ -142,7 +142,7 @@ export class CreareventoComponent{
     if (c.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return c.hasError('pattern') ? 'El costo puede ser gratis' : '';
+    return c.hasError('pattern') ? 'El costo puede ser "0" o máximo 3 digitos los cuales no tengan "0" por delante' : '';
   }
   getHorariosErrorMessage() {
     const h = this.crearForm.get('horarios');

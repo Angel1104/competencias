@@ -140,3 +140,12 @@ margin-bottom: 16px;
   display: flex;
   justify-content: space-around;
 }
+
+/*imagne afuera*/
+.imagen-no-hay img{
+  width: 30%;
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+  display: block; /* Asegura que la imagen se centre correctamente */
+  border-top-left-radius: 15px; /* Añade bordes redondeados solo a la esquina superior izquierda de la imagen */
+  border-top-right-radius: 15px; /* Añade bordes redondeados solo a la esquina superior derecha de la imagen */
+}

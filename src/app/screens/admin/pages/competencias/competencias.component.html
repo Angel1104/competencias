@@ -38,6 +38,9 @@
   
       <div class="mat-elevation-z2">
         <div class="section-card">
+          <!-- -->
+          <ng-container *ngIf="filteredCompetencias.length > 0; else noCompetencias"> 
+            <!--  -->
           <mat-card class="card" *ngFor="let competencias of filteredCompetencias">
             <mat-card-header>
               <mat-card-title> {{competencias.nombre}} </mat-card-title>
@@ -48,7 +51,7 @@
 
               <p><strong>Fecha: </strong>{{competencias.fechaIni}}<strong> al </strong> {{competencias.fechaFin}}</p>
               <p><strong>Lugar: </strong> {{competencias.lugar}}<strong> - </strong> {{competencias.horarios}} </p>
-              <p><strong>Costo: </strong> {{competencias.costo}}</p>
+              <p><strong>Costo: </strong> {{competencias.costo}}<strong> Bs.</strong></p>
 
               <h4>Requisitos </h4>
               <h2>{{competencias.requisitos}}</h2>
@@ -61,6 +64,16 @@
                 <button mat-raised-button (click)="agregarGanador(competencias.id, competencias.id_tipoCompetencias)">Agregar ganador</button>
             </mat-card-actions>
           </mat-card>
+        </ng-container>
+        <!-- Mostrar mensaje si no hay eventos -->
+        <ng-template #noCompetencias>
+          <div class="imagen-no-hay">
+            <img src="../../../../../assets/Competencia inactiva.jpeg" alt="Photo of a Shiba Inu">
+          </div>
+          <div class="mensaje-no-hay">
+            <h5>No existe competencias disponibles en el sistema. Si estás buscando una competencia específica por nombre y no lo encuentras, puede que aún no esté registrada.</h5>
+          </div>
+        </ng-template>
         </div>  
       </div>
   

@@ -43,7 +43,7 @@ export class EditarcompComponent implements OnInit {
     id_tipoCompetencias : new FormControl('',Validators.required),
     imagen : new FormControl(''),
     estado : new FormControl('',[Validators.required, Validators.pattern(/^(activo|inactivo)$/i)]),
-    costo: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9-|_|!|#|%(|),.\sñÑ]{1,6}$/)]),
+    costo: new FormControl('',[Validators.required, Validators.pattern(/^(0|[1-9][0-9]{0,2})$/)]),
     horarios: new FormControl('',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)),
     email: new FormControl('', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]),
     umss: new FormControl('',[Validators.required, Validators.pattern(/^(si|no)$/i)]),
@@ -119,7 +119,7 @@ getCostoErrorMessage() {
   if (c.hasError('required')) {
     return 'Este campo es obligatorio';
   }
-  return c.hasError('pattern') ? 'El costo puede ser gratis' : '';
+  return c.hasError('pattern') ? 'El costo puede ser "0" o máximo 3 digitos los cuales no tengan "0" por delante' : '';
 }
 getHorariosErrorMessage() {
   const h = this.editarForm.get('horarios');

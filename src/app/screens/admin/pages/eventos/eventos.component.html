@@ -40,7 +40,11 @@
   
       <div class="mat-elevation-z2">
         <div class="section-card">
+          <!-- Verificar si hay eventos para mostrar -->
+          <ng-container *ngIf="filteredEventos.length > 0; else noEventos"> 
+            <!-- Iterar sobre los eventos -->
           <mat-card class="card" *ngFor="let evento of filteredEventos">
+              <!-- Contenido del evento -->       
             <mat-card-header>
               <mat-card-title> {{evento.nombre}} </mat-card-title>
             </mat-card-header>
@@ -50,7 +54,7 @@
 
               <p><strong>Fecha: </strong>{{evento.fechaIni}}<strong> al </strong> {{evento.fechaFin}}</p>
               <p><strong>Lugar: </strong> {{evento.lugar}}<strong> - </strong> {{evento.horarios}} </p>
-              <p><strong>Costo: </strong> {{evento.costo}}</p>
+              <p><strong>Costo: </strong> {{evento.costo}}<strong> Bs.</strong></p>
 
               <h4>Requisitos </h4>
               <h2>{{evento.requisitos}}</h2>
@@ -62,6 +66,17 @@
                 <button mat-raised-button (click)="notificarEvento(evento.id)">Notificar</button>
             </mat-card-actions>
           </mat-card>
+        </ng-container>
+            <!-- Mostrar mensaje si no hay eventos -->
+            <ng-template #noEventos>
+              <div class="imagen-no-hay">
+                <img src="../../../../../assets/EvInactivo.jpeg" alt="Photo of a Shiba Inu">
+              </div>
+              <div class="mensaje-no-hay">
+                <h5>No existe eventos disponibles en el sistema. Si estás buscando un evento específico por nombre y no lo encuentras, puede que aún no esté registrado.</h5>
+              </div>
+            </ng-template>
+            
         </div>  
       </div>
     </mat-card-content>
