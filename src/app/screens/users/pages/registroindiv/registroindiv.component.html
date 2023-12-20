@@ -19,17 +19,17 @@
             <mat-error *ngIf="crearForm?.get('apellidos')?.invalid">{{getApellidoErrorMessage()}}</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 8 caracteres">
+          <mat-form-field class="campo" hintLabel="Mínimo 7 y máximo 8 caracteres">
             <mat-label>Telefono:</mat-label> 
             <input matInput #tInput formControlName="telefono">
             <mat-hint align="end">{{tInput.value.length}}/8</mat-hint>
             <mat-error *ngIf="crearForm?.get('telefono')?.invalid">{{getTelefonoErrorMessage()}}</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 3 caracteres">
+          <mat-form-field class="campo" hintLabel="Máximo 1 dígito">
             <mat-label>Semestre:</mat-label> 
             <input matInput #sInput formControlName="semestre" >
-            <mat-hint align="end">{{sInput.value.length}}/3</mat-hint>
+            <mat-hint align="end">{{sInput.value.length}}/1</mat-hint>
             <mat-error *ngIf="crearForm?.get('semestre')?.invalid">{{getSemestreErrorMessage()}}</mat-error>
           </mat-form-field>
 

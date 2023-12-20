@@ -21,7 +21,7 @@
         <mat-error *ngIf="crearForm?.get('nombreCoach')?.invalid">{{getNombreErrorMessage('nombreCoach')}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="campo" hintLabel="Mínimo 3 y máximo 8 caracteres">
+      <mat-form-field class="campo" hintLabel="Mínimo 7 y máximo 8 caracteres">
         <mat-label>Numero:</mat-label>
         <input matInput #numeroCInput formControlName="numeroCoach">
         <mat-hint align="end">{{numeroCInput.value.length}}/8</mat-hint>
@@ -67,10 +67,10 @@
         <mat-error *ngIf="crearForm?.get('codSISCoach')?.invalid">{{getCodSisErrorMessage('codSISCoach')}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 3 caracteres">
+      <mat-form-field class="campo" hintLabel="Máximo 1 dígito">
         <mat-label>Semestre:</mat-label> 
         <input matInput #sInput formControlName="semestreCoach" >
-        <mat-hint align="end">{{sInput.value.length}}/3</mat-hint>
+        <mat-hint align="end">{{sInput.value.length}}/1</mat-hint>
         <mat-error *ngIf="crearForm?.get('semestreCoach')?.invalid">{{getSemestreErrorMessage()}}</mat-error>
       </mat-form-field>
 

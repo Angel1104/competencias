@@ -25,40 +25,40 @@ export class RegistroequipoComponent {
       nombreEquipo: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,30}$/)]],
 
       nombreCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
-      edadCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
+      edadCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carreraCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,20}$/)]],
       emailCoach: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
-      numeroCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{4,8}$/)]],
+      numeroCoach: ['', [Validators.required, Validators.pattern(/^[467][0-9]{7,8}$/)]],
       universidadCoach: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
-      semestreCoach: ['', [Validators.required, Validators.pattern(/^[0-9]{1,3}$/)]],
+      semestreCoach: ['', [Validators.required, Validators.pattern(/^[1-9]$/)]],
 
       nombre1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
-      edad1: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
+      edad1: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
       universidad1: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
 
       nombre2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
-      edad2: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/)]],
+      edad2: ['', [Validators.required, Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
       universidad2: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)]],
         
       nombre3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
-      edad3: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      edad3: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       universidad3: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
-      edad4: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      edad4: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       universidad4: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
-      edad5: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      edad5: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       universidad5: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
 
       nombre6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)],
-      edad6: ['', Validators.pattern(/^[0-9]{1,2}$/)],
+      edad6: ['', [Validators.pattern(/^[0-9]{1,2}$/), Validators.min(15)]],
       carrera6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
       universidad6: ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,30}$/)],
       
@@ -87,8 +87,10 @@ export class RegistroequipoComponent {
     if (!e) {return 'Error en el formulario';}
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
+    }if (e.hasError('min')){
+      return 'La edad no puede ser menor a 15 años';
     }
-    return e.hasError('pattern') ? 'la edad debe tener máximo 2 caracteres y solo permite valores numéricos' : '';
+    return e.hasError('pattern') ? 'la edad debe tener máximo 2 dígitos' : '';
   }
   getCarreraErrorMessage(fieldName: string) {
     const c = this.crearForm.get(fieldName);
@@ -112,7 +114,7 @@ export class RegistroequipoComponent {
     if (n.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return n.hasError('pattern') ? 'El número debe tener máximo 8 caracteres y solo permite valores numericos' : '';
+    return n.hasError('pattern') ? 'El número debe tener máximo 8 dígitos y solo permite comenzar con 4, 6 o 7' : '';
   }
   getUniversidadErrorMessage(fieldName: string) {
     const u = this.crearForm.get(fieldName);
@@ -128,7 +130,7 @@ export class RegistroequipoComponent {
     if (s.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return s.hasError('pattern') ? 'El semestre debe tener entre 1 y 3 caracteres, y solo permite valores numericos' : '';
+    return s.hasError('pattern') ? 'El semestre solo acepta 1 dígito y no puede ser 0' : '';
   }
   //fin
   crearInteresado(){

@@ -35,9 +35,9 @@ export class CrearcompComponent {
     this.crearForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
       descripcion : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,400}$/)]],
-      encargado : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,70}$/)]],
-      fechaFin : ['', Validators.required],
-      fechaIni : ['', Validators.required],
+      encargado : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,70}$/)]],
+      fechaIni: ['', [Validators.required, this.validateFechaIni]],
+      fechaFin: ['', [Validators.required, this.validateFechaFin]],
       requisitos : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,1000}$/)]],
       lugar : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{3,60}$/)]],
       id_tipoCompetencias : ['', Validators.required],
@@ -51,6 +51,43 @@ export class CrearcompComponent {
   }
 
   //Controles
+  validateFechaIni(control: FormControl) {
+    const fechaInicio = new Date(control.value);
+    const today = new Date();
+  
+    return fechaInicio >= today ? null : { invalidFechaIni: true };
+  }
+  validateFechaFin = (control: FormControl) => {
+    if (!this.crearForm) {
+      return { invalidFechaFin: false };
+    }
+  
+    const fechaFin = new Date(control.value);
+    const ini = this.crearForm.get('fechaIni');
+    
+    if (!ini) {
+      return { invalidFechaFin: false };
+    }
+  
+    const fechaInicio = new Date(ini.value);
+    return fechaFin >= fechaInicio ? null : { invalidFechaFin: true };
+  }
+  getFechaIniErrorMessage() {
+    const ini = this.crearForm.get('fechaIni');
+    if (!ini) {return 'Error en el formulario';}
+    if (ini.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return ini.hasError('invalidFechaIni') ? 'La fecha inicio debe ser mayor o igual a la fecha actual' : '';
+  }
+  getFechaFinErrorMessage() {
+    const fin = this.crearForm.get('fechaFin');
+    if (!fin) {return 'Error en el formulario';}
+    if (fin.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return fin.hasError('invalidFechaFin') ? 'La fecha fin debe ser mayor o igual a la fecha inicio' : '';
+  }
   getNombreErrorMessage() {
     const n = this.crearForm.get('nombre');
     if (!n) {return 'Error en el formulario';}
@@ -74,22 +111,6 @@ export class CrearcompComponent {
       return 'Este campo es obligatorio';
     }
     return e.hasError('pattern') ? 'El encargado debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
-  }
-  getFechaFinErrorMessage() {
-    const fin = this.crearForm.get('fechaFin');
-    if (!fin) {return 'Error en el formulario';}
-    if (fin.hasError('required')) {
-      return 'Este campo es obligatorio';
-    }
-    return '';
-  }
-  getFechaIniErrorMessage() {
-    const ini = this.crearForm.get('fechaIni');
-    if (!ini) {return 'Error en el formulario';}
-    if (ini.hasError('required')) {
-      return 'Este campo es obligatorio';
-    }
-    return '';
   }
   getRequisitosErrorMessage() {
     const r = this.crearForm.get('requisitos');

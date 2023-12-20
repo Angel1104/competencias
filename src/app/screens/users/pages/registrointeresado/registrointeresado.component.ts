@@ -40,14 +40,29 @@ export class RegistrointeresadoComponent {
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       apellidos : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ\s]{3,30}$/)]],
       ci : ['', [Validators.required, Validators.pattern(/^[0-9]{6,10}$/)]],
-      fecha_Nacimiento : ['', Validators.required],
-      telefono : ['', [Validators.required, Validators.pattern(/^[0-9]{3,8}$/)]],
+      fecha_Nacimiento : ['', [Validators.required, this.validateFecha]],
+      telefono : ['', [Validators.required, Validators.pattern(/^[467][0-9]{7,8}$/)]],
       email : ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
       carrera : ['', Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)],
-      semestre : ['', Validators.pattern(/^[0-9]{1,3}$/)],
+      semestre: ['', Validators.pattern(/^[1-9]$/)],
     });
   }
   //Controles
+  validateFecha(control: FormControl) {
+    const fecha = new Date(control.value);
+    const today = new Date();
+    const edad = today.getFullYear() - fecha.getFullYear();
+  
+    return edad >= 15 ? null : { invalidFecha: true };
+  }
+  getFechaErrorMessage() {
+    const f = this.crearForm.get('fecha_Nacimiento');
+    if (!f) {return 'Error en el formulario';}
+    if (f.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    return f.hasError('invalidFecha') ? 'Solo acepta mayor igual a 15 años' : '';
+  }
   getNombreErrorMessage() {
     const n = this.crearForm.get('nombre');
     if (!n) {return 'Error en el formulario';}
@@ -68,15 +83,7 @@ export class RegistrointeresadoComponent {
     const s = this.crearForm.get('semestre');
     if (!s) {return 'Error en el formulario';}
     if (s.hasError('pattern')) {
-      return 'El semestre debe tener entre 1 y 3 caracteres, y solo permite valores numericos';
-    }
-    return '';
-  }
-  getFechaErrorMessage() {
-    const f = this.crearForm.get('fecha_Nacimiento');
-    if (!f) {return 'Error en el formulario';}
-    if (f.hasError('required')) {
-      return 'Este campo es obligatorio';
+      return 'El semestre solo acepta 1 dígito y no puede ser 0';
     }
     return '';
   }
@@ -110,7 +117,7 @@ export class RegistrointeresadoComponent {
     if (t.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return t.hasError('pattern') ? 'El telefono debe tener máximo 8 caracteres y solo permite valores numericos' : '';
+    return t.hasError('pattern') ? 'El telefono debe tener máximo 8 dígitos y solo permite comenzar con 4, 6 o 7' : '';
   }
   //fin
   crearInteresado(){
