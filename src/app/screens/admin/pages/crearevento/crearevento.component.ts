@@ -93,7 +93,7 @@ getdata(){
     if (ini.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return ini.hasError('invalidFechaIni') ? 'La fecha inicio debe ser mayor o igual a la fecha actual' : '';
+    return ini.hasError('invalidFechaIni') ? 'La fecha inicio debe ser mayor a la fecha actual' : '';
   }
   getFechaFinErrorMessage() {
     const fin = this.crearForm.get('fechaFin');

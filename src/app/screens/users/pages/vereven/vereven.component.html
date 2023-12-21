@@ -25,7 +25,7 @@
   </mat-form-field>
 
   <mat-form-field class="campo">
-    <mat-label>Horarios:</mat-label>
+    <mat-label>Cronograma:</mat-label>
     <input matInput value={{evento.horarios}} readonly>  
   </mat-form-field>
 
@@ -50,6 +50,20 @@
     <mat-form-field class="campo">
       <mat-label>Fecha de finalización:</mat-label>
       <input matInput value={{evento.fechaFin}} readonly>
+    </mat-form-field>
+
+  </div>
+
+  <div class="fechas-container">
+    
+    <mat-form-field class="campo">
+      <mat-label>Hora de inicio:</mat-label>
+      <input type="time" matInput value={{evento.horaInicio}} readonly>
+    </mat-form-field>
+
+    <mat-form-field class="campo">
+      <mat-label>Hora de finalización:</mat-label>
+      <input  type="time" matInput value={{evento.horaFin}} readonly>
     </mat-form-field>
 
   </div>
