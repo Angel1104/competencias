@@ -19,7 +19,8 @@ import {TipoEventoI} from '../../models/tipoEvento.interface';
 export class ApiService {
 
   private urlumss='http://codefusion.tis.cs.umss.edu.bo/api/';
-  private url='https://wanting-circle-production.up.railway.app/api/';
+  //private url='https://wanting-circle-production.up.railway.app/api/';
+  private url='http://codefusionsoft.tis.cs.umss.edu.bo/api/';
 
   constructor(private http: HttpClient) { }
 
