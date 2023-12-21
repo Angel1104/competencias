@@ -110,7 +110,7 @@ export class CreareventoComponent{
     if (e.hasError('required')) {
       return 'Este campo es obligatorio';
     }
-    return e.hasError('pattern') ? 'El encargado debe tener entre 3 y 50 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
+    return e.hasError('pattern') ? 'El encargado debe tener entre 3 y 70 caracteres, y no permite caracteres especiales como ser: - _ ! # % ( ) , . :' : '';
   }
   getRequisitosErrorMessage() {
     const r = this.crearForm.get('requisitos');
