@@ -47,7 +47,7 @@ export class CreareventoComponent implements OnInit{
     estado: [false, Validators.required],
     imagen: [''],
     costo: ['', [Validators.required, Validators.pattern(/^(0|[1-9][0-9]{0,2})$/)]],
-    horarios: ['',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)],
+    horarios: ['',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,300}$/)],
     email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
     umss: [false, Validators.required],
     horaInicio: ['',Validators.required],
@@ -203,7 +203,7 @@ getdata(){
     const h = this.crearForm.get('horarios');
     if (!h) {return 'Error en el formulario';}
     if (h.hasError('pattern')) {
-      return 'El horario debe tener entre 1 y 30 caracteres';
+      return 'El horario debe tener entre 1 y 300 caracteres';
     }
     return '';
   }

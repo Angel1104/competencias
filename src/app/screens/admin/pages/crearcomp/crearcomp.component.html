@@ -32,10 +32,10 @@
     <mat-error *ngIf="crearForm?.get('lugar')?.invalid">{{getLugarErrorMessage()}}</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 30 caracteres">
+  <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 300 caracteres">
     <mat-label>Cronograma:</mat-label>
-    <textarea matInput #hInput formControlName="horarios" placeholder="Ingrese el cronograma de su evento: hora - actividad"></textarea>
-    <mat-hint align="end">{{hInput.value.length}}/30</mat-hint>
+    <textarea matInput #hInput formControlName="horarios" placeholder="Ingrese el cronograma de su competencia: hora - actividad"></textarea>
+    <mat-hint align="end">{{hInput.value.length}}/300</mat-hint>
     <mat-error *ngIf="crearForm?.get('horarios')?.invalid">{{getHorariosErrorMessage()}}</mat-error>
   </mat-form-field>
 
