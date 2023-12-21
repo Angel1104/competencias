@@ -30,7 +30,7 @@ import { ReportesComponent } from './pages/reportes/reportes.component';
 import { ReportesEventosComponent } from './pages/reportes-eventos/reportes-eventos.component';
 import { GanadorIndividualComponent } from './pages/ganador-individual/ganador-individual.component';
 import { GanadorGrupalComponent } from './pages/ganador-grupal/ganador-grupal.component';
-
+import { TipeventoComponent } from './pages/tipoevento/tipevento/tipevento.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { GanadorGrupalComponent } from './pages/ganador-grupal/ganador-grupal.co
     ReportesComponent,
     ReportesEventosComponent,
     GanadorIndividualComponent,
-    GanadorGrupalComponent
+    GanadorGrupalComponent,
+    TipeventoComponent,
   ],
   imports: [
     CommonModule,

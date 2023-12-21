@@ -1,0 +1,119 @@
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.container-users {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .campo {
+    width: 90%;
+    margin-bottom: 16px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  /*fechas*/
+
+  .fechas-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+  }
+  
+  .fechas-container .campo {
+    width: 48%; /* Puedes ajustar el porcentaje según tus necesidades */
+  }
+  
+  /*imagen*/
+
+  .example-card {
+    max-width: 300px;
+  }
+  
+  .example-header-image {
+    /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
+    background-size: cover;
+  }
+
+  /*botones*/
+  
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+  
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+.imagen {
+  height: 60%;
+  width: 60%;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+table {
+    /* width: 100%; */
+}
+.imagen {
+  height: 30%;
+  width: 30%;
+}
+.form {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.form-container {
+  display: flex;
+  
+  gap: 30px;
+  background: #faf6f691;
+  padding: 5%;
+}
+.container-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

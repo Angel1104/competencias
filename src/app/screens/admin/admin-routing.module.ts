@@ -27,6 +27,7 @@ import { ReportesEventosComponent } from "./pages/reportes-eventos/reportes-even
 
 import { GanadorIndividualComponent } from "./pages/ganador-individual/ganador-individual.component";
 import { GanadorGrupalComponent } from "./pages/ganador-grupal/ganador-grupal.component";
+import { TipeventoComponent } from './pages/tipoevento/tipevento/tipevento.component';
 
 
 
@@ -54,6 +55,8 @@ const routes: Routes = [{
 
       {path: "ganadorIndividual/:id", component: GanadorIndividualComponent},
       {path: "ganadorGrpal/:id", component: GanadorGrupalComponent},
+
+      {path: "tipoevento", component: TipeventoComponent }
 
     ]
   }];

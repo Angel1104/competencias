@@ -11,6 +11,7 @@ import { InteresadoI } from "../../models/interesadoComp.interface";
 import { EquipoI } from "../../models/equipoComp.interface";
 
 import { InteresadoEditI } from "../../models/interesado.interface";
+import {TipoEventoI} from '../../models/tipoEvento.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -185,5 +186,18 @@ ganadorGrup(idComp : Number, id:Number):Observable<any>{
 getganadorGrup(idComp : Number):Observable<any>{
   return this.http.get<any>(`${this.url}Competencias/${idComp}/GanadoresEquipos`,{})
 }
+
+//tipoevento
+getTipoEventos():Observable<any> {
+  return this.http.get<any>(`${this.url}TipoEventos`)
+}
+
+postCrearTipoEventos(tipoEvento:TipoEventoI):Observable<any> {
+  return this.http.post<any>(`${this.url}TipoEventos`,tipoEvento)
+}
+
+deleteTipoEventos(id:number):Observable<any> {
+  return this.http.delete<any>(`${this.url}TipoEventos/${id}`)
+} 
 
 }
