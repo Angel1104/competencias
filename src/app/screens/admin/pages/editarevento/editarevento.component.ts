@@ -28,7 +28,7 @@ export const MY_FORMATS = {
 })
 export class EditareventoComponent implements OnInit {
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService) {}
-
+  eventos: any ;
   // evento!:EventoEditI;
   dataEvento! : EventoEditI;
   //imagenControl = new FormControl<File | null>(null);
@@ -50,6 +50,9 @@ export class EditareventoComponent implements OnInit {
     costo: new FormControl('',[Validators.required, Validators.pattern(/^(0|[1-9][0-9]{0,2})$/)]),
     horarios: new FormControl('',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)),
     email: new FormControl('', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]),
+    horaInicio: new FormControl ('', [Validators.required]),
+    horaFin: new FormControl ('', [Validators.required]),
+    
   });
 //controles
   getNombreErrorMessage() {
@@ -152,6 +155,10 @@ export class EditareventoComponent implements OnInit {
   }
 
   getData(id:Number){
+    this.apiService.getTipoEventos().subscribe(data=>{
+      this.eventos = data;
+      console.log(this.eventos);
+    });
     this.apiService.getEventById(id).subscribe(data=>{
       const { imagen, ...eventoSinImagen } = data;
 
@@ -175,6 +182,8 @@ export class EditareventoComponent implements OnInit {
         horarios: this.dataEvento.horarios || '',
         email: this.dataEvento.email || '',
         costo: this.dataEvento.costo.toString() || '',
+        horaInicio: this.dataEvento.horaInicio || '',
+        horaFin:this.dataEvento.horaFin || ''
       })
       console.log(this.editarForm.value);
     })

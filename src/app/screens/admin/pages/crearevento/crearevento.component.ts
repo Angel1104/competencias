@@ -26,13 +26,15 @@ export const MY_FORMATS = {
   styleUrls: ['./crearevento.component.css'],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
 })
-export class CreareventoComponent{
+export class CreareventoComponent implements OnInit{
   crearForm: FormGroup;
   imagenSeleccionada: File | null = null;
   dataEvento! : EventoI;
+  eventos: any ;
 
   constructor(private router: Router, private activaterouter:ActivatedRoute,private apiService: ApiService, private fb: FormBuilder) {
   
+    
   this.crearForm = this.fb.group({
     nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9\s]{3,50}$/)]],
     descripcion : ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿñÑ0-9-|_|!|#|%(|),.\s]{4,300}$/)]],
@@ -48,7 +50,20 @@ export class CreareventoComponent{
     horarios: ['',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)],
     email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
     umss: [false, Validators.required],
+    horaInicio: ['',Validators.required],
+    horaFin: ['',Validators.required]
+
   });
+}
+
+ngOnInit(): void {
+  this.getdata();
+}
+getdata(){
+  this.apiService.getTipoEventos().subscribe(data=>{
+    this.eventos = data;
+    console.log(this.eventos);
+  })
 }
   //Controles
   validateFechaIni(control: FormControl) {
@@ -198,7 +213,8 @@ export class CreareventoComponent{
     if (datos.horarios) {formData.append('horarios', datos.horarios);}
     formData.append('email', datos.email);
     formData.append('umss', umss);
-
+    formData.append('horaInicio', datos.horaInicio);
+    formData.append('horaFin', datos.horaFin);
 
     console.log(formData);
     Swal.fire({

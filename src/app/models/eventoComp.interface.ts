@@ -15,4 +15,6 @@ export interface EventoI {
     email: string;
     umss: string;
     reporte: string;
+    horaInicio: string;
+    horaFin: string;
 }

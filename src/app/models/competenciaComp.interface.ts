@@ -15,4 +15,6 @@ export interface CompetenciaI {
     umss: string;
     horarios: string;
     reporte: string;
+    horaInicio: string;
+    horaFin : string;
 }

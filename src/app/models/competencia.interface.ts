@@ -14,4 +14,6 @@ export interface CompetenciaEditI {
     imagen: File;
     umss: string;
     reporte: string;
+    horaInicio: string;
+    horaFin: String;
 }

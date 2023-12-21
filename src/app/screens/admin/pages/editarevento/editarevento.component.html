@@ -13,11 +13,8 @@
 
   <mat-form-field class="campo">
     <mat-label>Tipo de evento:</mat-label>
-    <mat-select matInput formControlName="id_tipoEventos">
-      <mat-option value="1">Entrenamiento</mat-option>
-      <mat-option value="2">Reclutamiento</mat-option>
-      <mat-option value="3">Clasificatorias Internas</mat-option>
-      <mat-option value="4">Competencia de entrenamiento para la ICPC</mat-option>
+    <mat-select formControlName="id_tipoEventos">
+      <mat-option *ngFor="let evento of eventos" [value]="evento.id">{{ evento.nombre }}</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -36,8 +33,8 @@
   </mat-form-field>
 
   <mat-form-field class="campo" hintLabel="Mínimo 1 y máximo 30 caracteres">
-    <mat-label>Horarios:</mat-label>
-    <input matInput #hInput formControlName="horarios">
+    <mat-label>Cronograma:</mat-label>
+    <textarea matInput #hInput formControlName="horarios" placeholder="Ingrese el cronograma de su evento: hora - actividad"></textarea>
     <mat-hint align="end">{{hInput.value.length}}/30</mat-hint>
     <mat-error *ngIf="editarForm.get('horarios')?.invalid">{{getHorariosErrorMessage()}}</mat-error>
   </mat-form-field>
@@ -64,6 +61,17 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
       <mat-error *ngIf="editarForm.get('fechaFin')?.invalid">{{getFechaFinErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="fechas-container">
+    <mat-form-field class="campo" hintLabel="Elije una hora inicial">
+      <mat-label>Hora Inicio</mat-label>
+      <input matInput formControlName="horaInicio" type="time">
+    </mat-form-field>
+
+    <mat-form-field class="campo" hintLabel="Elije una hora final">
+      <mat-label>Hora Fin</mat-label>
+      <input matInput formControlName="horaFin" type="time">
     </mat-form-field>
   </div>
 

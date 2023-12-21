@@ -14,4 +14,6 @@ export interface EventoEditI {
     umss: string;
     imagen: File;
     reporte: string;
+    horaInicio: string;
+    horaFin: String;
 }

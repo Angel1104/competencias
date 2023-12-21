@@ -15,4 +15,6 @@ export interface CompEditI {
     horarios: string;
     umss: string;
     reporte: string;
+    horaInicio:string;
+    horaFin:string;
 }

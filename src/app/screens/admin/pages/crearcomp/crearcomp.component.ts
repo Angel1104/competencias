@@ -43,6 +43,8 @@ export class CrearcompComponent {
       horarios: ['',  Validators.pattern(/^[a-zA-Z0-9-|_:!#%(),.\sñÑ]{1,30}$/)],
       email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
       umss: [false, Validators.required],
+      horaInicio: ['',Validators.required],
+      horaFin: ['',Validators.required]
     });
   }
 
@@ -196,6 +198,8 @@ export class CrearcompComponent {
     formData.append('estado', estado);
     formData.append('umss', umss);
     formData.append('imagen', this.imagenSeleccionada as File);
+    formData.append('horaInicio', datos.horaInicio);
+    formData.append('horaFin', datos.horaFin);
 
     console.log(formData);
     Swal.fire({

@@ -49,7 +49,8 @@ export class EditarcompComponent implements OnInit {
     //umss: new FormControl('',[Validators.required, Validators.pattern(/^(si|no)$/i)]),
     estado: new FormControl(false || true),
     umss: new FormControl(false || true),
-
+    horaInicio: new FormControl ('', [Validators.required]),
+    horaFin: new FormControl ('', [Validators.required]),
   });
 //controles
 getNombreErrorMessage() {
@@ -175,6 +176,8 @@ getEmailErrorMessage() {
         email: this.dataCompetencia.email || '',
         costo: this.dataCompetencia.costo.toString() || '',
         horarios: this.dataCompetencia.horarios || '',
+        horaInicio: this.dataCompetencia.horaInicio || '',
+        horaFin:this.dataCompetencia.horaFin || ''
 
       })
       console.log(this.editarForm.value);
