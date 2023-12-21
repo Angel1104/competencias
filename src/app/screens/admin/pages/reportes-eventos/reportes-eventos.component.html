@@ -1,9 +1,13 @@
 <h1 style="margin:20px 0px 0px 40px">Reportes de eventos</h1>
 
 <mat-card class="contenedor-principal">
-
-    <mat-card-title>
-      <div class="contenedor-filtro">
+  <div class="descripcion-general">
+    <p>
+      Esta sección te permite visualizar reportes detallados de eventos. Utiliza los filtros disponibles para refinar tu búsqueda y visualizar datos específicos de los eventos. La tabla muestra información relevante como el nombre, lugar, fechas y costo de los eventos filtrados.
+    </p>
+  </div>
+    <mat-card-title class="filter-section">
+      <div class="contenedor-filtro filter-container">
         <mat-form-field>
           <mat-label>Estado:</mat-label>
           <mat-select [(ngModel)]="estadoFiltro" (ngModelChange)="applyEstadoFilter()">
@@ -33,44 +37,66 @@
       </div>
     </mat-card-title>
 
-    <table class="mat-elevation-z8">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Lugar</th>
-          <th>Fecha Inicio</th>
-          <th>Fecha Fin</th>
-          <th>Costo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let competencia of filteredCompetencias">
-          <td>{{ competencia.nombre }}</td>
-          <td>{{ competencia.lugar }}</td>
-          <td>{{ competencia.fechaIni }}</td>
-          <td>{{ competencia.fechaFin }}</td>
-          <td>{{ competencia.costo }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-section">
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Lugar</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Costo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let competencia of filteredCompetencias">
+            <td>{{ competencia.nombre }}</td>
+            <td>{{ competencia.lugar }}</td>
+            <td>{{ competencia.fechaIni }}</td>
+            <td>{{ competencia.fechaFin }}</td>
+            <td>{{ competencia.costo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     
-    <section class="contenedor-grafico">
-      <section class="botones">
-        <button (click)="generarGraficoPie()" mat-raised-button color="primary">Generar grafico pie de activos e inactivos</button>
-        <button (click)="generarGraficoBarra()" mat-raised-button color="primary">Generar grafico bar de activos e inactivos</button>
+    
+    <div class="chart-section">
+      <section class="date-chart">
+        <section class="chart-buttons">
+          <button (click)="generarGraficoFechas()" mat-raised-button color="primary">
+            Generar gráfico basado en fechas
+          </button>
+          <p class="chart-description">
+            Este gráfico de barras muestra la distribución de eventos según el filtro de fechas seleccionado, permitiendo visualizar la cantidad de eventos en un período de tiempo específico.
+          </p>
+        </section>
+        <div id="chartfechas" class="chart"></div>
       </section>
-      
-      <div id="chartbar"></div>
-      <div id="chartpie"></div>
-
-    </section>
-    <section class="contenedor-grafico">
-      <section class="botones">
-        <button (click)="generarGraficoFechas()" mat-raised-button color="primary">Generar grafico de barras de acuerdo al filtro de fechas fechas</button>
+  
+      <section class="chart-container">
+        <section class="chart-buttons">
+          <button (click)="generarGraficoPie()" mat-raised-button color="primary">
+            Generar gráfico de pastel de eventos
+          </button>
+          <p class="chart-description">
+            Este gráfico de pastel muestra la distribución porcentual de los diferentes tipos de eventos, proporcionando una vista rápida de la participación de cada tipo.
+          </p>
+        </section>
+        <div id="chartpie" class="chart"></div>
       </section>
-      
-      <div id="chartfechas"></div>
-
-    </section>
+  
+      <section class="date-chart">
+        <section class="chart-buttons">
+          <button (click)="generarGraficoBarra()" mat-raised-button color="primary">
+            Generar gráfico de barras de eventos
+          </button>
+          <p class="chart-description">
+            Este gráfico de barras compara la cantidad de eventos activos e inactivos, ayudando a identificar patrones y tendencias en el estado de los eventos.
+          </p>
+        </section>
+        <div id="chartbar" class="chart"></div>
+      </section>
+    </div>
     
 </mat-card>

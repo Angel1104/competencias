@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomComponent } from './pages/hom/hom.component';
 import { CompComponent } from './pages/comp/comp.component';
 import { VerevenComponent } from './pages/vereven/vereven.component';
 import { EvenComponent } from './pages/even/even.component';
@@ -23,6 +22,7 @@ import { RegistroindivComponent } from './pages/registroindiv/registroindiv.comp
 import { RegistroindivumssComponent } from './pages/registroindivumss/registroindivumss.component';
 import { RegistroequipoumssComponent } from './pages/registroequipoumss/registroequipoumss.component';
 import { RegistrointeresadoumssComponent } from './pages/registrointeresadoumss/registrointeresadoumss.component';
+import { Hom2Component } from './pages/hom2/hom2.component';
 
 
 @NgModule({
@@ -31,13 +31,13 @@ import { RegistrointeresadoumssComponent } from './pages/registrointeresadoumss/
     EvenComponent,
     VercompComponent,
     VerevenComponent,
-    HomComponent,
     RegistroequipoComponent,
     RegistrointeresadoComponent,
     RegistroindivComponent,
     RegistroindivumssComponent,
     RegistroequipoumssComponent,
-    RegistrointeresadoumssComponent
+    RegistrointeresadoumssComponent,
+    Hom2Component
   ],
   imports: [
     CommonModule,
