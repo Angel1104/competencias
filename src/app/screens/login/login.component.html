@@ -13,8 +13,6 @@
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
 
-            
-
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Contraseña</mat-label>
               <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
@@ -22,16 +20,23 @@
                 <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
               </button>
             </mat-form-field>
-
             <div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
-            <button class="full-width" mat-raised-button color="primary" type="submit" [disabled]="loading">
-              Ingresar
-              <mat-icon matSuffix>login</mat-icon>
-            </button>
-            
-          </div>
+            <section class="btn">
+              <button  mat-raised-button routerLink="/users">
+                Retroceder
+              </button>
+              <button  mat-raised-button color="primary" type="submit" [disabled]="loading">
+                Ingresar
+                <mat-icon matSuffix>login</mat-icon>
+              </button>
+            </section>
+              
+            </div>
         </form>
-  
+        <div class="recuperar full-width" (click)="openDialog()">
+          <label class="text" >Recuperar contraseña </label>
+        </div>
+
       </mat-card-content>
       <mat-card-footer>
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>

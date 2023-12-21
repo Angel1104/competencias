@@ -10,6 +10,7 @@ import { AdminComponent } from './screens/admin/admin.component'
 import { LoginComponent } from './screens/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './screens/users/users.component';
+import { DialogComponent } from './screens/login/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { UsersComponent } from './screens/users/users.component';
     AdminComponent,
     LoginComponent,
     UsersComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

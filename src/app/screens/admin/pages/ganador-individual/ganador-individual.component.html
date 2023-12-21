@@ -2,13 +2,18 @@
 <div class="contenedor">
   <h1>Agregar ganador individual</h1>
     <section class="contenedor-principal">
+  <h2>Participantes de la competencia</h2>
+
       <form [formGroup]="ganadorForm" (ngSubmit)="agregarGanador(ganadorForm.value)" class="formulario">
+          <div>
+          <div *ngIf="errorAgregarGanador" class="error-message text-error">{{ errorAgregarGanador }}</div>
 
-        <mat-form-field >
-          <mat-label>ID ganador:</mat-label>
-          <input matInput formControlName="id">
-        </mat-form-field>
-
+          <mat-form-field >
+            <mat-label>ID ganador:</mat-label>
+            <input matInput formControlName="id">
+            
+          </mat-form-field>
+          </div>
         <button type="submit" color="primary" mat-raised-button>Enviar</button>
       </form>
     <table mat-table [dataSource]="interesados" class="mat-elevation-z8">
@@ -36,9 +41,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>  
     <hr>
-    <div class="example-button-row">
-      <button mat-raised-button color="primary" routerLink="/admin/competencias">Volver</button>
-    </div>
+    
     <hr>
     <h2>Ganador actual</h2>
     <table mat-table [dataSource]="ganador" class="mat-elevation-z8">
@@ -65,7 +68,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    
   </section>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" routerLink="/admin/competencias">Volver</button>
+  </div>
   
 
 </div>

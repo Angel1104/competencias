@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ApiService } from "../../services/api/api.service";
-import { LoginI } from "../../models/login.interface";
 
 import { Router } from '@angular/router';
+
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component'; 
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit{
 
   errorMsg: string = '';
   loading: boolean = false;
-  hidePassword: boolean = true; // Variable para rastrear la visibilidad de la contraseña
+  hidePassword: boolean = true;
 
 
   loginForm = new FormGroup({
@@ -22,10 +24,12 @@ export class LoginComponent implements OnInit{
     password : new FormControl('',Validators.required)
   })
 
-  constructor(private api:ApiService, private router: Router){}
+  constructor(private api:ApiService, 
+    private router: Router,
+    public dialog: MatDialog
+    ){}
 
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
   }
   
   togglePasswordVisibility(): void {
@@ -36,47 +40,27 @@ export class LoginComponent implements OnInit{
     this.loading = true;
     this.api.loginByEmail(form).subscribe(
       (response) => {
-        // Aquí puedes realizar acciones adicionales si es necesario
         console.log(response);
         this.router.navigate(['/admin']);
-
-        /*
-        // Verificar si la respuesta indica que el inicio de sesión fue exitoso
-        if (response && response.token) {
-          // Almacenar el token u otros datos de sesión según sea necesario
-
-          this.router.navigate(['/admin']);
-        } else {
-          // Manejar el caso en el que el inicio de sesión no fue exitoso
-          console.log('estoy aqui');
-        }*/
       },
       (error) => {
-        // Manejar errores de la llamada API
         console.error(error);
         this.errorMsg = 'Error al intentar iniciar sesión como ADMINISTRADOR. Verifica tus credenciales.';
       }
     ).add(() => {
-      // Deshabilita el estado de carga después de que la solicitud se complete (ya sea exitosa o con error)
       this.loading = false;
     });
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '500px',
+      data: { message: 'Por favor enviar mensaje al siguiente correo para recuperar contraseña: ' }
+    });
   
-/*
-  onLogin(form: any){
-    console.log(form);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
-  // onLogin(formValue: any) {
-  //   if (formValue.email && formValue.password) {
-  //     const loginData: LoginI = {
-  //       email: formValue.email,
-  //       password: formValue.password
-  //     };
-  //     this.api.loginByEmail(loginData);
-  //     console.log(loginData);
-  //   } else {
-  //     // Manejar el caso donde los valores de email o password son undefined
-  //   }
-  // }
-*/
+  
+  
 }

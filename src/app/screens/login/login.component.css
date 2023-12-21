@@ -24,3 +24,25 @@
   color: red;
   margin-top: 10px;
 }
+.recuperar {
+  height: 50px;
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.text {
+  color: black;
+  text-decoration-line: none;
+}
+.text:hover{
+  text-decoration-line: underline;
+  cursor: pointer;
+  color: blue;
+}
+
+.btn {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}

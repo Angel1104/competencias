@@ -2,12 +2,13 @@
   <h1>Agregar ganador grupal</h1>
     <section class="contenedor-principal">
       <form [formGroup]="ganadorForm" (ngSubmit)="agregarGanador(ganadorForm.value)" class="formulario">
-
-        <mat-form-field >
-          <mat-label>ID equipo ganador:</mat-label>
-          <input matInput formControlName="id">
-        </mat-form-field>
-
+        <div>
+          <div *ngIf="errorAgregarGanador" class="error-message text-error">{{ errorAgregarGanador }}</div>
+          <mat-form-field >
+            <mat-label>ID equipo ganador:</mat-label>
+            <input matInput formControlName="id">
+          </mat-form-field>
+      </div>
         <button type="submit" color="primary" mat-raised-button>Enviar</button>
       </form>
       <table mat-table [dataSource]="equipos" class="mat-elevation-z8" style="width: 100%">

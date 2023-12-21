@@ -19,6 +19,10 @@ export class GanadorGrupalComponent implements OnInit {
 
   equipos!: EquipoI[];
   ganador!: EquipoI[];
+  errorAgregarGanador: string = '';
+  ganadorAgregado: boolean = false;
+
+
 
   compId: string | null = null;
 
@@ -56,28 +60,48 @@ export class GanadorGrupalComponent implements OnInit {
   }
 
   agregarGanador(form: any) {
-    console.log(form);
-    console.log(this.compId);
+    if (this.ganadorAgregado) {
+      this.errorAgregarGanador = 'Ya se ha agregado un ganador para esta competencia';
+      return;
+    }
+
+    const ganadorId: number = parseInt(form.id, 10);
+
+    if (isNaN(ganadorId)) {
+      this.errorAgregarGanador = 'ID de ganador no válido';
+      return;
+    }
+
+    const ganadorExistente = this.interesados.find(
+      (interesado) => interesado.id === ganadorId
+    );
+    if (!ganadorExistente) {
+      this.errorAgregarGanador = 'El ID del ganador no existe en la lista de interesados';
+      return;
+    }
+
     if (this.compId !== null) {
       const compIdNumber: number = parseInt(this.compId, 10);
-  
-      this.apiService.ganadorGrup(compIdNumber, form.id).subscribe(data => {
-      console.log(data);
-        Swal.fire({
-          icon: 'success',
-          title: 'Se ha agregado el ganador con éxito',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          // this.router.navigate(['/admin/competencias']);
-        });
-      }, error => {
-        // Manejar errores si la llamada al servicio falla
-        console.error('Error al agregar el ganador:', error);
-      });
+
+      this.apiService.ganadorInd(compIdNumber, ganadorId).subscribe(
+        () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Se ha agregado el ganador con éxito',
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            this.router.navigate(['/admin']);
+          });
+        },
+        (error) => {
+          console.error('Error al agregar el ganador:', error);
+          this.errorAgregarGanador =
+            'Hubo un error al agregar el ganador. Por favor, intenta nuevamente más tarde.';
+        }
+      );
     } else {
       console.error('compId es nulo, no se puede agregar el ganador');
-      // Manejar este caso si es necesario
     }
   }
 
