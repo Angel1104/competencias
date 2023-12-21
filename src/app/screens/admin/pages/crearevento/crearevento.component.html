@@ -62,7 +62,9 @@
       <input matInput [matDatepicker]="picker2" formControlName="fechaFin">
       <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
-      <mat-error *ngIf="crearForm?.get('fechaFin')?.invalid">{{getFechaFinErrorMessage()}}</mat-error>
+      <mat-error *ngIf="crearForm?.get('fechaFin')?.invalid || crearForm?.get('fechaIni')?.invalid">
+        {{getFechaFinErrorMessage()}}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -70,11 +72,13 @@
     <mat-form-field class="campo" hintLabel="Elije una hora inicial">
       <mat-label>Hora Inicio</mat-label>
       <input matInput formControlName="horaInicio" type="time">
+      <mat-error *ngIf="crearForm?.get('horaInicio')?.invalid">{{getHoraIniErrorMessage()}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="campo" hintLabel="Elije una hora final">
       <mat-label>Hora Fin</mat-label>
       <input matInput formControlName="horaFin" type="time">
+      <mat-error *ngIf="crearForm?.get('horaFin')?.invalid || crearForm?.get('horaInicio')?.invalid">{{getHoraFinErrorMessage()}}</mat-error>
     </mat-form-field>
   </div>
 

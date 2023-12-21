@@ -51,7 +51,7 @@ export class CreareventoComponent implements OnInit{
     email: ['', [Validators.required, Validators.pattern(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/)]],
     umss: [false, Validators.required],
     horaInicio: ['',Validators.required],
-    horaFin: ['',Validators.required]
+    horaFin: ['', [Validators.required, this.validateHoraFin]],
 
   });
 }
@@ -66,6 +66,44 @@ getdata(){
   })
 }
   //Controles
+  validateHoraFin = (control: FormControl) => {
+    if (!this.crearForm) {
+      return { invalidHoraFin: false };
+    }
+  
+    const horaFin = control.value;
+    const ini = this.crearForm.get('horaInicio');
+  
+    if (!ini || !ini.value) {
+      return { invalidHoraFin: true, horaInicioVacia: true };
+    }
+  
+    const horaInicio = ini.value;
+  
+    return horaFin > horaInicio ? null : { invalidHoraFin: true };
+  };
+  getHoraFinErrorMessage() {
+    const fin = this.crearForm.get('horaFin');
+    const ini = this.crearForm.get('horaInicio');
+  
+    if (!fin || !ini) {
+      return 'Error en el formulario';
+    }
+  
+    if (fin.hasError('required') || ini.hasError('required')) {
+      return 'Llene primero la hora inicio';
+    }
+  
+    return fin.hasError('invalidHoraFin') ? 'La hora de fin debe ser mayor a la hora de inicio' : '';
+  }
+  getHoraIniErrorMessage() {
+    const ini = this.crearForm.get('horaInicio');
+    if (!ini) {return 'Error en el formulario';}
+    if (ini.hasError('required')) {
+    return 'Este campo es obligatorio';
+    }
+    return '';
+}
   validateFechaIni(control: FormControl) {
     const fechaInicio = new Date(control.value);
     const today = new Date();
@@ -76,17 +114,14 @@ getdata(){
     if (!this.crearForm) {
       return { invalidFechaFin: false };
     }
-  
     const fechaFin = new Date(control.value);
     const ini = this.crearForm.get('fechaIni');
-    
-    if (!ini) {
-      return { invalidFechaFin: false };
+    if (!ini || !ini.value) {
+      return { invalidFechaFin: true, fechaIniVacia: true };
     }
-  
     const fechaInicio = new Date(ini.value);
     return fechaFin >= fechaInicio ? null : { invalidFechaFin: true };
-  }
+  };
   getFechaIniErrorMessage() {
     const ini = this.crearForm.get('fechaIni');
     if (!ini) {return 'Error en el formulario';}
@@ -97,9 +132,14 @@ getdata(){
   }
   getFechaFinErrorMessage() {
     const fin = this.crearForm.get('fechaFin');
-    if (!fin) {return 'Error en el formulario';}
-    if (fin.hasError('required')) {
-      return 'Este campo es obligatorio';
+    const ini = this.crearForm.get('fechaIni');
+  
+    if (!fin || !ini) {
+      return 'Error en el formulario';
+    }
+  
+    if (fin.hasError('required') || ini.hasError('required')) {
+      return 'Llene la fecha inicial primero';
     }
     return fin.hasError('invalidFechaFin') ? 'La fecha fin debe ser mayor o igual a la fecha inicio' : '';
   }
